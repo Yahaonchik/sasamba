@@ -5,10 +5,13 @@ import Header from '../components/Header'
 import MainFooter from '../components/MainFooter'
 import SEOHead from '../components/SEOHead'
 import PageNavigation from '../components/PageNavigation'
-import OrderButton from '../components/OrderButton'
-import OrderModal from '../components/OrderModal'
+const OrderModal = dynamic(() => import('../components/OrderModal'), { ssr: false })
 import Breadcrumbs from '../components/Breadcrumbs'
-import RelatedArticles from '../components/RelatedArticles'
+import dynamic from 'next/dynamic'
+const RelatedArticles = dynamic(() => import('../components/RelatedArticles'), { ssr: false })
+import AnchorLinksSection from '../components/AnchorLinksSection'
+const CallMasterSection = dynamic(() => import('../components/CallMasterSection'))
+import InterestingAside from '../components/InterestingAside'
 import { getSEOData } from '../utils/seoConfig'
 import { getProblemPageStructuredData } from '../utils/structuredData'
 
@@ -26,7 +29,7 @@ const Page = (props) => {
   const baseUrl = 'https://remstirmash.od.ua'
   const structuredData = getProblemPageStructuredData(
     'Ремонт стиральной машины которая не сливает воду',
-    'Професси��нальный ремонт стир��льных машин которы�� не сливают воду в Одессе. Диагностика, чистка фильтров, ремонт насоса.',
+    'Профессиональный ремонт стиральных машин которые не сливают воду в Одессе. Диагностика, чистка фильтров, ремонт насоса.',
     `${baseUrl}/neslivaetvodu`
   )
 
@@ -41,16 +44,14 @@ const Page = (props) => {
           structuredData={structuredData}
         />
         <Header />
-        <div className="page-breadcrumbs-section">
-          <Breadcrumbs style="white-left" />
-        </div>
+        <Breadcrumbs style="white-left" />
         <main className="page-main">
           <div className="page-left-main-box">
 
             <div className="page-headertextwashermachine">
               <h1 className="page-text10">
                 <span className="page-text11">
-                  Стиральная машина н�� сливает воду —
+                  Стиральная машина не сливает воду —
                 </span>
                 <span className="page-text12">
                   <span
@@ -62,218 +63,19 @@ const Page = (props) => {
                 <span className="page-text13">что делать?</span>
               </h1>
             </div>
-            <section className="page-container11">
-              <svg
-                width="100%"
-                xmlns="http://www.w3.org/2000/svg"
-                height="17"
-                viewBox="0 0 10 20"
-                preserveAspectRatio="none"
-                className="page-icon10"
-              >
-                <circle
-                  r="3.75"
-                  cx="5"
-                  cy="10"
-                  fill="#606060"
-                  vectorEffect="non-scaling-stroke"
-                ></circle>
-              </svg>
-              <svg
-                width="100%"
-                xmlns="http://www.w3.org/2000/svg"
-                height="17"
-                viewBox="0 0 10 20"
-                preserveAspectRatio="none"
-                className="page-icon12"
-              >
-                <circle
-                  r="3.75"
-                  cx="5"
-                  cy="10"
-                  fill="#606060"
-                  vectorEffect="non-scaling-stroke"
-                ></circle>
-              </svg>
-              <svg
-                width="100%"
-                xmlns="http://www.w3.org/2000/svg"
-                height="17"
-                viewBox="0 0 10 20"
-                preserveAspectRatio="none"
-                className="page-icon14"
-              >
-                <circle
-                  r="3.75"
-                  cx="5"
-                  cy="10"
-                  fill="#606060"
-                  vectorEffect="non-scaling-stroke"
-                ></circle>
-              </svg>
-              <svg
-                width="100%"
-                xmlns="http://www.w3.org/2000/svg"
-                height="17"
-                viewBox="0 0 10 20"
-                preserveAspectRatio="none"
-                className="page-icon16"
-              >
-                <circle
-                  r="3.75"
-                  cx="5"
-                  cy="10"
-                  fill="#606060"
-                  vectorEffect="non-scaling-stroke"
-                ></circle>
-              </svg>
-              <strong className="page-text14">
-                <span>Основные пр��чины отсутствия сл��ва:</span>
-                <br></br>
-              </strong>
-              <ul className="page-ul list">
-                <li className="page-li3 list-item">
-                  <img
-                    alt="Vector8669"
-                    src="/external/vector8669-r6fr.svg"
-                    className="page-vector2"
-                  />
-                  <a href="#1" className="page-link3 ge">
-                    1. Засор сливного ��ильтра
-                  </a>
-                </li>
-                <li className="page-li4 list-item ge">
-                  <img
-                    alt="Vector8669"
-                    src="/external/vector8669-r6fr.svg"
-                    className="page-vector3"
-                  />
-                  <a href="#2" className="page-link4">
-                    2. Неисправность датчика уровня воды (прессостата)
-                  </a>
-                </li>
-                <li className="page-li5 list-item">
-                  <img
-                    alt="Vector8669"
-                    src="/external/vector8669-r6fr.svg"
-                    className="page-vector4"
-                  />
-                  <a href="#2b" className="page-link5 ge">
-                    3. Неисправность сливного насоса.
-                  </a>
-                </li>
-                <li className="page-li6 list-item">
-                  <img
-                    alt="Vector8669"
-                    src="/external/vector8669-r6fr.svg"
-                    className="page-vector5"
-                  />
-                  <a href="#2c" className="page-link6 ge">
-                    4. Сбой или поломка мо��уля ��правления
-                  </a>
-                </li>
-                <li className="page-li6 list-item">
-                  <img
-                    alt="Vector8669"
-                    src="/external/vector8669-r6fr.svg"
-                    className="page-vector5"
-                  />
-                  <a href="#2d" className="page-link6 ge">
-                    5. Засор сливног�� патрубка
-                  </a>
-                </li>
-                <li className="page-li6 list-item">
-                  <img
-                    alt="Vector8669"
-                    src="/external/vector8669-r6fr.svg"
-                    className="page-vector5"
-                  />
-                  <a href="#2e" className="page-link6 ge">
-                    6. Засор сливного ��ланга
-                  </a>
-                </li>
-                <li className="page-li2 list-item">
-                  <img alt="image" src="/vector.svg" className="page-image2" />
-                  <a href="#3" className="page-link2">
-                    Как самостоятельно слить воду:
-                  </a>
-                </li>
-                <li className="page-li2 list-item">
-                  <img alt="image" src="/vector.svg" className="page-image2" />
-                  <a href="#4" className="page-link2">
-                    Советы по профилактике:
-                  </a>
-                </li>
-              </ul>
-              <svg
-                width="330"
-                xmlns="http://www.w3.org/2000/svg"
-                height="20"
-                viewBox="0 0 330 20"
-                preserveAspectRatio="none"
-                className="page-icon18"
-              >
-                <path
-                  d="M0 10 H330"
-                  fill="none"
-                  stroke="#000000"
-                  strokeWidth="0.5"
-                  vectorEffect="non-scaling-stroke"
-                  strokeDasharray="11 11"
-                ></path>
-              </svg>
-              <svg
-                width="330"
-                xmlns="http://www.w3.org/2000/svg"
-                height="20"
-                viewBox="0 0 330 20"
-                preserveAspectRatio="none"
-                className="page-icon20"
-              >
-                <path
-                  d="M0 10 H330"
-                  fill="none"
-                  stroke="#000000"
-                  strokeWidth="0.5"
-                  vectorEffect="non-scaling-stroke"
-                  strokeDasharray="11 11"
-                ></path>
-              </svg>
-              <svg
-                width="20"
-                xmlns="http://www.w3.org/2000/svg"
-                height="110"
-                viewBox="0 0 20 110"
-                preserveAspectRatio="none"
-                className="page-icon22"
-              >
-                <path
-                  d="M10 0 V110"
-                  fill="none"
-                  stroke="#000000"
-                  strokeWidth="0.5"
-                  vectorEffect="non-scaling-stroke"
-                  strokeDasharray="11 11"
-                ></path>
-              </svg>
-              <svg
-                width="20"
-                xmlns="http://www.w3.org/2000/svg"
-                height="110"
-                viewBox="0 0 20 110"
-                preserveAspectRatio="none"
-                className="page-icon24"
-              >
-                <path
-                  d="M10 0 V110"
-                  fill="none"
-                  stroke="#000000"
-                  strokeWidth="0.5"
-                  vectorEffect="non-scaling-stroke"
-                  strokeDasharray="11 11"
-                ></path>
-              </svg>
-            </section>
+            <AnchorLinksSection
+              title="Основные причины отсутствия слива:"
+              items={[
+                { icon: '/external/vector8669-r6fr.svg', href: '#1', text: '1. Засор сливного фильтра' },
+                { icon: '/external/vector8669-r6fr.svg', href: '#2', text: '2. Неисправность датчика уровня воды (прессостата)' },
+                { icon: '/external/vector8669-r6fr.svg', href: '#2b', text: '3. Неисправность сливного насоса.' },
+                { icon: '/external/vector8669-r6fr.svg', href: '#2c', text: '4. Сбой или поломка модуля управления' },
+                { icon: '/external/vector8669-r6fr.svg', href: '#2d', text: '5. Засор сливного патрубка' },
+                { icon: '/external/vector8669-r6fr.svg', href: '#2e', text: '6. Засор сливного щланга' },
+                { icon: '/vector.svg', href: '#3', text: 'Как самостоятельно слить воду:' },
+                { icon: '/vector.svg', href: '#4', text: 'Советы по профилактике:' },
+              ]}
+            />
             <section id="1" className="page-firstproblem">
               <div className="page-container12 zagolovkiskorobkoy">
                 <h2 className="zagolovki2">
@@ -306,19 +108,19 @@ const Page = (props) => {
                     className="page-image38230522"
                   />
                   <span className="page-text19">
-                    <span>З��сор сливного фильтра</span>
+                    <span>Засор сливного фильтра</span>
                     <br></br>
                   </span>
                 </figure>
                 <p className="vicetext">
-                  Сливной фильтр улавлив��ет мелк��е предметы и ворси��ки, не давая им попасть в насос. Как правило, он находится в нижней части корпуса за откидной крышкой. Пе��ед нач��лом любых ��абот обязательно ��тключите машину от сети и подготовьте ёмкость для слива. Аккуратн�� открутите кры��ку фильтра против часов��й стрелки – под ней немедленно начнёт вытекать вода. Как только в баке останется мало ��оды, сработает защёлка запорного механизма, и дверца разблокируется. После этого полностью вытащите фильтр и очистите его от ско����вшейся пыли, волос, ��оне��ок и других посто��онних предметов. Собирая обратно, будьте осторожны: пластмассовый фильтр хрупкий. Если засор в фильтре ��ыл причиной проблемы, после его очистки вода будет свободно уходить, �� люк должен открыться.
+                  Сливной фильтр улавливает мелкие предметы и ворсинки, не давая им попасть в насос. Как правило, он находится в нижней части корпуса за откидной крышкой. Перед началом любых работ обязательно отключите машину от сети и подготовьте ёмкость для слива. Аккуратно открутите крышку фильтра против часовой стрелки – под ней немедленно начнёт вытекать вода.( см. как правильно сливать воду ) Как только в баке останется мало воды, сработает защёлка запорного механизма, и дверца разблокируется. После этого полностью вытащите фильтр и очистите его от скопившейся пыли, волос, монеток и других посторонних предметов. Собирая обратно, будьте осторожны: пластмассовый фильтр хрупкий. Если засор в фильтре был причиной проблемы, после его очистки вода будет свободно уходить, а люк должен открыться.
                 </p>
               </div>
             </section>
             <section id="2" className="page-thirdproblem1">
               <div className="page-container16 zagolovkiskorobkoy">
                 <h3 className="zagolovki2">
-                  2. Неис��равность датчика уровня воды (прессостата)
+                  2. Неисправность датчика уровня воды (прессостата)
                 </h3>
                 <svg
                   width="330"
@@ -353,21 +155,14 @@ const Page = (props) => {
                 </figure>
                 <p className="vicetext">
                   {' '}
-                  Современные машины контролируют уров����нь в��ды �� помо��ью
-                  прессос��ата �� герметичной ёмкости с трубкой и датчиком
-                  д��вления. Если прессос��ат сломан ��ли его шл��нг оторвался,
-                  ������шина может ошибочно сч��тать бак п��стым и не подавать команду
-                  на слив. Обычно в этом случае машина останавливается �� кодами
-                  ошибок RE или OE. Проблему ин��гда решают проверкой ��
-                  прочисткой трубки прессостата, в более сложных случаях –
-                  за��еной д��тчи����.
+                  Современные машины контролируют уровень воды с помощью прессостата – герметичной ёмкости с трубкой и датчиком давления. Если прессостат сломан или его шланг оторвался, машина может ошибочно считать бак пустым и не подавать команду на слив. Обычно в этом случае машина останавливается с кодами ошибок RE или OE. Проблему иногда решают проверкой и прочисткой трубки прессостата, в более сложных случаях – заменой датчика.
                 </p>
               </div>
             </section>
             <section id="2b" className="page-thirdproblem1">
               <div className="page-container16 zagolovkiskorobkoy">
                 <h3 className="zagolovki2">
-                  3. Не��справность сливного насоса
+                  3. Неисправность сливного насоса
                 </h3>
                 <svg
                   width="330"
@@ -390,7 +185,7 @@ const Page = (props) => {
               <div className="page-container17">
                 <figure className="page-container18">
                   <img
-                    alt="��омпа стиральной машины"
+                    alt="помпа стиральной машины"
                     src="/1/slivanasos.webp"
                     loading="lazy"
                     className="page-image38230522"
@@ -402,14 +197,14 @@ const Page = (props) => {
                 </figure>
                 <p className="vicetext">
                   {' '}
-                  Помпа откачивает воду из бака в канализацию. Под крышкой фильтра вид��а ��рыльчатка насоса – маленький винт, который вращается при сливе. Проверьте, легко ли он ��роворачивается вруч��ую. Если крыльча��ка заклинила из-за ��астрявшего предмета, или мотор совсем не вращается, нас��с не справится со сли��ом. Для проверки запустите короткий режим «Слив» или «Отжим» – при исправном насосе крыльчатка будет вращаться, и вы услышите её гул. Если помпа едва вр��щается или останавливается при небольшом нажатии (значит, износила ресурс), её нужно заменить. При поломке насоса вод�� не откачивается вообще, и дверца остаётся закрытой.
+                  Помпа откачивает воду из бака в канализацию. Под крышкой фильтра видна крыльчатка насоса – маленький винт, который вращается при сливе. Проверьте, легко ли он проворачивается вручную. Если крыльчатка заклинила из-за застрявшего предмета, или мотор совсем не вращается, насос не справится со сливом. Для проверки запустите короткий режим «Слив» или «Отжим» – при исправном насосе крыльчатка будет вращаться, и вы услышите её гул. Если помпа едва вращается или останавливается при небольшом нажатии (значит, износила ресурс), её нужно заменить. При поломке насоса вода не откачивается вообще, и дверца остаётся закрытой.
                 </p>
               </div>
             </section>
             <section id="2c" className="page-thirdproblem1">
               <div className="page-container16 zagolovkiskorobkoy">
                 <h3 className="zagolovki2">
-                  4. Сбой или поломка мо��уля управления
+                  4. Сбой или поломка модуля управления
                 </h3>
                 <svg
                   width="330"
@@ -432,26 +227,26 @@ const Page = (props) => {
               <div className="page-container17">
                 <figure className="page-container18">
                   <img
-                    alt="м��дуль управления ��тиральной машиной"
+                    alt="модуль управления стиральной машиной"
                     src="/1/plata.webp"
                     loading="lazy"
                     className="page-image38230522"
                   />
                   <span className="page-text21">
-                    <span>Модуль управ��ения</span>
+                    <span>Модуль управления</span>
                     <br></br>
                   </span>
                 </figure>
                 <p className="vicetext">
                   {' '}
-                  Элек��ро��ная плата (модуль управления) посылает команды насосу при окончании цикла стирки. Если п��ата неисправн�� или «зависа��т», она может н�� запустить сливной насос и не разблоки��овать люк. При п��дозрении на сбой электроники нужна диагностика специалиста: плату о��ычно вынимают для тестирования. Возможные причины – перег��ревшие микросх��мы, сбой прошивки или окисление контактов. Это самая сложная поломка, которую сложно ус��ранить самостоятель��о.
+                  Электронная плата (модуль управления) посылает команды насосу при окончании цикла стирки. Если плата неисправна или «зависает», она может не запустить сливной насос и не разблокировать люк. При подозрении на сбой электроники нужна диагностика специалиста: плату обычно вынимают для тестирования. Возможные причины – перегоревшие микросхемы, сбой прошивки или окисление контактов. Это самая сложная поломка, которую сложно устранить самостоятельно.
                 </p>
               </div>
             </section>
             <section id="2d" className="page-thirdproblem1">
               <div className="page-container16 zagolovkiskorobkoy">
                 <h3 className="zagolovki2">
-                  5. Засор сливного патр��бка
+                  5. Засор сливного патрубка
                 </h3>
                 <svg
                   width="330"
@@ -486,14 +281,14 @@ const Page = (props) => {
                 </figure>
                 <p className="vicetext">
                   {' '}
-                  Слив��ой патру��ок (гофра) соединяет бак с насосом. Даже после чистки фильтра вода может не уходить, если в этом па����убке что-то застряло. Чаще всего вну��рь попадают ��онеты, пуговицы, обрывки ткани – они могут ��е��иодически перекрывать проток в��ды.Чтобы провери��ь патрубок, отключ����те машину, уло��ите её на бок и ��нимите заднюю или нижнюю панель. Далее отсоедините патрубок от насоса: внутри часто обнаружива��тся мелки�� тряпочк��, носк�� и мелкие детали. Уд��лите из патрубка мусор. После сборки ��роверьте слив – при отсутст��ии за��ора в��да долж��а св����одно уходить.
+                  Сливной патрубок (гофра) соединяет бак с насосом. Даже после чистки фильтра вода может не уходить, если в этом патрубке что-то застряло. Чаще всего внутрь попадают монеты, пуговицы, обрывки ткани – они могут периодически перекрывать проток воды.Чтобы проверить патрубок, отключите машину, уложите её на бок и снимите заднюю или нижнюю панель. Далее отсоедините патрубок от насоса: внутри часто обнаруживаются мелкие тряпочки, носки и мелкие детали. Удалите из патрубка мусор. После сборки проверьте слив – при отсутствии засора вода должна свободно уходить.
                 </p>
               </div>
             </section>
             <section id="2e" className="page-thirdproblem1">
               <div className="page-container16 zagolovkiskorobkoy">
                 <h3 className="zagolovki2">
-                  6. Засор сливног�� шланга
+                  6. Засор сливного шланга
                 </h3>
                 <svg
                   width="330"
@@ -528,13 +323,13 @@ const Page = (props) => {
                 </figure>
                 <p className="vicetext">
                   {' '}
-                  Гибкий сливной шланг идёт от насоса к стояку канализации. Важно у�����ед��тьс��, что он не пережат и не забит ��рязью или жи��ом, особенно в местах изги��ов и по����оединения к р��ковине или сифону. Для проверки отсоедин��те ��ланг от канализации и попробуйте п���одут�� его: при ч����том шланге воздух проходит легко и сл��шно, как булькает оставшаяся вода. Если шланг забит, протолкн��те внутрь гибкую пр��волоку или промойте его п���� струёй горячей воды. После прочистки у��тановите шланг на место и убедитесь, что он нигде не перегибае��ся �� надёжно за��реплён.
+                  Гибкий сливной шланг идёт от насоса к стояку канализации. Важно убедиться, что он не пережат и не забит грязью или жиром, особенно в местах изгибов и подсоединения к раковине или сифону. Для проверки отсоедините шланг от канализации и попробуйте продуть его: при чистом шланге воздух проходит легко и слышно, как булькает оставшаяся вода. Если шланг забит, протолкните внутрь гибкую проволоку или промойте его под струёй горячей воды. После прочистки установите шланг на место и убедитесь, что он нигде не перегибается и надёжно закреплён.
                 </p>
               </div>
             </section>
             <section id="3" className="page-thirdproblem2">
               <div className="page-container19 zagolovkiskorobkoy">
-                <h3 className="zagolovki2">7. ��ак с��мостоятельно слить воду?</h3>
+                <h3 className="zagolovki2">7. Как самостоятельно слить воду?</h3>
                 <svg
                   width="330"
                   xmlns="http://www.w3.org/2000/svg"
@@ -562,14 +357,18 @@ const Page = (props) => {
                     className="page-image38230522"
                   />
                   <span className="page-text19">
-                    <span>Подготовк��� к аварийному сливу</span>
+                    <span>Подготовка к аварийному сливу</span>
                     <br></br>
                   </span>
                 </figure>
-                <p className="vicetext">
-                  {' '}
-                  1. Если ваша ��тиральная машина подключ��на к сети, начните с отключения питания — просто выньте вилку из ро����етк��. Это обязательн��я мера безопасности, которая ис��люч��ет риск удара т��ком при любых действиях с техникой.2. За��ем подготовьте ��сё нео��ход��мое для сли���� воды. Возьмите несколько тряпок или старых пол��тенец — они помогут впитать пролитую воду и уберечь пол. Также с��оит заране�� ��риготовить невысокую ёмкость: например, плоский таз, миску или ло��ок. Если машинка установлена �� ванн��й и есть возможность ��одв��сти шланг в душевую или ванну — это упрос��ит задачу. В остальных случая�� воду придётся собирать и переносить вру��ную — понадобится отдел����н��е в��дро или таз для слива.3. Если стирка заве���шилас�� недавно, не то��опитесь — дождитесь, пока вода остынет. Темпера��уру можно примерно оценить, при��ожив руку к стеклу люка: е��ли оно го��яче��, лучше ��емного подож���ать.4. Далее найдите сливной фи����тр — он обычно расположен ��низу пере��ней части корпуса. Закрыт он может быть небольшой пла��тиков��й крышкой. В боль��инстве моделей она снимается вручную, но ��сли крепится на винтах — ��онадобится подх��дящая отвёртка. Учти��е, ��то фи��ьтр находит��я низко, почт�� у самого по���а, п���этому сливать воду нужно будет в плоскую посуду.5. Чтобы немного облегчить слив, можно аккура��но отодвинуть машинку от стены и чуть-чу��ь наклонит�� её ����азад — так остатки воды быстрее стекаю�� к фильтру. Поднимать техн��ку луч��е вдвоём, та�� как даже ��устая машинка ��есит более 30 килограммов, а с водой и мокрым бельём — значительно больше.6. После того как вода полностью ��йд��т, можно выкрути��ь фильтр до конца и пр��верить его на нал��чие зас�����ра — нередко ��ам скапливают��я волос��, нитки, мелкие предметы. Очистите фильтр, промойте его п���� краном и установите об��атн��.
-                </p>
+                <div className="vicetext">
+                  <p><strong>1. Отключите питание.</strong><br />Выньте вилку из розетки — это обязательная мера безопасности.</p>
+                  <p><strong>2. Подготовьте всё для сбора воды.</strong><br />Возьмите тряпки или старые полотенца и плоскую невысокую ёмкость (таз, миску или лоток). Если можно — отведите сливной шланг в душевую/ванну; иначе собирайте воду в ёмкость и переносите.</p>
+                  <p><strong>3. Дайте воде остыть.</strong><br />Если стирка была недавно, дождитесь остывания. Оцените температуру по стеклу люка: если оно горячее — подождите.</p>
+                  <p><strong>4. Откройте доступ к сливному фильтру.</strong><br />Он внизу спереди за крышкой. Подставьте плоскую ёмкость и аккуратно приоткрутите пробку для слива.</p>
+                  <p><strong>5. Наклоните машинку немного назад.</strong><br />Так остатки быстрее стекают к фильтру. Делайте это вдвоём — техника тяжёлая.</p>
+                  <p><strong>6. Очистите фильтр.</strong><br />Когда вода выйдет, выкрутите фильтр до конца, удалите мусор, промойте и установите обратно.</p>
+                </div>
               </div>
             </section>
             <section id="4" className="page-fiveproblem1">
@@ -596,212 +395,15 @@ const Page = (props) => {
                 </svg>
               </div>
               <div className="page-container17">
-                <p className="vicetext">
-                  {' '}
-                  1. Регулярно очищайте фильтр. Чистый фильтр предотвращает заторы из ворса и мелкого мусора.2. Не допускайте п��падания м����ких предметов. Проверяйте карманы одежды перед сти��кой: монет��, заколки, носовые платки и т.п. часто попадают в б��рабан и могут попасть в патрубок.3. Следите за положение�� сливного шланга. Шланг не должен сильно переги��аться или пережиматься. Оптимальная высота его вывода – до 50 см от уро��ня пола. При ��ксплуатации следите, чтобы машинка стояла ровно ��� вибрировала минимально: излишняя вибрация мож��т пе���етёреть провода или ослабить пат��убки.4. Не за��ывайте провер��ть ка��ализацию. Убедите��ь, что в стояке или сифоне нет за��ора. Если вода из раков��ны уходит медленно, жидкость из с��ираль��ой может застаиваться. Время от времени очищайте сантехнику в доме, чтобы слив маши��ы работал беспрепятственно.
-                  <span
-                    dangerouslySetInnerHTML={{
-                      __html: ' ',
-                    }}
-                  />
-                </p>
-              </div>
-            </section>
-            <section className="page-better-call-master">
-              <svg
-                width="100%"
-                xmlns="http://www.w3.org/2000/svg"
-                height="17"
-                viewBox="0 0 10 20"
-                preserveAspectRatio="none"
-                className="page-icon36"
-              >
-                <circle
-                  r="3.75"
-                  cx="5"
-                  cy="10"
-                  fill="#606060"
-                  vectorEffect="non-scaling-stroke"
-                ></circle>
-              </svg>
-              <svg
-                width="100%"
-                xmlns="http://www.w3.org/2000/svg"
-                height="17"
-                viewBox="0 0 10 20"
-                preserveAspectRatio="none"
-                className="page-icon38"
-              >
-                <circle
-                  r="3.75"
-                  cx="5"
-                  cy="10"
-                  fill="#606060"
-                  vectorEffect="non-scaling-stroke"
-                ></circle>
-              </svg>
-              <svg
-                width="100%"
-                xmlns="http://www.w3.org/2000/svg"
-                height="17"
-                viewBox="0 0 10 20"
-                preserveAspectRatio="none"
-                className="page-icon40"
-              >
-                <circle
-                  r="3.75"
-                  cx="5"
-                  cy="10"
-                  fill="#606060"
-                  vectorEffect="non-scaling-stroke"
-                ></circle>
-              </svg>
-              <svg
-                width="100%"
-                xmlns="http://www.w3.org/2000/svg"
-                height="17"
-                viewBox="0 0 10 20"
-                preserveAspectRatio="none"
-                className="page-icon42"
-              >
-                <circle
-                  r="3.75"
-                  cx="5"
-                  cy="10"
-                  fill="#606060"
-                  vectorEffect="non-scaling-stroke"
-                ></circle>
-              </svg>
-              <svg
-                width="330"
-                xmlns="http://www.w3.org/2000/svg"
-                height="20"
-                viewBox="0 0 330 20"
-                preserveAspectRatio="none"
-                className="page-icon44"
-              >
-                <path
-                  d="M0 10 H330"
-                  fill="none"
-                  stroke="#000000"
-                  strokeWidth="0.5"
-                  vectorEffect="non-scaling-stroke"
-                  strokeDasharray="11 11"
-                ></path>
-              </svg>
-              <svg
-                width="330"
-                xmlns="http://www.w3.org/2000/svg"
-                height="20"
-                viewBox="0 0 330 20"
-                preserveAspectRatio="none"
-                className="page-icon46"
-              >
-                <path
-                  d="M0 10 H330"
-                  fill="none"
-                  stroke="#000000"
-                  strokeWidth="0.5"
-                  vectorEffect="non-scaling-stroke"
-                  strokeDasharray="11 11"
-                ></path>
-              </svg>
-              <svg
-                width="20"
-                xmlns="http://www.w3.org/2000/svg"
-                height="110"
-                viewBox="0 0 20 110"
-                preserveAspectRatio="none"
-                className="page-icon48"
-              >
-                <path
-                  d="M10 0 V110"
-                  fill="none"
-                  stroke="#000000"
-                  strokeWidth="0.5"
-                  vectorEffect="non-scaling-stroke"
-                  strokeDasharray="11 11"
-                ></path>
-              </svg>
-              <svg
-                width="20"
-                xmlns="http://www.w3.org/2000/svg"
-                height="110"
-                viewBox="0 0 20 110"
-                preserveAspectRatio="none"
-                className="page-icon50"
-              >
-                <path
-                  d="M10 0 V110"
-                  fill="none"
-                  stroke="#000000"
-                  strokeWidth="0.5"
-                  vectorEffect="non-scaling-stroke"
-                  strokeDasharray="11 11"
-                ></path>
-              </svg>
-              <h2 className="page-text50">Когда вы��ывать мастера?</h2>
-              <p className="page-text51">
-                <span className="page-text52">
-                  Если вы выполнили все рекомендации, но пр��бле��а осталась —
-                  обратитесь в сервис
-                  <span
-                    dangerouslySetInnerHTML={{
-                      __html: ' ',
-                    }}
-                  />
-                </span>
-                <span className="page-text53">&quot;</span>
-                <span className="page-text54">РемCтирМаш</span>
-                <span className="page-text55">&quot;</span>
-                <span className="page-text56">.</span>
-                <span className="page-text57">
-                  {' '}
-                  Наши специа��исты быстро прие  ут к вам �� желаемое вами время в
-                  любо�� район Одессы и выполнят ка����еств��нную диагностику и
-                  ремонт.
-                </span>
-              </p>
-              <svg
-                width="330"
-                xmlns="http://www.w3.org/2000/svg"
-                height="20"
-                viewBox="0 0 330 20"
-                preserveAspectRatio="none"
-                className="page-icon52"
-              >
-                <path
-                  d="M0 10 H330"
-                  fill="none"
-                  stroke="#000000"
-                  strokeWidth="0.5"
-                  vectorEffect="non-scaling-stroke"
-                  strokeDasharray="11 11"
-                ></path>
-              </svg>
-              <strong className="page-text58">Ра��отаем без выходных</strong>
-              <div className="page-container28">
-                <div className="page-container29">
-                  <div className="page-container30">
-                    <img
-                      alt="image"
-                      src="/image%203823106.svg"
-                      className="page-image3"
-                    />
-                    <strong className="page-text59">+38 (048) 253-23-23</strong>
-                  </div>
-                  <div className="page-container31">
-                    <img
-                      alt="image"
-                      src="/image%203823107.svg"
-                      className="page-image4"
-                    />
-                    <strong className="page-text60">+38 (048) 123-35-21</strong>
-                  </div>
+                <div className="vicetext">
+                  <p><strong>1. Регулярно очищайте фильтр.</strong><br />Чистый фильтр предотвращает заторы из ворса и мелкого мусора.</p>
+                  <p><strong>2. Не допускайте попадания мелких предметов.</strong><br />Проверяйте карманы одежды перед стиркой: монеты, заколки, платки и т.п. могут попасть в патрубок.</p>
+                  <p><strong>3. Следите за положением сливного шланга.</strong><br />Шланг не должен перегибаться или пережиматься. Оптимальная высота вывода — до 50 см от уровня пола. Ставьте машинку ровно и снижайте вибрации, чтобы не перетирались провода и не ослабевали патрубки.</p>
+                  <p><strong>4. Проверяйте канализацию.</strong><br />Убедитесь, что стояк или сифон не засорены. Если из раковины вода уходит медленно, стирочная может застаиваться. Периодически очищайте сантехнику.</p>
                 </div>
-                <OrderButton onClick={openModal} text="Заказать мастера" />
               </div>
             </section>
+            <CallMasterSection onOrderClick={openModal} />
             <PageNavigation
               prevPage={{
                 href: '/nekrutitbaraban',
@@ -831,20 +433,20 @@ const Page = (props) => {
             </svg>
             <RelatedArticles />
           </div>
-          <div className="page-dops-info">
-            <section className="page-frame1299">
-              <span className="page-text72">В���м будет интересно:</span>
+          <div className="page-dops-info"><InterestingAside />
+            <section className="page-frame1299" style={{display:"none"}}>
+              <span className="page-text72">Вам будет интересно:</span>
               <div className="page-frame12981">
                 <span className="page-text73">
-                  Ошибки, которые приводят �� дорогостоящ��му ремон��у (и к��к их
-                  изб��жать)
+                  Ошибки, которые приводят к дорогостоящему ремонту (и как их
+                  избежать)
                 </span>
                 <div className="page-container45"></div>
               </div>
               <div className="page-frame12982">
                 <span className="page-text74">
-                  Как продлить жизнь машине на 3–5 лет — простые привычки,
-                  которы�� сэкономят день����
+                  Как продлить жизнь машине на 3–5 лет — простые ��ривычки,
+                  которые сэкономят деньги
                 </span>
                 <div className="page-container46"></div>
               </div>
@@ -857,7 +459,7 @@ const Page = (props) => {
               </div>
               <div className="page-frame12984">
                 <span className="page-text76">
-                  ��ак с��кономить эле��тричест��о и воду — реальные настройки и
+                  Как секономить электричест��о и воду — реальные настройки и
                   лайфхаки
                 </span>
                 <div className="page-container48"></div>
@@ -886,6 +488,7 @@ const Page = (props) => {
             width: 100%;
             display: flex;
             min-height: 100vh;
+            min-height: 100dvh;
             align-items: center;
             flex-direction: column;
             background-color: #ffffff;
@@ -919,7 +522,7 @@ const Page = (props) => {
             max-width: 1471px;
             min-height: 711px;
             align-items: flex-start;
-            padding-top: var(--dl-layout-space-unit);
+            padding-top: 0;
             flex-direction: row;
             justify-content: center;
           }
@@ -960,7 +563,7 @@ const Page = (props) => {
             color: rgb(80, 80, 80);
             width: 100%;
             height: auto;
-            font-size: 32px;
+            font-size: 35px;
             align-self: flex-start;
             text-align: left;
             font-family: 'Noto Serif SC';
@@ -968,6 +571,7 @@ const Page = (props) => {
             line-height: normal;
             font-stretch: normal;
             text-decoration: none;
+            margin: 0 0 8px 0;
           }
           .page-text11 {
             color: var(--dl-color-theme-neutral-dark);
@@ -1260,7 +864,6 @@ const Page = (props) => {
             margin-bottom: var(--dl-layout-space-halfunit);
             padding: 5px;
           }
-          @media (max-width: 487px) { .page-headertextwashermachine { margin-top: 53px; } }
           @media (max-width: 768px) {
             .page-container13,
             .page-container17,
@@ -2388,6 +1991,9 @@ const Page = (props) => {
             .page-frame1299 {
               display: none;
             }
+            .page-dops-info {
+              display: none;
+            }
           }
           @media (max-width: 767px) {
             .page-breadcrumbs-section {
@@ -2455,7 +2061,7 @@ const Page = (props) => {
             .page-text10 {
               fill: #373333;
               color: rgb(55, 51, 51);
-              font-size: 25px;
+              font-size: 24px;
               font-style: normal;
               text-align: center;
               font-family: Noto Serif SC;

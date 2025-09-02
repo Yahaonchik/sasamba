@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import Head from 'next/head'
 import Header from '../components/Header'
 import MainFooter from '../components/MainFooter'
@@ -6,40 +6,24 @@ import SEOHead from '../components/SEOHead'
 import Breadcrumbs from '../components/Breadcrumbs'
 import SellModal from '../components/SellModal'
 import { getSEOData } from '../utils/seoConfig'
-import { getServiceData, getLocalBusinessData, getBreadcrumbData } from '../utils/structuredData'
+import { getServiceData, getLocalBusinessData } from '../utils/structuredData'
+import Image from 'next/image'
 
 const Vikup = (props) => {
   const [isSellModalOpen, setIsSellModalOpen] = useState(false)
-  const [isMobile, setIsMobile] = useState(false)
 
   const openSellModal = () => setIsSellModalOpen(true)
   const closeSellModal = () => setIsSellModalOpen(false)
 
-  useEffect(() => {
-    const update = () => setIsMobile(window.innerWidth < 767)
-    update()
-    window.addEventListener('resize', update)
-    return () => window.removeEventListener('resize', update)
-  }, [])
-
-  const truncate = (text, max) => {
-    if (typeof text !== 'string') return ''
-    return text.length > max ? text.slice(0, max - 1).trimEnd() + '…' : text
-  }
-
   const seoData = getSEOData('/vikup')
   const baseUrl = 'https://remstirmash.od.ua'
   const serviceData = getServiceData(
-    'Выкуп б/у стиральны�� машин',
+    'Выкуп б/у стиральных машин',
     'Выкупаем б/у стиральные машины в Одессе дорого. Любые марки и состояние.',
     `${baseUrl}/vikup`
   )
   const localBusinessData = getLocalBusinessData(`${baseUrl}/vikup`)
-  const breadcrumbData = getBreadcrumbData([
-    { name: 'Главная', url: `${baseUrl}/` },
-    { name: 'Выкуп б/у машин', url: `${baseUrl}/vikup` }
-  ])
-  const structuredData = [serviceData, localBusinessData, breadcrumbData]
+  const structuredData = [serviceData, localBusinessData]
 
   return (
     <>
@@ -52,15 +36,14 @@ const Vikup = (props) => {
           structuredData={structuredData}
         />
         <Header />
-        <div className="page1-breadcrumbs-section">
-          <Breadcrumbs style="white-left" />
-        </div>
+        <Breadcrumbs style="white-left" />
         <div className="page1-main-posle-hedera">
           <div className="page1-container11">
             <div className="page1-container12">
               <div className="page1-container13">
                 <h1 className="page1-text10">
-                  <span>Выкуп б/у машин</span>
+                  <span className="page1-text10-blue">Выкуп </span>
+                  <span className="page1-text10-black">б/у машин</span>
                   <br></br>
                 </h1>
                 <p className="page1-text13">
@@ -125,29 +108,27 @@ const Vikup = (props) => {
                   </span>
                 </p>
               </div>
-              <img
-                alt="мастер п�� ремонту стиральных машин жмет руку покупателю"
-                src="/vikupsochi-1500w.webp"
-                loading="eager"
-                className="page1-image2"
-              />
+              <div className="page1-hero-image">
+                <Image
+                  alt="мастер по ремонту стиральных машин жмет руку покупателю"
+                  src="/vikupsochi-1500w.webp"
+                  layout="fill"
+                  objectFit="cover"
+                  className="page1-image2"
+                />
+              </div>
             </div>
             <div className="page1-container14">
               <h2 className="page1-text26">
-                <span>Почем�� луч��е не выбрасывать</span>
+                <span>Почему лучше не выбрасывать</span>
                 <br></br>
               </h2>
             </div>
             <div className="page1-container15">
               <div className="page1-container16">
-                <img
-                  alt="image"
-                  src="/ICONS/23222.svg"
-                  loading="eager"
-                  className="page1-image3"
-                />
+                <img alt="image" src="/ICONS/23222.svg" loading="eager" className="page1-image3" />
                 <div className="page1-container17">
-                  <h3 className="page1-text29">{isMobile ? (<><span>Вместо ��усора –</span><br/>польза</>) : 'Вместо мусора – польза'}</h3>
+                  <h3 className="page1-text29">Вместо мусора – польза</h3>
                   <svg
                     width="100%"
                     xmlns="http://www.w3.org/2000/svg"
@@ -178,18 +159,15 @@ const Vikup = (props) => {
                       strokeDasharray="11 11"
                     ></path>
                   </svg>
-                  <p className="page1-text30">{isMobile ? truncate('Мы выкупим вашу машинку и используем её на благо другим', 160) : 'Мы выкупим вашу машинку и используем её на благо другим'}</p>
+                  <p className="page1-text30">
+                    Мы выкупим вашу машинку и используем её на благо другим
+                  </p>
                 </div>
               </div>
               <div className="page1-container18">
-                <img
-                  alt="image"
-                  src="/ICONS/res3.svg"
-                  loading="eager"
-                  className="page1-image4"
-                />
+                <img alt="image" src="/ICONS/res3.svg" loading="eager" className="page1-image4" />
                 <div className="page1-container19">
-                  <h3 className="page1-text31">{isMobile ? (<><span>Экономия</span><br/>времени</>) : 'Экономия времени'}</h3>
+                  <h3 className="page1-text31">Экономия времени</h3>
                   <svg
                     width="100%"
                     xmlns="http://www.w3.org/2000/svg"
@@ -220,19 +198,17 @@ const Vikup = (props) => {
                       strokeDasharray="11 11"
                     ></path>
                   </svg>
-                  <p className="page1-text32">{isMobile ? truncate('Мы сами приезжаем, аккуратно выносим', 160) : 'Мы сами приезжаем, аккуратно выносим'}</p>
+                  <p className="page1-text32">
+                    Мы сами приезжаем, аккуратно выносим
+                  </p>
                 </div>
               </div>
               <div className="page1-container20">
-                <img
-                  alt="image"
-                  src="/ICONS/zamena1.svg"
-                  loading="eager"
-                  className="page1-image5"
-                />
+                <img alt="image" src="/ICONS/zamena1.svg" loading="eager" className="page1-image5" />
                 <div className="page1-container21">
                   <h3 className="page1-text33">
-                    {isMobile ? (<><span>Оплат��</span><br/>наличными</>) : (<><span>Оплата наличными</span><br></br></>)}
+                    <span>Оплата наличными</span>
+                    <br></br>
                   </h3>
                   <svg
                     width="100%"
@@ -264,7 +240,9 @@ const Vikup = (props) => {
                       strokeDasharray="11 11"
                     ></path>
                   </svg>
-                  <p className="page1-text36">{isMobile ? truncate('Вы получаете реальную выгоду — деньги сразу на месте', 160) : 'Вы получаете реальную выгоду — деньги сразу на месте'}</p>
+                  <p className="page1-text36">
+                    Вы получаете реальную выгоду — деньги сразу на месте
+                  </p>
                 </div>
               </div>
               <svg
@@ -454,15 +432,11 @@ const Vikup = (props) => {
                   strokeDasharray="11 11"
                 ></path>
               </svg>
-              <div className="page1-container26" onClick={openSellModal}>
+              <div className="page1-container26 clickable-button" onClick={openSellModal}>
                 <div className="page1-container27">
                   <span className="page1-text43">Продать</span>
                 </div>
-                <img
-                  alt="image"
-                  src="/ICONS/29.svg"
-                  className="page1-image6"
-                />
+                <img alt="image" src="/ICONS/29.svg" loading="eager" className="page1-image6" />
               </div>
             </div>
           </div>
@@ -632,15 +606,11 @@ const Vikup = (props) => {
                   strokeDasharray="11 11"
                 ></path>
               </svg>
-              <div className="page1-container30" onClick={openSellModal}>
+              <div className="page1-container30 clickable-button" onClick={openSellModal}>
                 <div className="page1-container31">
                   <span className="page1-text46">Продать</span>
                 </div>
-                <img
-                  alt="image"
-                  src="/ICONS/29.svg"
-                  className="page1-image7"
-                />
+                <img alt="image" src="/ICONS/29.svg" loading="eager" className="page1-image7" />
               </div>
             </div>
           </div>
@@ -678,15 +648,11 @@ const Vikup = (props) => {
                   strokeDasharray="11 11"
                 ></path>
               </svg>
-              <div className="page1-container34" onClick={openSellModal}>
+              <div className="page1-container34 clickable-button" onClick={openSellModal}>
                 <div className="page1-container35">
                   <span className="page1-text49">Продать</span>
                 </div>
-                <img
-                  alt="image"
-                  src="/ICONS/29.svg"
-                  className="page1-image8"
-                />
+                <img alt="image" src="/ICONS/29.svg" loading="eager" className="page1-image8" />
               </div>
             </div>
           </div>
@@ -700,6 +666,7 @@ const Vikup = (props) => {
             width: 100%;
             display: flex;
             min-height: 100vh;
+            min-height: 100dvh;
             align-items: center;
             flex-direction: column;
             background-color: #ffffff;
@@ -780,14 +747,16 @@ const Vikup = (props) => {
           .page1-text10 {
             fill: #4ec8ed;
             color: #4ec8ed;
-            font-size: 25px;
+            font-size: 35px;
             align-self: center;
             font-style: normal;
             font-family: 'Noto Serif SC';
             font-weight: 600;
           }
+          .page1-text10-black { color: #000000; }
+          .page1-text10-blue { color: #87ceeb; font-weight: 700; }
           .page1-text13 {
-            font-size: 17.5px;
+            font-size: 16px;
             max-width: 700px;
             text-align: center;
             font-family: 'Noto Serif SC';
@@ -816,9 +785,12 @@ const Vikup = (props) => {
           .page1-text24 {
             color: #373737;
           }
-          .page1-image2 {
+          .page1-hero-image {
+            position: relative;
             width: 502px;
             height: 325px;
+          }
+          .page1-image2 {
             object-fit: cover;
           }
           .page1-container14 {
@@ -931,7 +903,7 @@ const Vikup = (props) => {
             max-width: 280px;
             align-items: center;
             padding-top: var(--dl-layout-space-unit);
-            padding-left: var(--dl-layout-space-unit);
+            padding-left: calc(var(--dl-layout-space-unit) + 15px);
             padding-right: var(--dl-layout-space-unit);
             padding-bottom: var(--dl-layout-space-unit);
             justify-content: center;
@@ -987,7 +959,7 @@ const Vikup = (props) => {
             display: flex;
             max-width: 280px;
             align-items: center;
-            padding-top: var(--dl-layout-space-unit);
+            padding-top: 0px;
             padding-left: var(--dl-layout-space-unit);
             padding-right: var(--dl-layout-space-unit);
             padding-bottom: var(--dl-layout-space-unit);
@@ -1033,8 +1005,8 @@ const Vikup = (props) => {
             font-size: 14.5px;
             max-width: 175px;
             font-style: italic;
-            max-height: 55px;
-            min-height: 55px;
+            max-height: none;
+            min-height: auto;
             font-family: 'Nunito';
             font-weight: 300;
           }
@@ -1154,7 +1126,7 @@ const Vikup = (props) => {
           .page1-container24 {
             gap: var(--dl-layout-space-unit);
             width: 100%;
-            height: 106px;
+            height: 121px;
             display: flex;
             max-width: 300px;
             min-width: 300px;
@@ -1283,7 +1255,7 @@ const Vikup = (props) => {
           .page1-container28 {
             gap: var(--dl-layout-space-unit);
             width: 100%;
-            height: 106px;
+            height: 121px;
             display: flex;
             max-width: 300px;
             min-width: 300px;
@@ -1356,7 +1328,7 @@ const Vikup = (props) => {
           .page1-container32 {
             gap: var(--dl-layout-space-unit);
             width: 100%;
-            height: 106px;
+            height: 121px;
             display: flex;
             max-width: 300px;
             min-width: 300px;
@@ -1460,6 +1432,8 @@ const Vikup = (props) => {
               font-style: normal;
               font-family: Nunito;
               font-weight: 300;
+              min-height: auto;
+              max-height: none;
             }
             .page1-container20 {
               padding-top: 0px;
@@ -1477,6 +1451,7 @@ const Vikup = (props) => {
               max-width: 300px;
               margin-bottom: 67px;
             }
+            .page1-text13 { font-size: 15.5px; }
           }
           @media (max-width: 767px) {
             .page1-main-posle-hedera {
@@ -1498,23 +1473,27 @@ const Vikup = (props) => {
               padding-left: var(--dl-layout-space-oneandhalfunits);
               padding-right: var(--dl-layout-space-oneandhalfunits);
             }
-            .page1-image2 {
+            .page1-hero-image {
               width: 418px;
               height: 323px;
             }
             .page1-container15 {
               gap: calc(var(--dl-layout-space-unit) - 6px);
               max-width: 290px;
-              padding-left: var(--dl-layout-space-oneandhalfunits);
+              padding-left: calc(var(--dl-layout-space-unit) - 12px);
               padding-right: 0px;
               flex-direction: column;
             }
+            .page1-image3 { width: 68px; }
             .page1-text29 {
               font-size: 14px;
               font-weight: 500;
             }
             .page1-text30 {
               font-size: 14px;
+              font-style: italic;
+              font-family: 'Nunito';
+              font-weight: 300;
             }
             .page1-text31 {
               font-size: 14px;
@@ -1522,6 +1501,11 @@ const Vikup = (props) => {
             }
             .page1-text32 {
               font-size: 14px;
+              font-style: italic;
+              font-family: 'Nunito';
+              font-weight: 300;
+              max-width: 140px;
+              line-height: 1.2;
             }
             .page1-text33 {
               font-size: 14px;
@@ -1534,15 +1518,8 @@ const Vikup = (props) => {
               font-style: normal;
               font-weight: 500;
             }
-            .page1-text29,
-            .page1-text31,
-            .page1-text33 {
-              max-width: 150px;
-            }
-            .page1-text30,
-            .page1-text32,
-            .page1-text36 {
-              max-width: 160px;
+            .page1-container25, .page1-container29, .page1-container33 {
+              gap: var(--dl-layout-space-halfunit);
             }
           }
           @media (max-width: 767px) {
@@ -1585,22 +1562,22 @@ const Vikup = (props) => {
             }
             .page1-container13 {
               width: 100%;
-              margin-top: 20px;
+              margin-top: 50px;
             }
             .page1-text10 {
-              font-size: 21px;
+              font-size: 24px;
             }
             .page1-text13 {
               width: 100%;
               height: 100%;
-              font-size: 15px;
-              padding-left: var(--dl-layout-space-unit);
+              font-size: 13.5px;
+              padding-left: calc(var(--dl-layout-space-unit) + 6px);
               margin-bottom: var(--dl-layout-space-twounits);
-              padding-right: var(--dl-layout-space-unit);
+              padding-right: calc(var(--dl-layout-space-unit) + 6px);
             }
-            .page1-image2 {
+            .page1-hero-image {
               width: 100%;
-              height: auto;
+              height: 240px;
             }
             .page1-container14 {
               margin-top: 0px;
@@ -1619,34 +1596,67 @@ const Vikup = (props) => {
               height: 100%;
               align-items: flex-start;
               padding-top: var(--dl-layout-space-twounits);
-              padding-left: var(--dl-layout-space-oneandhalfunits);
+              padding-left: calc(var(--dl-layout-space-oneandhalfunits) - 18px);
               padding-bottom: var(--dl-layout-space-unit);
             }
+            .page1-image3 { width: 68px; }
             .page1-container16 {
               gap: calc(var(--dl-layout-space-twounits) - 6px);
+              padding-left: var(--dl-layout-space-halfunit);
+              justify-content: flex-start;
+              margin-bottom: 25px;
+            }
+            .page1-container17, .page1-container19, .page1-container21 {
+              max-width: 140px;
+              min-height: auto;
             }
             .page1-container18 {
               gap: calc(var(--dl-layout-space-twounits) - 6px);
+              padding-left: var(--dl-layout-space-halfunit);
+              justify-content: flex-start;
+              margin-bottom: 25px;
             }
             .page1-container20 {
               gap: calc(var(--dl-layout-space-twounits) - 6px);
+              padding-left: var(--dl-layout-space-halfunit);
+              justify-content: flex-start;
             }
             .page1-text29 {
-              font-size: 1em;
+              font-size: 14px;
+              max-width: 140px;
+              line-height: 1.2;
             }
             .page1-text30 {
               min-height: auto;
+              max-width: 140px;
+              line-height: 1.2;
             }
             .page1-text31 {
+              font-size: 14px;
               font-style: normal;
               font-weight: 500;
+              max-width: 140px;
+              line-height: 1.2;
+            }
+            .page1-text33 {
+              font-size: 14px;
+              font-weight: 500;
+              max-width: 140px;
+              line-height: 1.2;
             }
             .page1-image5 {
               width: 68px;
               height: 36px;
             }
             .page1-text36 {
-              max-width: 160px;
+              max-width: 140px;
+              line-height: 1.2;
+            }
+            .page1-text32 {
+              max-width: 140px;
+              line-height: 1.2;
+              min-height: auto;
+              max-height: none;
             }
             .page1-text37 {
               width: auto;
@@ -1664,6 +1674,7 @@ const Vikup = (props) => {
             .page1-container24 {
               height: auto;
               min-width: 100%;
+              min-height: 121px;
               padding-top: var(--dl-layout-space-unit);
               padding-bottom: var(--dl-layout-space-unit);
             }
@@ -1684,6 +1695,7 @@ const Vikup = (props) => {
             .page1-container28 {
               height: auto;
               min-width: 100%;
+              min-height: 121px;
               padding-top: var(--dl-layout-space-unit);
               padding-bottom: var(--dl-layout-space-unit);
             }
@@ -1705,6 +1717,7 @@ const Vikup = (props) => {
             .page1-container32 {
               height: auto;
               min-width: 100%;
+              min-height: 121px;
               padding-top: var(--dl-layout-space-unit);
               padding-bottom: var(--dl-layout-space-unit);
             }
@@ -1724,6 +1737,13 @@ const Vikup = (props) => {
               font-weight: 400;
             }
           }
+          /* Анимация как у кнопок "Вызвать мастера" */
+          .clickable-button { cursor: pointer; transition: all 0.2s ease; border-radius: 4px; padding: 4px; }
+          .clickable-button:hover { transform: translateY(-2px); }
+          .clickable-button:hover span { color: #3A9BC1; }
+          .clickable-button:hover img { transform: rotate(15deg); filter: brightness(1.2); }
+          .clickable-button img { transition: transform 0.2s ease, filter 0.2s ease; }
+          .clickable-button:active { transform: translateY(0); }
         `}
       </style>
     </>

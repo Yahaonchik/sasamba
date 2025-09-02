@@ -5,10 +5,13 @@ import Header from '../components/Header'
 import MainFooter from '../components/MainFooter'
 import SEOHead from '../components/SEOHead'
 import PageNavigation from '../components/PageNavigation'
-import OrderButton from '../components/OrderButton'
-import OrderModal from '../components/OrderModal'
+const OrderModal = dynamic(() => import('../components/OrderModal'), { ssr: false })
 import Breadcrumbs from '../components/Breadcrumbs'
-import RelatedArticles from '../components/RelatedArticles'
+import dynamic from 'next/dynamic'
+const RelatedArticles = dynamic(() => import('../components/RelatedArticles'))
+import AnchorLinksSection from '../components/AnchorLinksSection'
+const CallMasterSection = dynamic(() => import('../components/CallMasterSection'))
+const InterestingAside = dynamic(() => import('../components/InterestingAside'), { ssr: false })
 import { getSEOData } from '../utils/seoConfig'
 import { getProblemPageStructuredData } from '../utils/structuredData'
 
@@ -25,8 +28,8 @@ const Page = (props) => {
   const seoData = getSEOData('/neotkrivaetsadverca')
   const baseUrl = 'https://remstirmash.od.ua'
   const structuredData = getProblemPageStructuredData(
-    'Ремонт заблокированной две��цы стиральной машины',
-    'Профессиональный ремонт заблокированно�� дверцы стиральной машины в Одессе. Ремонт замка люка, разблокировка.',
+    'Ремонт заблокированной дверцы стиральной машины',
+    'Профессиональный ремонт заблокированной дверцы стиральной машины в Одессе. Ремонт замка люка, разблокировка.',
     `${baseUrl}/neotkrivaetsadverca`
   )
 
@@ -41,9 +44,7 @@ const Page = (props) => {
           structuredData={structuredData}
         />
         <Header />
-        <div className="page-breadcrumbs-section">
-          <Breadcrumbs style="white-left" />
-        </div>
+        <Breadcrumbs style="white-left" />
         <main className="page-main">
           <div className="page-left-main-box">
 
@@ -62,196 +63,16 @@ const Page = (props) => {
                 <span className="page-text13">что делать?</span>
               </h1>
             </div>
-            <section className="page-container11">
-              <svg
-                width="100%"
-                xmlns="http://www.w3.org/2000/svg"
-                height="17"
-                viewBox="0 0 10 20"
-                preserveAspectRatio="none"
-                className="page-icon10"
-              >
-                <circle
-                  r="3.75"
-                  cx="5"
-                  cy="10"
-                  fill="#606060"
-                  vectorEffect="non-scaling-stroke"
-                ></circle>
-              </svg>
-              <svg
-                width="100%"
-                xmlns="http://www.w3.org/2000/svg"
-                height="17"
-                viewBox="0 0 10 20"
-                preserveAspectRatio="none"
-                className="page-icon12"
-              >
-                <circle
-                  r="3.75"
-                  cx="5"
-                  cy="10"
-                  fill="#606060"
-                  vectorEffect="non-scaling-stroke"
-                ></circle>
-              </svg>
-              <svg
-                width="100%"
-                xmlns="http://www.w3.org/2000/svg"
-                height="17"
-                viewBox="0 0 10 20"
-                preserveAspectRatio="none"
-                className="page-icon14"
-              >
-                <circle
-                  r="3.75"
-                  cx="5"
-                  cy="10"
-                  fill="#606060"
-                  vectorEffect="non-scaling-stroke"
-                ></circle>
-              </svg>
-              <svg
-                width="100%"
-                xmlns="http://www.w3.org/2000/svg"
-                height="17"
-                viewBox="0 0 10 20"
-                preserveAspectRatio="none"
-                className="page-icon16"
-              >
-                <circle
-                  r="3.75"
-                  cx="5"
-                  cy="10"
-                  fill="#606060"
-                  vectorEffect="non-scaling-stroke"
-                ></circle>
-              </svg>
-              <strong className="page-text14">
-                <span>У стирал��ной машины не открывается дверца:</span>
-                <br></br>
-              </strong>
-              <ul className="page-ul list">
-                <li className="page-li3 list-item">
-                  <img
-                    alt="Vector8669"
-                    src="/external/vector8669-r6fr.svg"
-                    className="page-vector2"
-                  />
-                  <a href="#2" className="page-link3 ge">
-                    1. Блокировка «Детский замок».
-                  </a>
-                </li>
-                <li className="page-li4 list-item ge">
-                  <img
-                    alt="Vector8669"
-                    src="/external/vector8669-r6fr.svg"
-                    className="page-vector3"
-                  />
-                  <a href="#3" className="page-link4">
-                    2. Остатки воды в б��ке или незавершённый цикл
-                  </a>
-                </li>
-                <li className="page-li5 list-item">
-                  <img
-                    alt="Vector8669"
-                    src="/external/vector8669-r6fr.svg"
-                    className="page-vector4"
-                  />
-                  <a href="#4" className="page-link5 ge">
-                    3. Засо�� в сливной системе или неиспр��вность датчика уровня (прессостат).
-                  </a>
-                </li>
-                <li className="page-li6 list-item">
-                  <img
-                    alt="Vector8669"
-                    src="/external/vector8669-r6fr.svg"
-                    className="page-vector5"
-                  />
-                  <a href="#5" className="page-link6 ge">
-                    4. Сбой электроники или от��лючение питания.
-                  </a>
-                </li>
-                <li className="page-li6 list-item">
-                  <img
-                    alt="Vector8669"
-                    src="/external/vector8669-r6fr.svg"
-                    className="page-vector5"
-                  />
-                  <a href="#5-1" className="page-link6 ge">
-                    5. Механическая поломка замка или ручки.
-                  </a>
-                </li>
-              </ul>
-              <svg
-                width="330"
-                xmlns="http://www.w3.org/2000/svg"
-                height="20"
-                viewBox="0 0 330 20"
-                preserveAspectRatio="none"
-                className="page-icon18"
-              >
-                <path
-                  d="M0 10 H330"
-                  fill="none"
-                  stroke="#000000"
-                  strokeWidth="0.5"
-                  vectorEffect="non-scaling-stroke"
-                  strokeDasharray="11 11"
-                ></path>
-              </svg>
-              <svg
-                width="330"
-                xmlns="http://www.w3.org/2000/svg"
-                height="20"
-                viewBox="0 0 330 20"
-                preserveAspectRatio="none"
-                className="page-icon20"
-              >
-                <path
-                  d="M0 10 H330"
-                  fill="none"
-                  stroke="#000000"
-                  strokeWidth="0.5"
-                  vectorEffect="non-scaling-stroke"
-                  strokeDasharray="11 11"
-                ></path>
-              </svg>
-              <svg
-                width="20"
-                xmlns="http://www.w3.org/2000/svg"
-                height="110"
-                viewBox="0 0 20 110"
-                preserveAspectRatio="none"
-                className="page-icon22"
-              >
-                <path
-                  d="M10 0 V110"
-                  fill="none"
-                  stroke="#000000"
-                  strokeWidth="0.5"
-                  vectorEffect="non-scaling-stroke"
-                  strokeDasharray="11 11"
-                ></path>
-              </svg>
-              <svg
-                width="20"
-                xmlns="http://www.w3.org/2000/svg"
-                height="110"
-                viewBox="0 0 20 110"
-                preserveAspectRatio="none"
-                className="page-icon24"
-              >
-                <path
-                  d="M10 0 V110"
-                  fill="none"
-                  stroke="#000000"
-                  strokeWidth="0.5"
-                  vectorEffect="non-scaling-stroke"
-                  strokeDasharray="11 11"
-                ></path>
-              </svg>
-            </section>
+            <AnchorLinksSection
+              title="У стиральной машины не открывается дверца:"
+              items={[
+                { icon: '/external/vector8669-r6fr.svg', href: '#2', text: '1. Блокировка «Детский замок».' },
+                { icon: '/external/vector8669-r6fr.svg', href: '#3', text: '2. Остатки воды в баке или незавершённый цикл' },
+                { icon: '/external/vector8669-r6fr.svg', href: '#4', text: '3. Засор в сливной системе или неисправность датчика уровня (прессостат).' },
+                { icon: '/external/vector8669-r6fr.svg', href: '#5', text: '4. Сбой электроники или отключение питания.' },
+                { icon: '/external/vector8669-r6fr.svg', href: '#5-1', text: '5. Механическая поломка замка или ручки.' },
+              ]}
+            />
             <div className="page-container15">
               <h2 className="page-text34">
                 <span>Возможные причины:</span>
@@ -290,13 +111,13 @@ const Page = (props) => {
                     className="page-image38230522"
                   />
                   <span className="page-text19">
-                    <span>Де��ская защита (Child Lock)</span>
+                    <span>Детская защита (Child Lock)</span>
                     <br></br>
                   </span>
                 </figure>
                 <p className="vicetext">
                   {' '}
-                  Многие модели оснащены функцией «Child Lock», которая предотвращает ��лучайное открытие люка в�� время работы. Если эта блокировка активна, дверца не откроется, и на панели обычно горит ��оответствующая пикт��грамма. В таком случае нужно отключить функцию в соответствии с инструкцией к вашей модели — не пытайтесь тянуть дверцу силой, сначала снимит�� защиту.
+                  Многие модели оснащены функцией «Child Lock», которая предотвращает случайное открытие люка во время работы. Если эта блокировка активна, дверца не откроется, и на панели обычно горит соответствующая пиктограмма. В таком случае нужно отключить функцию в соответствии с инструкцией к вашей модели — не пытайтесь тянуть дверцу силой, сначала снимите защиту.
                 </p>
               </div>
             </section>
@@ -332,14 +153,14 @@ const Page = (props) => {
                 </figure>
                 <p className="vicetext">
                   {' '}
-                  Машина не разблок��рует люк, пока в баке остаётся ��ода, это предохраняет от подтопления. Если цикл был прерван или не завершился, в барабане может остаться вода и блокировка не снимется даже после звукового сигнала об окончании. В такой ситуации попробуйте восстановить нормальную процедуру слива или дождаться автоматического завершения цикла; не дергайте дверцу насильно.
+                  Машина не разблокирует люк, пока в баке остаётся вода, это предохраняет от подтопления. Если цикл был прерван или не завершился, в барабане может остаться вода и блокировка не снимется даже после звукового сигнала об окончании. В такой ситуации попробуйте восстановить нормальную процедуру слива или дождаться автоматического завершения цикла; не дергайте дверцу насильно.
                 </p>
               </div>
             </section>
             <section id="4" className="page-fiveproblem1">
               <div className="page-container22 zagolovkiskorobkoy">
                 <h3 className="zagolovki2">
-                  3. ��асор в сливной системе или неисправность датчика уровня (прессостат).
+                  3. Засор в сливной системе или неисправность датчика уровня (прессостат).
                 </h3>
                 <svg
                   width="330"
@@ -362,7 +183,7 @@ const Page = (props) => {
               <div className="page-container23">
                 <figure className="page-container24">
                   <img
-                    alt="��рессостат"
+                    alt="прессостат"
                     src="/2/presso.webp"
                     loading="lazy"
                     className="page-image38230524"
@@ -371,7 +192,7 @@ const Page = (props) => {
                 </figure>
                 <p className="page-text46 vicetext">
                   {' '}
-                  ��сли слив заблокирован — засорился фильтр, дренажный шланг или сифон — вода остаётся в баке и люк удерживается запертым. Аналоги��но, при пол��мке датчика уровня система может «думать», что вода есть, даж�� е��ли её визуально нет, и не снимать блокировку. В таких случаях необходима проверка и очистка сливного тракта или диагностика датчика
+                  Если слив заблокирован — засорился фильтр, дренажный шланг или сифон — вода остаётся в баке и люк удерживается запертым. Аналогично, при поломке датчика уровня система может «думать», что вода есть, даже если её визуально нет, и не снимать блокировку. В таких случаях необходима проверка и очистка сливного тракта или диагностика датчика
                   <span
                     dangerouslySetInnerHTML={{
                       __html: ' ',
@@ -411,11 +232,11 @@ const Page = (props) => {
                     loading="lazy"
                     className="page-image38230525"
                   />
-                  <span className="page-text48">Бло�� управления</span>
+                  <span className="page-text48">Блок управления</span>
                 </figure>
                 <p className="page-text49 vicetext">
                   {' '}
-                  Внезапные перебои с питанием или ошибки в модуле управления могут приводить к «замораживанию» замка люка: кон��роллер просто не получает и��и не обрабатывает команду н�� разблокир��в��у. Иногда помогает полная перезагрузка питания, в иных случаях требуе��ся диагностика и ремонт электронной час��и в сервисном центре.
+                  Внезапные перебои с питанием или ошибки в модуле управления могут приводить к «замораживанию» замка люка: контроллер просто не получает или не обрабатывает команду на разблокировку. Иногда помогает полная перезагрузка питания, в иных случаях требуется диагностика и ремонт электронной части в сервисном центре.
                   <span
                     dangerouslySetInnerHTML={{
                       __html: ' ',
@@ -427,7 +248,7 @@ const Page = (props) => {
             <section id="5-1" className="page-fiveproblem2">
               <div className="page-container25 zagolovkiskorobkoy">
                 <h3 className="zagolovki2">
-                  5. Механическая пол��мка замка или ручки.
+                  5. Механическая поломка замка или ручки.
                 </h3>
                 <svg
                   width="330"
@@ -450,7 +271,7 @@ const Page = (props) => {
               <div className="page-container26">
                 <p className="page-text49 vicetext">
                   {' '}
-                  Износ или поломка механики з��мка, сломанная ручка или повреждённый фиксатор — частая причина невозможно��ти от��рытия люка. При такой неисправн��сти замок может не фиксироваться или проворачиваться «в холостую», и потребуется замена механизма или ручки: это уже профильная работа для мастера.
+                  Износ или поломка механики замка, сломанная ручка или повреждённый фиксатор — частая причина невозможности открытия люка. При такой неисправности замок может не фиксироваться или проворачиваться «в холостую», и потребуется замена механизма или ручки: это уже профильная работа для мастера.
                   <span
                     dangerouslySetInnerHTML={{
                       __html: ' ',
@@ -459,201 +280,7 @@ const Page = (props) => {
                 </p>
               </div>
             </section>
-            <section className="page-better-call-master">
-              <svg
-                width="100%"
-                xmlns="http://www.w3.org/2000/svg"
-                height="17"
-                viewBox="0 0 10 20"
-                preserveAspectRatio="none"
-                className="page-icon36"
-              >
-                <circle
-                  r="3.75"
-                  cx="5"
-                  cy="10"
-                  fill="#606060"
-                  vectorEffect="non-scaling-stroke"
-                ></circle>
-              </svg>
-              <svg
-                width="100%"
-                xmlns="http://www.w3.org/2000/svg"
-                height="17"
-                viewBox="0 0 10 20"
-                preserveAspectRatio="none"
-                className="page-icon38"
-              >
-                <circle
-                  r="3.75"
-                  cx="5"
-                  cy="10"
-                  fill="#606060"
-                  vectorEffect="non-scaling-stroke"
-                ></circle>
-              </svg>
-              <svg
-                width="100%"
-                xmlns="http://www.w3.org/2000/svg"
-                height="17"
-                viewBox="0 0 10 20"
-                preserveAspectRatio="none"
-                className="page-icon40"
-              >
-                <circle
-                  r="3.75"
-                  cx="5"
-                  cy="10"
-                  fill="#606060"
-                  vectorEffect="non-scaling-stroke"
-                ></circle>
-              </svg>
-              <svg
-                width="100%"
-                xmlns="http://www.w3.org/2000/svg"
-                height="17"
-                viewBox="0 0 10 20"
-                preserveAspectRatio="none"
-                className="page-icon42"
-              >
-                <circle
-                  r="3.75"
-                  cx="5"
-                  cy="10"
-                  fill="#606060"
-                  vectorEffect="non-scaling-stroke"
-                ></circle>
-              </svg>
-              <svg
-                width="330"
-                xmlns="http://www.w3.org/2000/svg"
-                height="20"
-                viewBox="0 0 330 20"
-                preserveAspectRatio="none"
-                className="page-icon44"
-              >
-                <path
-                  d="M0 10 H330"
-                  fill="none"
-                  stroke="#000000"
-                  strokeWidth="0.5"
-                  vectorEffect="non-scaling-stroke"
-                  strokeDasharray="11 11"
-                ></path>
-              </svg>
-              <svg
-                width="330"
-                xmlns="http://www.w3.org/2000/svg"
-                height="20"
-                viewBox="0 0 330 20"
-                preserveAspectRatio="none"
-                className="page-icon46"
-              >
-                <path
-                  d="M0 10 H330"
-                  fill="none"
-                  stroke="#000000"
-                  strokeWidth="0.5"
-                  vectorEffect="non-scaling-stroke"
-                  strokeDasharray="11 11"
-                ></path>
-              </svg>
-              <svg
-                width="20"
-                xmlns="http://www.w3.org/2000/svg"
-                height="110"
-                viewBox="0 0 20 110"
-                preserveAspectRatio="none"
-                className="page-icon48"
-              >
-                <path
-                  d="M10 0 V110"
-                  fill="none"
-                  stroke="#000000"
-                  strokeWidth="0.5"
-                  vectorEffect="non-scaling-stroke"
-                  strokeDasharray="11 11"
-                ></path>
-              </svg>
-              <svg
-                width="20"
-                xmlns="http://www.w3.org/2000/svg"
-                height="110"
-                viewBox="0 0 20 110"
-                preserveAspectRatio="none"
-                className="page-icon50"
-              >
-                <path
-                  d="M10 0 V110"
-                  fill="none"
-                  stroke="#000000"
-                  strokeWidth="0.5"
-                  vectorEffect="non-scaling-stroke"
-                  strokeDasharray="11 11"
-                ></path>
-              </svg>
-              <h2 className="page-text50">Когда вызывать м��стера?</h2>
-              <p className="page-text51">
-                <span className="page-text52">
-                  Ес��и вы выполнили все рекомендации, но проблема оста��ась —
-                  обратитесь в сервис
-                  <span
-                    dangerouslySetInnerHTML={{
-                      __html: ' ',
-                    }}
-                  />
-                </span>
-                <span className="page-text53">&quot;</span>
-                <span className="page-text54">РемCтирМаш</span>
-                <span className="page-text55">&quot;</span>
-                <span className="page-text56">.</span>
-                <span className="page-text57">
-                  {' '}
-                  Наши специалисты быстро прие����ут к вам в желаемое вами время в
-                  любой район Одессы и выпол��ят качественную диагностику и
-                  ремонт.
-                </span>
-              </p>
-              <svg
-                width="330"
-                xmlns="http://www.w3.org/2000/svg"
-                height="20"
-                viewBox="0 0 330 20"
-                preserveAspectRatio="none"
-                className="page-icon52"
-              >
-                <path
-                  d="M0 10 H330"
-                  fill="none"
-                  stroke="#000000"
-                  strokeWidth="0.5"
-                  vectorEffect="non-scaling-stroke"
-                  strokeDasharray="11 11"
-                ></path>
-              </svg>
-              <strong className="page-text58">Работаем без ��ыходны��</strong>
-              <div className="page-container28">
-                <div className="page-container29">
-                  <div className="page-container30">
-                    <img
-                      alt="image"
-                      src="/image%203823106.svg"
-                      className="page-image3"
-                    />
-                    <strong className="page-text59">+38 (048) 253-23-23</strong>
-                  </div>
-                  <div className="page-container31">
-                    <img
-                      alt="image"
-                      src="/image%203823107.svg"
-                      className="page-image4"
-                    />
-                    <strong className="page-text60">+38 (048) 123-35-21</strong>
-                  </div>
-                </div>
-                <OrderButton onClick={openModal} text="Заказать мастера" />
-              </div>
-            </section>
+            <CallMasterSection onOrderClick={openModal} />
             <PageNavigation
               prevPage={{
                 href: '/nenabiraetvodu',
@@ -661,7 +288,7 @@ const Page = (props) => {
               }}
               nextPage={{
                 href: '/nekrutitbaraban',
-                title: 'Стиральная машина н�� крутит барабан'
+                title: 'Стиральная машина не крутит барабан'
               }}
             />
             <svg
@@ -683,20 +310,20 @@ const Page = (props) => {
             </svg>
             <RelatedArticles />
           </div>
-          <div className="page-dops-info">
-            <section className="page-frame1299">
+          <div className="page-dops-info"><InterestingAside />
+            <section className="page-frame1299" style={{display:"none"}}>
               <span className="page-text72">Вам будет интересно:</span>
               <div className="page-frame12981">
                 <span className="page-text73">
-                  Ошибк��, котор��е приводят к дорогостоящему ремонту (и как их
-                  избежать)
+                  Ошиб����, котор��е приводят к д��рогостоящему ремонту (и как их
+                  изб��жать)
                 </span>
                 <div className="page-container45"></div>
               </div>
               <div className="page-frame12982">
                 <span className="page-text74">
                   К��к продлить жизнь машине на 3–5 лет — простые привычки,
-                  которые сэкономят деньги
+                  которые сэконо��ят деньги
                 </span>
                 <div className="page-container46"></div>
               </div>
@@ -722,7 +349,7 @@ const Page = (props) => {
               </div>
               <div className="page-frame12986">
                 <span className="page-text78">
-                  Мифы о стиралках: что правда, а что — вым��сел?
+                  Мифы о стир��лках: что правда, а что — вым��сел?
                 </span>
                 <div className="page-container50"></div>
               </div>
@@ -813,7 +440,7 @@ const Page = (props) => {
             color: rgb(80, 80, 80);
             width: 100%;
             height: auto;
-            font-size: 32px;
+            font-size: 35px;
             align-self: flex-start;
             text-align: left;
             font-family: 'Noto Serif SC';
@@ -821,6 +448,7 @@ const Page = (props) => {
             line-height: normal;
             font-stretch: normal;
             text-decoration: none;
+            margin: 0 0 8px 0;
           }
           .page-text11 {
             color: var(--dl-color-theme-neutral-dark);
@@ -2242,6 +1870,9 @@ const Page = (props) => {
             .page-frame1299 {
               display: none;
             }
+            .page-dops-info {
+              display: none;
+            }
           }
           @media (max-width: 767px) {
             .page-breadcrumbs-section {
@@ -2309,7 +1940,7 @@ const Page = (props) => {
             .page-text10 {
               fill: #373333;
               color: rgb(55, 51, 51);
-              font-size: 25px;
+              font-size: 24px;
               font-style: normal;
               text-align: center;
               font-family: Noto Serif SC;
@@ -2384,54 +2015,21 @@ const Page = (props) => {
             }
             .page-container18 { gap: var(--dl-layout-space-halfunit); width: 280px; max-width: 280px; min-width: 280px; height: auto; min-height: 0; margin: 12px auto 16px; float: none; }
             .page-image38230522 { width: 100%; height: 170px; object-fit: cover; min-width: 0; min-height: 0; }
-            .page-container21 {
-              gap: var(--dl-layout-space-halfunit);
-              height: 100%;
-              max-width: var(--dl-layout-size-xxlarge);
-              min-width: 100%;
-              min-height: 100%;
-              margin-bottom: 14px;
-            }
-            .page-image38230523 {
-              width: 100%;
-              min-width: 50%;
-              min-height: 50px;
-            }
+            .page-container21 { gap: var(--dl-layout-space-halfunit); width: 280px; max-width: 280px; min-width: 280px; height: auto; min-height: 0; margin: 12px auto 16px; float: none; }
+            .page-image38230523 { width: 100%; height: 170px; object-fit: cover; min-width: 0; min-height: 0; }
             .page-text40 {
               font-size: 13px;
             }
-            .page-container24 {
-              gap: var(--dl-layout-space-halfunit);
-              height: 100%;
-              max-width: 100%;
-              min-width: 100%;
-              min-height: 100%;
-              margin-bottom: 14px;
-            }
-            .page-image38230524 {
-              width: 100%;
-              min-width: 50%;
-              min-height: 50px;
-            }
+            .page-container24 { gap: var(--dl-layout-space-halfunit); width: 280px; max-width: 280px; min-width: 280px; height: auto; min-height: 0; margin: 12px auto 16px; float: none; }
+            .page-image38230524 { width: 100%; height: 170px; object-fit: cover; min-width: 0; min-height: 0; }
             .page-text45 {
               font-size: 13px;
               font-style: normal;
               font-family: Roboto;
               font-weight: 400;
             }
-            .page-container27 {
-              gap: var(--dl-layout-space-halfunit);
-              height: 100%;
-              max-width: 100%;
-              min-width: 100%;
-              min-height: 100%;
-              margin-bottom: 14px;
-            }
-            .page-image38230525 {
-              width: 100%;
-              min-width: 50%;
-              min-height: 50px;
-            }
+            .page-container27 { gap: var(--dl-layout-space-halfunit); width: 280px; max-width: 280px; min-width: 280px; height: auto; min-height: 0; margin: 12px auto 16px; float: none; }
+            .page-image38230525 { width: 100%; height: 170px; object-fit: cover; min-width: 0; min-height: 0; }
             .page-text48 {
               font-size: 13px;
               font-style: normal;

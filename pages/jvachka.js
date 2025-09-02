@@ -5,10 +5,13 @@ import Header from '../components/Header'
 import MainFooter from '../components/MainFooter'
 import SEOHead from '../components/SEOHead'
 import PageNavigation from '../components/PageNavigation'
-import OrderButton from '../components/OrderButton'
-import OrderModal from '../components/OrderModal'
+const OrderModal = dynamic(() => import('../components/OrderModal'), { ssr: false })
 import Breadcrumbs from '../components/Breadcrumbs'
-import RelatedArticles from '../components/RelatedArticles'
+import dynamic from 'next/dynamic'
+const RelatedArticles = dynamic(() => import('../components/RelatedArticles'))
+const CallMasterSection = dynamic(() => import('../components/CallMasterSection'))
+const InterestingAside = dynamic(() => import('../components/InterestingAside'), { ssr: false })
+import AnchorLinksSection from '../components/AnchorLinksSection'
 import { getSEOData } from '../utils/seoConfig'
 import { getArticleStructuredData } from '../utils/structuredData'
 
@@ -42,9 +45,7 @@ const Page = (props) => {
           structuredData={structuredData}
         />
         <Header />
-        <div className="page-breadcrumbs-section">
-          <Breadcrumbs style="white-left" />
-        </div>
+        <Breadcrumbs style="white-left" />
         <main className="page-main">
           <div className="page-left-main-box">
             <div className="page-headertextwashermachine">
@@ -62,212 +63,17 @@ const Page = (props) => {
                 <span className="page-text13">что делать?</span>
               </h1>
             </div>
-            <section className="page-container11">
-              <svg
-                width="100%"
-                xmlns="http://www.w3.org/2000/svg"
-                height="17"
-                viewBox="0 0 10 20"
-                preserveAspectRatio="none"
-                className="page-icon10"
-              >
-                <circle
-                  r="3.75"
-                  cx="5"
-                  cy="10"
-                  fill="#606060"
-                  vectorEffect="non-scaling-stroke"
-                ></circle>
-              </svg>
-              <svg
-                width="100%"
-                xmlns="http://www.w3.org/2000/svg"
-                height="17"
-                viewBox="0 0 10 20"
-                preserveAspectRatio="none"
-                className="page-icon12"
-              >
-                <circle
-                  r="3.75"
-                  cx="5"
-                  cy="10"
-                  fill="#606060"
-                  vectorEffect="non-scaling-stroke"
-                ></circle>
-              </svg>
-              <svg
-                width="100%"
-                xmlns="http://www.w3.org/2000/svg"
-                height="17"
-                viewBox="0 0 10 20"
-                preserveAspectRatio="none"
-                className="page-icon14"
-              >
-                <circle
-                  r="3.75"
-                  cx="5"
-                  cy="10"
-                  fill="#606060"
-                  vectorEffect="non-scaling-stroke"
-                ></circle>
-              </svg>
-              <svg
-                width="100%"
-                xmlns="http://www.w3.org/2000/svg"
-                height="17"
-                viewBox="0 0 10 20"
-                preserveAspectRatio="none"
-                className="page-icon16"
-              >
-                <circle
-                  r="3.75"
-                  cx="5"
-                  cy="10"
-                  fill="#606060"
-                  vectorEffect="non-scaling-stroke"
-                ></circle>
-              </svg>
-              <strong className="page-text14">
-                <span>Жвачка на одежде:</span>
-                <br></br>
-              </strong>
-              <ul className="page-ul list">
-                <li className="page-li2 list-item">
-                  <img alt="image" src="/vector.svg" className="page-image2" />
-                  <a href="#2" className="page-link2">
-                    Ос��овные способы содрать жвачку:
-                  </a>
-                </li>
-                <li className="page-li3 list-item">
-                  <img
-                    alt="Vector8669"
-                    src="/external/vector8669-r6fr.svg"
-                    className="page-vector2"
-                  />
-                  <a href="#2" className="page-link3 ge">
-                    1. Заморозка (мор��зильник или лёд)
-                  </a>
-                </li>
-                <li className="page-li4 list-item ge">
-                  <img
-                    alt="Vector8669"
-                    src="/external/vector8669-r6fr.svg"
-                    className="page-vector3"
-                  />
-                  <a href="#2-1" className="page-link4">
-                    2. Горячая вода и утюг
-                  </a>
-                </li>
-                <li className="page-li5 list-item">
-                  <img
-                    alt="Vector8669"
-                    src="/external/vector8669-r6fr.svg"
-                    className="page-vector4"
-                  />
-                  <a href="#2-2" className="page-link5 ge">
-                    3. Клейкая лента и фен
-                  </a>
-                </li>
-                <li className="page-li6 list-item">
-                  <img
-                    alt="Vector8669"
-                    src="/external/vector8669-r6fr.svg"
-                    className="page-vector5"
-                  />
-                  <a href="#3" className="page-link6 ge">
-                    4. Растворители (ацетон, уайт-спирит, WD-40)
-                  </a>
-                </li>
-                <li className="page-li6 list-item">
-                  <img
-                    alt="Vector8669"
-                    src="/external/vector8669-r6fr.svg"
-                    className="page-vector5"
-                  />
-                  <a href="#4" className="page-link6 ge">
-                    5. Масло и уксус
-                  </a>
-                </li>
-                <li className="page-li6 list-item">
-                  <img
-                    alt="Vector8669"
-                    src="/external/vector8669-r6fr.svg"
-                    className="page-vector5"
-                  />
-                  <a href="#5" className="page-link6 ge">
-                    6. Неве����о выбран режим стирки
-                  </a>
-                </li>
-              </ul>
-              <svg
-                width="330"
-                xmlns="http://www.w3.org/2000/svg"
-                height="20"
-                viewBox="0 0 330 20"
-                preserveAspectRatio="none"
-                className="page-icon18"
-              >
-                <path
-                  d="M0 10 H330"
-                  fill="none"
-                  stroke="#000000"
-                  strokeWidth="0.5"
-                  vectorEffect="non-scaling-stroke"
-                  strokeDasharray="11 11"
-                ></path>
-              </svg>
-              <svg
-                width="330"
-                xmlns="http://www.w3.org/2000/svg"
-                height="20"
-                viewBox="0 0 330 20"
-                preserveAspectRatio="none"
-                className="page-icon20"
-              >
-                <path
-                  d="M0 10 H330"
-                  fill="none"
-                  stroke="#000000"
-                  strokeWidth="0.5"
-                  vectorEffect="non-scaling-stroke"
-                  strokeDasharray="11 11"
-                ></path>
-              </svg>
-              <svg
-                width="20"
-                xmlns="http://www.w3.org/2000/svg"
-                height="110"
-                viewBox="0 0 20 110"
-                preserveAspectRatio="none"
-                className="page-icon22"
-              >
-                <path
-                  d="M10 0 V110"
-                  fill="none"
-                  stroke="#000000"
-                  strokeWidth="0.5"
-                  vectorEffect="non-scaling-stroke"
-                  strokeDasharray="11 11"
-                ></path>
-              </svg>
-              <svg
-                width="20"
-                xmlns="http://www.w3.org/2000/svg"
-                height="110"
-                viewBox="0 0 20 110"
-                preserveAspectRatio="none"
-                className="page-icon24"
-              >
-                <path
-                  d="M10 0 V110"
-                  fill="none"
-                  stroke="#000000"
-                  strokeWidth="0.5"
-                  vectorEffect="non-scaling-stroke"
-                  strokeDasharray="11 11"
-                ></path>
-              </svg>
-            </section>
+            <AnchorLinksSection
+              title="Жвачка на одежде:"
+              items={[
+                { icon: '/vector.svg', href: '#2', text: 'Основные способы содрать жвачку:' },
+                { icon: '/external/vector8669-r6fr.svg', href: '#2', text: '1. Заморозка (морозильник или лёд)' },
+                { icon: '/external/vector8669-r6fr.svg', href: '#2-1', text: '2. Горячая вода и утюг' },
+                { icon: '/external/vector8669-r6fr.svg', href: '#2-2', text: '3. Клейкая лента и фен' },
+                { icon: '/external/vector8669-r6fr.svg', href: '#3', text: '4. Растворители (ацетон, уайт-спирит, WD-40)' },
+                { icon: '/external/vector8669-r6fr.svg', href: '#4', text: '5. Масло и уксус' },
+              ]}
+            />
             <section id="2" className="page-thirdproblem1">
               <div className="page-container16 zagolovkiskorobkoy">
                 <h3 className="zagolovki2">
@@ -294,7 +100,7 @@ const Page = (props) => {
               <div className="page-container17">
                 <figure className="page-container18">
                   <img
-                    alt="тэн стиральной ма��ины"
+                    alt="тэн стиральной машины"
                     src="/2/ten.webp"
                     loading="lazy"
                     className="page-image38230522"
@@ -306,7 +112,7 @@ const Page = (props) => {
                 </figure>
                 <p className="vicetext">
                   {' '}
-                  Если вещь помещается в м��розильник, это ��аиболее простой способ. Поместите испачканную одежду в полиэтиленовый пакет и уберите в морозилку на 2–3 часа. Когда жвачка полностью застынет, её легко отлепить от ткани руками. Если куртк�� слишком большая, п��ложите на пятно кусочки льда – жвачка затвердеет на месте и её можно будет собрать щёткой или пальцами. После снятия жвачки может остаться лёгкий след: он обычно хорошо отстирывается мылом или порошком.
+                  Если вещь помещается в морозильник, это наиболее простой способ. Поместите испачканную одежду в полиэтиленовый пакет и уберите в морозилку на 2–3 часа. Когда жвачка полностью застынет, её легко отлепить от ткани руками. Если куртка слишком большая, приложите на пятно кусочки льда – жвачка затвердеет на месте и её можно будет собрать щёткой или пальцами. После снятия жвачки может остаться лёгкий след: он обычно хорошо отстирывается мылом или порошком.
                 </p>
               </div>
             </section>
@@ -348,7 +154,7 @@ const Page = (props) => {
                 </figure>
                 <p className="vicetext">
                   {' '}
-                  Этот приём подойдёт для прочных тканей (лучше избегать шёлка и шерсти). Разведите очень горячую воду и погрузите поражённый участок на 5–10 минут – жвачка быстро расплавится. Аккуратно счистите размягчённые кусочки щёткой. Также мо��но воспользоваться утюгом: положите под шмо��ку плотный картон (или бумажное полотенце), прогрейт�� утюг до 100–120°C и на несколько сек��нд приж��ите им место с жвачкой. Жвачка расплавится и прилипнет к картону. Повто��яйте, пок�� все остатки не исчезнут. По��ле использ��йте ткань: поместите тряпочку между утюгом и вещью, чтобы не пропекать волокна.
+                  Этот приём подойдёт для прочных тканей (лучше избегать шёлка и шерсти). Разведите очень горячую воду и погрузите поражённый участок на 5–10 минут – жвачка быстро расплавится. Аккуратно счистите размягчённые кусочки щёткой. Также можно воспользоваться утюгом: положите под шмотку плотный картон (или бумажное полотенце), прогрейте утюг до 100–120 °C и на несколько секунд прижмите им место с жвачкой. Жвачка расплавится и прилипнет к картону. Повторяйте, пока все остатки не исчезнут. После используйте ткань: поместите тряпочку между утюгом и вещью, чтобы не пропекать волокна.
                 </p>
               </div>
             </section>
@@ -378,7 +184,7 @@ const Page = (props) => {
               <div className="page-container17">
                 <figure className="page-container18">
                   <img
-                    alt="прессос��а��"
+                    alt="��рессо������а��"
                     src="/2/presso.webp"
                     loading="lazy"
                     className="page-image38230522"
@@ -390,13 +196,13 @@ const Page = (props) => {
                 </figure>
                 <p className="vicetext">
                   {' '}
-                  Скотч может пом��чь с сырой или ч��стично размягчённой резинкой. Направьте на жвачку тёплый воздух из фена на 1–2 минуты – резинка размягчи��ся. Затем плотно пр��жмите кусок клейкой ленты к жвачке и резко оторвите – так вы сможете «вытянуть» жвачку за ленту. Повторяй��е, пока не оторвёте всё. Этот способ удобен, когда нет под рукой морозильника.
+                  Скотч может помочь с сырой или частично размягчённой резинкой. Направьте на жвачку тёплый воздух из фена на 1–2 минуты – резинка размягчится. Затем плотно прижмите кусок клейкой ленты к жвачке и резко оторвите – так вы сможете «вытянуть» жвачку за ленту. Повторяйте, пока не оторвёте всё. Этот способ удобен, когда нет под рукой морозильника.
                 </p>
               </div>
             </section>
             <section id="3" className="page-thirdproblem2">
               <div className="page-container19 zagolovkiskorobkoy">
-                <h3 className="zagolovki2">4. Р��створители (ацетон, уайт-спирит, WD-40)</h3>
+                <h3 className="zagolovki2">4. Растворители (ацетон, уайт-спирит, WD-40)</h3>
                 <svg
                   width="330"
                   xmlns="http://www.w3.org/2000/svg"
@@ -430,7 +236,7 @@ const Page = (props) => {
                 </figure>
                 <p className="vicetext">
                   {' '}
-                  Если ни холод, ни тепло не помогли, пробуйте местные растворители. Жидкость для снятия ла��а с ацетоном мягко разъедает жевательную резинку – смочите ватный диск, приложите к пятну на 2–3 минуты, затем сотрите резинку щёткой. Ксилол (уайт-спир��т) или промышленный очиститель WD-40 тоже эффективно размягчают клейкость жвачки. Эти средства хорошо по��ходят для плотных тканей, но о��язательно протестируйте их на незаметном фрагменте, чтобы избежать обесцвечивания. После применения растворителя одежду нужно обязательно выстирать – это удалит остатки химии и запах растворителя.
+                  Если ни холод, ни тепло не помогли, пробуйте местные растворители. Жидкость для снятия лака с ацетоном мягко разъедает жевательную резинку – смочите ватный диск, приложите к пятну на 2–3 минуты, затем сотрите резинку щёткой. Ксилол (уайт-спирит) или промышленный очиститель WD-40 тоже эффективно размягчают клейкость жвачки. Эти средства хорошо подходят для плотных тканей, но обязательно протестируйте их на незаметном фрагменте, чтобы избежать обесцвечивания. После применения растворителя одежду нужно обязательно выстирать – это удалит остатки химии и запах.
                 </p>
               </div>
             </section>
@@ -472,8 +278,9 @@ const Page = (props) => {
                 </figure>
                 <p className="page-text46 vicetext">
                   {' '}
-                  Другое народное средство – растительное масло или сливочное масло: нанесите его на жва��ку, дождитесь 10–15 минут и попробуйте стереть жвачку (масло уменьшит её липкость). Ацетон из жидкостей для снятия лака часто заменяют уксусом: подогре��те столовый уксус до 40°C, нанесите на жвачку и оставьте на пару минут. Жвачка размягчится, и её можно б��дет счистить щёткой. Эти способы хор��ши, но оставляют жирные п��тна: после удаления резинки одежду нужно выстирать с порошком или жидкостью для посуды.
-                  После всех процедур обязательно постирайте вещь (лучше в прохладной воде с моющим средством). Так вы удалите остатки жвачки и любых использованных химикатов. Бла����одаря таким методам даже застаревшую жвачку можно убрать без следов, главное – терпение и аккуратность.
+                  Другое народное средство – растительное или сливочное масло: нанесите его на жвачку, дождитесь 10–15 минут и попробуйте стереть жвачку (масло уменьшит её липкость). Ацетон из жидкостей для снятия лака часто заменяют уксусом: подогрейте столовый уксус до 40 °C, нанесите на жвачку и оставьте на пару минут. Жвачка размягчится, и её можно будет счистить щёткой. Эти способы хороши, но оставляют жирные пятна: после удаления резинки одежду нужно выстирать с порошком или жидкостью для посуды.
+
+                  После всех процедур обязательно постирайте вещь (лучше в прохладной воде с моющим средством). Так вы удалите остатки жвачки и любых использованных химикатов. Благодаря таким методам даже застаревшую жвачку можно убрать без следов, главное – терпение и аккуратность.
                   <span
                     dangerouslySetInnerHTML={{
                       __html: ' ',
@@ -482,236 +289,7 @@ const Page = (props) => {
                 </p>
               </div>
             </section>
-            <section id="5" className="page-fiveproblem2">
-              <div className="page-container25 zagolovkiskorobkoy">
-                <h3 className="zagolovki2">
-                  6. Неверно выбран режим стирки
-                </h3>
-                <svg
-                  width="330"
-                  xmlns="http://www.w3.org/2000/svg"
-                  height="20"
-                  viewBox="0 0 330 20"
-                  preserveAspectRatio="none"
-                  className="page-icon34"
-                >
-                  <path
-                    d="M0 10 H330"
-                    fill="none"
-                    stroke="#000000"
-                    strokeWidth="0.5"
-                    vectorEffect="non-scaling-stroke"
-                    strokeDasharray="11 11"
-                  ></path>
-                </svg>
-              </div>
-              <div className="page-container17">
-                <p className="page-text49 vicetext">
-                  {' '}
-                  Иногда причиной «холодной» стирки оказывается банальная оши��ка в настройках. Если выставлен режим быстрой или энергосберегающей стир��и без подогрева (или выбран ми��имальный температурный режим), машина прос��о не включит ТЭН. Например, регулятор температуры на панели должен соответствов��ть выбранной пр��грамме. Чтобы проверить, достаточно заново установить режим с высоким подогревом (40–60 °C). После корректировки настроек проблема исчезнет �� функция нагрева будет работать как положено. Такой простой сове�� иногда спасает до обращ��ния в сервис.
-                  <span
-                    dangerouslySetInnerHTML={{
-                      __html: ' ',
-                    }}
-                  />
-                </p>
-              </div>
-            </section>
-            <section className="page-better-call-master">
-              <svg
-                width="100%"
-                xmlns="http://www.w3.org/2000/svg"
-                height="17"
-                viewBox="0 0 10 20"
-                preserveAspectRatio="none"
-                className="page-icon36"
-              >
-                <circle
-                  r="3.75"
-                  cx="5"
-                  cy="10"
-                  fill="#606060"
-                  vectorEffect="non-scaling-stroke"
-                ></circle>
-              </svg>
-              <svg
-                width="100%"
-                xmlns="http://www.w3.org/2000/svg"
-                height="17"
-                viewBox="0 0 10 20"
-                preserveAspectRatio="none"
-                className="page-icon38"
-              >
-                <circle
-                  r="3.75"
-                  cx="5"
-                  cy="10"
-                  fill="#606060"
-                  vectorEffect="non-scaling-stroke"
-                ></circle>
-              </svg>
-              <svg
-                width="100%"
-                xmlns="http://www.w3.org/2000/svg"
-                height="17"
-                viewBox="0 0 10 20"
-                preserveAspectRatio="none"
-                className="page-icon40"
-              >
-                <circle
-                  r="3.75"
-                  cx="5"
-                  cy="10"
-                  fill="#606060"
-                  vectorEffect="non-scaling-stroke"
-                ></circle>
-              </svg>
-              <svg
-                width="100%"
-                xmlns="http://www.w3.org/2000/svg"
-                height="17"
-                viewBox="0 0 10 20"
-                preserveAspectRatio="none"
-                className="page-icon42"
-              >
-                <circle
-                  r="3.75"
-                  cx="5"
-                  cy="10"
-                  fill="#606060"
-                  vectorEffect="non-scaling-stroke"
-                ></circle>
-              </svg>
-              <svg
-                width="330"
-                xmlns="http://www.w3.org/2000/svg"
-                height="20"
-                viewBox="0 0 330 20"
-                preserveAspectRatio="none"
-                className="page-icon44"
-              >
-                <path
-                  d="M0 10 H330"
-                  fill="none"
-                  stroke="#000000"
-                  strokeWidth="0.5"
-                  vectorEffect="non-scaling-stroke"
-                  strokeDasharray="11 11"
-                ></path>
-              </svg>
-              <svg
-                width="330"
-                xmlns="http://www.w3.org/2000/svg"
-                height="20"
-                viewBox="0 0 330 20"
-                preserveAspectRatio="none"
-                className="page-icon46"
-              >
-                <path
-                  d="M0 10 H330"
-                  fill="none"
-                  stroke="#000000"
-                  strokeWidth="0.5"
-                  vectorEffect="non-scaling-stroke"
-                  strokeDasharray="11 11"
-                ></path>
-              </svg>
-              <svg
-                width="20"
-                xmlns="http://www.w3.org/2000/svg"
-                height="110"
-                viewBox="0 0 20 110"
-                preserveAspectRatio="none"
-                className="page-icon48"
-              >
-                <path
-                  d="M10 0 V110"
-                  fill="none"
-                  stroke="#000000"
-                  strokeWidth="0.5"
-                  vectorEffect="non-scaling-stroke"
-                  strokeDasharray="11 11"
-                ></path>
-              </svg>
-              <svg
-                width="20"
-                xmlns="http://www.w3.org/2000/svg"
-                height="110"
-                viewBox="0 0 20 110"
-                preserveAspectRatio="none"
-                className="page-icon50"
-              >
-                <path
-                  d="M10 0 V110"
-                  fill="none"
-                  stroke="#000000"
-                  strokeWidth="0.5"
-                  vectorEffect="non-scaling-stroke"
-                  strokeDasharray="11 11"
-                ></path>
-              </svg>
-              <h2 className="page-text50">Когда вызывать мастера?</h2>
-              <p className="page-text51">
-                <span className="page-text52">
-                  Если вы выполнили все рекомендации, но проблема осталась —
-                  о��ратитесь в серв��с
-                  <span
-                    dangerouslySetInnerHTML={{
-                      __html: ' ',
-                    }}
-                  />
-                </span>
-                <span className="page-text53">&quot;</span>
-                <span className="page-text54">РемCтирМаш</span>
-                <span className="page-text55">&quot;</span>
-                <span className="page-text56">.</span>
-                <span className="page-text57">
-                  {' '}
-                  Наши специ��листы быстро прие��ут к ва�� в желае��ое вами время в
-                  любой район Одессы и выполнят качественную диагностику и
-                  ремонт.
-                </span>
-              </p>
-              <svg
-                width="330"
-                xmlns="http://www.w3.org/2000/svg"
-                height="20"
-                viewBox="0 0 330 20"
-                preserveAspectRatio="none"
-                className="page-icon52"
-              >
-                <path
-                  d="M0 10 H330"
-                  fill="none"
-                  stroke="#000000"
-                  strokeWidth="0.5"
-                  vectorEffect="non-scaling-stroke"
-                  strokeDasharray="11 11"
-                ></path>
-              </svg>
-              <strong className="page-text58">Работаем без выходны��</strong>
-              <div className="page-container28">
-                <div className="page-container29">
-                  <div className="page-container30">
-                    <img
-                      alt="image"
-                      src="/image%203823106.svg"
-                      className="page-image3"
-                    />
-                    <strong className="page-text59">+38 (048) 253-23-23</strong>
-                  </div>
-                  <div className="page-container31">
-                    <img
-                      alt="image"
-                      src="/image%203823107.svg"
-                      className="page-image4"
-                    />
-                    <strong className="page-text60">+38 (048) 123-35-21</strong>
-                  </div>
-                </div>
-                <OrderButton onClick={openModal} text="Заказать мастера" />
-              </div>
-            </section>
+            <CallMasterSection onOrderClick={openModal} />
             <PageNavigation
               prevPage={{
                 href: '/neslivaetvodu',
@@ -741,8 +319,8 @@ const Page = (props) => {
             </svg>
             <RelatedArticles />
           </div>
-          <div className="page-dops-info">
-            <section className="page-frame1299">
+          <div className="page-dops-info"><InterestingAside />
+            <section className="page-frame1299" style={{display:"none"}}>
               <span className="page-text72">Вам будет интересно:</span>
               <div className="page-frame12981">
                 <span className="page-text73">
@@ -767,14 +345,14 @@ const Page = (props) => {
               </div>
               <div className="page-frame12984">
                 <span className="page-text76">
-                  Как ��экономить электричес��во и воду — реаль��ые настройки и
+                  Как ��экономить электричес��во и воду — реаль��ые настройк�� и
                   лайфхаки
                 </span>
                 <div className="page-container48"></div>
               </div>
               <div className="page-frame12985">
                 <span className="page-text77">
-                  Как бе��опасно пе��евозить и хранить стиральную маши��у
+                  Как бе��опасно пе����евозить и хранить стиральную м��шину
                 </span>
                 <div className="page-container49"></div>
               </div>
@@ -799,6 +377,7 @@ const Page = (props) => {
             width: 100%;
             display: flex;
             min-height: 100vh;
+            min-height: 100dvh;
             align-items: center;
             flex-direction: column;
             background-color: #ffffff;
@@ -873,7 +452,7 @@ const Page = (props) => {
             color: rgb(80, 80, 80);
             width: 100%;
             height: auto;
-            font-size: 32px;
+            font-size: 35px;
             align-self: flex-start;
             text-align: left;
             font-family: 'Noto Serif SC';
@@ -881,6 +460,7 @@ const Page = (props) => {
             line-height: normal;
             font-stretch: normal;
             text-decoration: none;
+            margin: 0 0 8px 0;
           }
           .page-text11 {
             color: var(--dl-color-theme-neutral-dark);
@@ -909,7 +489,7 @@ const Page = (props) => {
             margin-bottom: var(--dl-layout-space-unit);
             flex-direction: column;
             justify-content: flex-start;
-            background-color: #fdfdf6;
+            background-color: #fdfdf0;
           }
           .page-icon10 {
             top: -19px;
@@ -1258,7 +838,7 @@ const Page = (props) => {
             font-family: 'Noto Serif SC';
             font-weight: 500;
             line-height: normal;
-            margin-bottom: 8px;
+            margin-bottom: calc(8px / 1.7);
           }
           .page-container16 {
             gap: var(--dl-layout-space-halfunit);
@@ -1275,20 +855,7 @@ const Page = (props) => {
             display: flow-root;
           }
           .page-container18 {
-            gap: 5px;
-            float: right;
-            width: 279px;
-            height: auto;
-            display: flex;
-            max-width: 220px;
-            min-width: auto;
-            max-height: 200px;
-            min-height: auto;
-            align-items: center;
-            margin-left: var(--dl-layout-space-oneandhalfunits);
-            flex-direction: column;
-            justify-content: center;
-            background-color: rgba(69, 197, 237, 0.1);
+            display: none !important;
           }
           .page-image38230522 {
             float: right;
@@ -1321,20 +888,7 @@ const Page = (props) => {
             display: flow-root;
           }
           .page-container21 {
-            gap: 5px;
-            float: right;
-            width: 279px;
-            height: auto;
-            display: flex;
-            max-width: 220px;
-            min-width: auto;
-            max-height: 200px;
-            min-height: auto;
-            align-items: center;
-            margin-left: var(--dl-layout-space-oneandhalfunits);
-            flex-direction: column;
-            justify-content: center;
-            background-color: rgba(69, 197, 237, 0.1);
+            display: none !important;
           }
           .page-image38230523 {
             float: right;
@@ -1380,20 +934,7 @@ const Page = (props) => {
             display: flow-root;
           }
           .page-container24 {
-            gap: 5px;
-            float: right;
-            width: 100%;
-            height: auto;
-            display: flex;
-            max-width: 250px;
-            min-width: auto;
-            max-height: 200px;
-            min-height: 100%;
-            align-items: center;
-            margin-left: var(--dl-layout-space-oneandhalfunits);
-            flex-direction: column;
-            justify-content: center;
-            background-color: rgba(69, 197, 237, 0.1);
+            display: none !important;
           }
           .page-image38230524 {
             float: right;
@@ -1447,20 +988,7 @@ const Page = (props) => {
             display: flow-root;
           }
           .page-container27 {
-            gap: 5px;
-            float: right;
-            width: 100%;
-            height: auto;
-            display: flex;
-            max-width: 250px;
-            min-width: auto;
-            max-height: 200px;
-            min-height: 100%;
-            align-items: center;
-            margin-left: var(--dl-layout-space-oneandhalfunits);
-            flex-direction: column;
-            justify-content: center;
-            background-color: rgba(69, 197, 237, 0.1);
+            display: none !important;
           }
           .page-image38230525 {
             float: right;
@@ -1510,7 +1038,7 @@ const Page = (props) => {
             flex-direction: column;
             padding-bottom: var(--dl-layout-space-twounits);
             justify-content: center;
-            background-color: #fdfdf6;
+            background-color: #fdfdf0;
           }
           .page-icon36 {
             top: -21px;
@@ -2326,6 +1854,9 @@ const Page = (props) => {
             .page-frame1299 {
               display: none;
             }
+            .page-dops-info {
+              display: none;
+            }
           }
           @media (max-width: 767px) {
             .page-breadcrumbs-section {
@@ -2395,7 +1926,7 @@ const Page = (props) => {
             .page-text10 {
               fill: #373333;
               color: rgb(55, 51, 51);
-              font-size: 25px;
+              font-size: 24px;
               font-style: normal;
               text-align: center;
               font-family: Noto Serif SC;

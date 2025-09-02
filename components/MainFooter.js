@@ -2,7 +2,9 @@ import React, { useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import OrderButton from './OrderButton'
-import OrderModal from './OrderModal'
+import dynamic from 'next/dynamic'
+import { PHONE_DISPLAY, PHONE_DISPLAY_2 } from '../utils/contacts'
+const OrderModal = dynamic(() => import('./OrderModal'), { ssr: false })
 
 const MainFooter = () => {
   const router = useRouter()
@@ -16,8 +18,8 @@ const MainFooter = () => {
     setIsModalOpen(false)
   }
 
-  // Проверяем, является ли текущая страница страницей проблемы
-  const isProblemPage = router.pathname && (
+  // Проверяем, является ли текущая страница страницей статей или проблемы
+  const isArticlesPage = router.pathname === '/articles' || (router.pathname && (
     router.pathname.includes('NESLIVAETIVODU') ||
     router.pathname.includes('NEGREETIVODU') ||
     router.pathname.includes('PROTEKAET') ||
@@ -26,8 +28,12 @@ const MainFooter = () => {
     router.pathname.includes('ZAVISAETNAPROGRAMME') ||
     router.pathname.includes('NEOTJIMAET') ||
     router.pathname.includes('NENABIRRAETVODU') ||
-    router.pathname.includes('NEOTKRIVATSADVERCA')
-  )
+    router.pathname.includes('NEOTKRIVATSADVERCA') ||
+    router.pathname.includes('jirniepyatna') ||
+    router.pathname.includes('jvachka') ||
+    router.pathname.includes('vlapalisvkrov') ||
+    router.pathname.includes('puhovik')
+  ))
 
   return (
     <div className="main-footer-isolation">
@@ -44,10 +50,10 @@ const MainFooter = () => {
             <div className="frame1196-container232">
               <div className="frame1196-container233">
                 <p className="frame1196-text282">
-                  <span className="frame1196-text-bold">Тел.:</span> +38 (098) 467-13-52
+                  <span className="frame1196-text-bold">Тел.:</span> {PHONE_DISPLAY}
                 </p>
                 <p className="frame1196-text283">
-                  <span className="frame1196-text-bold">Тел.:</span> +38 (098) 467-13-52
+                  <span className="frame1196-text-bold">Тел.:</span> {PHONE_DISPLAY_2}
                 </p>
               </div>
             </div>
@@ -85,7 +91,7 @@ const MainFooter = () => {
               <strong className="frame1196-text287">
                 <span
                   dangerouslySetInnerHTML={{
-                    __html: 'Оставьте заявку на бесплатный ��ыезд мастера',
+                    __html: 'Оставьте заявку на бесплатный выезд мастера',
                   }}
                 ></span>
               </strong>
@@ -119,7 +125,7 @@ const MainFooter = () => {
               </span>
             </Link>
             <Link href="/articles">
-              <span className={`frame1196-text290 ${isProblemPage ? 'frame1196-nav-active' : ''}`}>
+              <span className={`frame1196-text290 ${isArticlesPage ? 'frame1196-nav-active' : ''}`}>
                 <span
                   dangerouslySetInnerHTML={{
                     __html: 'Статьи',
@@ -130,12 +136,6 @@ const MainFooter = () => {
           </nav>
         </div>
       </footer>
-      <span className="frame1196-text291">
-        <span className="frame1196-text292">&quot;Ваше название&quot;</span>
-        <span>: сервис по ремонту стиральных машин</span>
-        <br />
-        <span>© 2025</span>
-      </span>
 
       <style jsx>
         {`
@@ -160,7 +160,7 @@ const MainFooter = () => {
             padding-left: var(--dl-layout-space-threeunits);
             padding-right: var(--dl-layout-space-threeunits);
             flex-direction: column;
-            padding-bottom: var(--dl-layout-space-threeunits);
+            padding-bottom: calc(var(--dl-layout-space-threeunits) + env(safe-area-inset-bottom, 0px));
             justify-content: center;
             background-color: #faf8f6;
           }
@@ -376,30 +376,6 @@ const MainFooter = () => {
             color: #87ceeb;
           }
 
-          .frame1196-text291 {
-            color: rgb(56, 56, 56);
-            height: auto;
-            font-size: 18px;
-            font-style: Regular;
-            margin-top: var(--dl-layout-space-unit);
-            text-align: center;
-            font-family: Nunito;
-            font-weight: 400;
-            line-height: normal;
-            font-stretch: normal;
-            margin-bottom: var(--dl-layout-space-unit);
-            text-decoration: none;
-            width: 100%;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-          }
-
-          .frame1196-text292 {
-            color: #87ceeb;
-            font-style: normal;
-            font-weight: 600;
-          }
 
           /* Media queries - точная копия из main page */
           @media (max-width: 991px) {
@@ -477,7 +453,7 @@ const MainFooter = () => {
               height: 100%;
               min-height: auto;
               flex-direction: column;
-              padding-bottom: var(--dl-layout-space-threeunits);
+              padding-bottom: calc(var(--dl-layout-space-threeunits) + env(safe-area-inset-bottom, 0px));
             }
 
             .frame1196-container236 {
@@ -492,7 +468,7 @@ const MainFooter = () => {
             .frame1196-container229 {
               flex-wrap: wrap;
               padding-top: var(--dl-layout-space-oneandhalfunits);
-              padding-bottom: var(--dl-layout-space-oneandhalfunits);
+              padding-bottom: calc(var(--dl-layout-space-oneandhalfunits) + env(safe-area-inset-bottom, 0px));
             }
 
             .frame1196-container230 {
@@ -588,14 +564,9 @@ const MainFooter = () => {
             }
 
             .frame1196-text288 {
-              color: #87ceeb;
+              color: #000000;
             }
 
-            .frame1196-text291 {
-              max-width: 300px;
-              min-width: auto;
-              margin-top: 0px;
-            }
           }
         `}
       </style>

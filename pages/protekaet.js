@@ -6,9 +6,13 @@ import MainFooter from '../components/MainFooter'
 import SEOHead from '../components/SEOHead'
 import PageNavigation from '../components/PageNavigation'
 import OrderButton from '../components/OrderButton'
-import OrderModal from '../components/OrderModal'
+const OrderModal = dynamic(() => import('../components/OrderModal'), { ssr: false })
 import Breadcrumbs from '../components/Breadcrumbs'
-import RelatedArticles from '../components/RelatedArticles'
+import dynamic from 'next/dynamic'
+const RelatedArticles = dynamic(() => import('../components/RelatedArticles'), { ssr: false })
+const CallMasterSection = dynamic(() => import('../components/CallMasterSection'))
+const InterestingAside = dynamic(() => import('../components/InterestingAside'), { ssr: false })
+import AnchorLinksSection from '../components/AnchorLinksSection'
 import { getSEOData } from '../utils/seoConfig'
 import { getProblemPageStructuredData } from '../utils/structuredData'
 
@@ -26,7 +30,7 @@ const Page = (props) => {
   const baseUrl = 'https://remstirmash.od.ua'
   const structuredData = getProblemPageStructuredData(
     'Ремонт протекающей стиральной машины',
-    'Профессиональный ремонт протек��ющих стиральных машин в Одессе. Устранение течи, замена уплотнителей.',
+    'Профессиональный ремонт протекающих стиральных машин в Одессе. Устранение течи, замена уплотнителей.',
     `${baseUrl}/protekaet`
   )
 
@@ -61,206 +65,21 @@ const Page = (props) => {
                 <span className="page-text13">что делать?</span>
               </h1>
             </div>
-            <section className="page-container11">
-              <svg
-                width="100%"
-                xmlns="http://www.w3.org/2000/svg"
-                height="17"
-                viewBox="0 0 10 20"
-                preserveAspectRatio="none"
-                className="page-icon10"
-              >
-                <circle
-                  r="3.75"
-                  cx="5"
-                  cy="10"
-                  fill="#606060"
-                  vectorEffect="non-scaling-stroke"
-                ></circle>
-              </svg>
-              <svg
-                width="100%"
-                xmlns="http://www.w3.org/2000/svg"
-                height="17"
-                viewBox="0 0 10 20"
-                preserveAspectRatio="none"
-                className="page-icon12"
-              >
-                <circle
-                  r="3.75"
-                  cx="5"
-                  cy="10"
-                  fill="#606060"
-                  vectorEffect="non-scaling-stroke"
-                ></circle>
-              </svg>
-              <svg
-                width="100%"
-                xmlns="http://www.w3.org/2000/svg"
-                height="17"
-                viewBox="0 0 10 20"
-                preserveAspectRatio="none"
-                className="page-icon14"
-              >
-                <circle
-                  r="3.75"
-                  cx="5"
-                  cy="10"
-                  fill="#606060"
-                  vectorEffect="non-scaling-stroke"
-                ></circle>
-              </svg>
-              <svg
-                width="100%"
-                xmlns="http://www.w3.org/2000/svg"
-                height="17"
-                viewBox="0 0 10 20"
-                preserveAspectRatio="none"
-                className="page-icon16"
-              >
-                <circle
-                  r="3.75"
-                  cx="5"
-                  cy="10"
-                  fill="#606060"
-                  vectorEffect="non-scaling-stroke"
-                ></circle>
-              </svg>
-              <strong className="page-text14">
-                <span>Стиральная машина протекает:</span>
-                <br></br>
-              </strong>
-              <ul className="page-ul list">
-                <li className="page-li3 list-item">
-                  <img
-                    alt="Vector8669"
-                    src="/external/vector8669-r6fr.svg"
-                    className="page-vector2"
-                  />
-                  <a href="#2" className="page-link3 ge">
-                    1. Повреждение ��аливного или сливного шланга
-                  </a>
-                </li>
-                <li className="page-li4 list-item ge">
-                  <img
-                    alt="Vector8669"
-                    src="/external/vector8669-r6fr.svg"
-                    className="page-vector3"
-                  />
-                  <a href="#2-1" className="page-link4">
-                    2. Течь ��з контейнера для порошка
-                  </a>
-                </li>
-                <li className="page-li5 list-item">
-                  <img
-                    alt="Vector8669"
-                    src="/external/vector8669-r6fr.svg"
-                    className="page-vector4"
-                  />
-                  <a href="#2-2" className="page-link5 ge">
-                    3. Повреждение или пробой бака
-                  </a>
-                </li>
-                <li className="page-li6 list-item">
-                  <img
-                    alt="Vector8669"
-                    src="/external/vector8669-r6fr.svg"
-                    className="page-vector5"
-                  />
-                  <a href="#3" className="page-link6 ge">
-                    4. Износ сальника подшипника.
-                  </a>
-                </li>
-                <li className="page-li6 list-item">
-                  <img
-                    alt="Vector8669"
-                    src="/external/vector8669-r6fr.svg"
-                    className="page-vector5"
-                  />
-                  <a href="#4" className="page-link6 ge">
-                    5. Разгермет��зация в��утренних патрубков
-                  </a>
-                </li>
-                <li className="page-li2 list-item">
-                  <img alt="image" src="/vector.svg" className="page-image2" />
-                  <a href="#5" className="page-link2">
-                    Как не допуст��ть протечку
-                  </a>
-                </li>
-              </ul>
-              <svg
-                width="330"
-                xmlns="http://www.w3.org/2000/svg"
-                height="20"
-                viewBox="0 0 330 20"
-                preserveAspectRatio="none"
-                className="page-icon18"
-              >
-                <path
-                  d="M0 10 H330"
-                  fill="none"
-                  stroke="#000000"
-                  strokeWidth="0.5"
-                  vectorEffect="non-scaling-stroke"
-                  strokeDasharray="11 11"
-                ></path>
-              </svg>
-              <svg
-                width="330"
-                xmlns="http://www.w3.org/2000/svg"
-                height="20"
-                viewBox="0 0 330 20"
-                preserveAspectRatio="none"
-                className="page-icon20"
-              >
-                <path
-                  d="M0 10 H330"
-                  fill="none"
-                  stroke="#000000"
-                  strokeWidth="0.5"
-                  vectorEffect="non-scaling-stroke"
-                  strokeDasharray="11 11"
-                ></path>
-              </svg>
-              <svg
-                width="20"
-                xmlns="http://www.w3.org/2000/svg"
-                height="110"
-                viewBox="0 0 20 110"
-                preserveAspectRatio="none"
-                className="page-icon22"
-              >
-                <path
-                  d="M10 0 V110"
-                  fill="none"
-                  stroke="#000000"
-                  strokeWidth="0.5"
-                  vectorEffect="non-scaling-stroke"
-                  strokeDasharray="11 11"
-                ></path>
-              </svg>
-              <svg
-                width="20"
-                xmlns="http://www.w3.org/2000/svg"
-                height="110"
-                viewBox="0 0 20 110"
-                preserveAspectRatio="none"
-                className="page-icon24"
-              >
-                <path
-                  d="M10 0 V110"
-                  fill="none"
-                  stroke="#000000"
-                  strokeWidth="0.5"
-                  vectorEffect="non-scaling-stroke"
-                  strokeDasharray="11 11"
-                ></path>
-              </svg>
-            </section>
+            <AnchorLinksSection
+              title="Стиральная машина протекает:"
+              items={[
+                { icon: '/external/vector8669-r6fr.svg', href: '#2', text: '1. Повреждение заливного или сливного шланга' },
+                { icon: '/external/vector8669-r6fr.svg', href: '#2-1', text: '2. Течь из контейнера для порошка' },
+                { icon: '/external/vector8669-r6fr.svg', href: '#2-2', text: '3. Повреждение или пробой бака' },
+                { icon: '/external/vector8669-r6fr.svg', href: '#3', text: '4. Износ сальника подшипника.' },
+                { icon: '/external/vector8669-r6fr.svg', href: '#4', text: '5. Разгерметизация внутренних патрубков' },
+                { icon: '/vector.svg', href: '#5', text: 'Как не допустить протечку' },
+              ]}
+            />
             <section id="2" className="page-thirdproblem1">
               <div className="page-container16 zagolovkiskorobkoy">
                 <h3 className="zagolovki2">
-                  1. Повреждение заливн��го или сливного шланга
+                  1. Повреждение заливного или сливного шланга
                 </h3>
                 <svg
                   width="330"
@@ -289,13 +108,13 @@ const Page = (props) => {
                     className="page-image38230522"
                   />
                   <span className="page-text19">
-                    <span>Сливной ��ланг</span>
+                    <span>Сливной шланг</span>
                     <br></br>
                   </span>
                 </figure>
                 <p className="vicetext">
                   {' '}
-                  Шланги, подводящие воду к машине и отводящие её в канализацию, сильно под��ержены ��еханическим повреждениям. Например, есл�� стиральную машину двигали или при транспортировке не убрали тр��нспортировочные кр��пления, шланг мог надорваться или ��тстегнуться. На с��арых машинках резиновый сливной шланг может рассо��нуться и трескаться. В последнем случае воду видно под машиной ��о время слива – она капает снизу или из самого шланга.Совет: иногда проблему решает под��атягивание ��омута ��а соединении шланга с насо��ом или патрубком. Если же шланг пор��ан или прогрызен (иногда кошки любят погрызть упругую резину), луч��е сразу заменить его новым – это недорогая мера, а эффект очень заметен. Аналогично проверьте шланг подачи воды: при ��ильных изгибах и перегибах он также может пропускать. Меняйте старые шланги при��ерно раз в пять–семь ��ет и при малейших признаках протечки меняйте крепления.
+                  Шланги, подводящие воду к машине и отводящие её в канализацию, сильно подвержены механическим повреждениям. Например, если стиральную машину двигали или при транспортировке не убрали транспортировочные крепления, шланг мог надорваться или отстегнуться. На старых машинках резиновый сливной шланг может рассохнуться и трескаться. В последнем случае воду видно под машиной во время слива – она капает снизу или из самого шланга.Совет: иногда проблему решает подзатягивание хомута на соединении шланга с насосом или патрубком. Если же шланг порван или прогрызен (иногда кошки любят погрызть упругую резину), лучше сразу заменить его новым – это недорогая мера, а эффект очень заметен. Аналогично проверьте шланг подачи воды: при сильных изгибах и перегибах он также может пропускать. Меняйте старые шланги примерно раз в пять–семь лет и при малейших признаках протечки меняйте крепления.
                 </p>
               </div>
             </section>
@@ -337,14 +156,14 @@ const Page = (props) => {
                 </figure>
                 <p className="vicetext">
                   {' '}
-                  Если пос����е набора воды заметили под стира��кой воду в районе лотка для пор��шка, прич��ной часто бывает его засор. Тогда часть воды ��уползает» мимо и вытекает на��ужу. Иногда лоток просто трескается ил�� расслаивается ��о временем – тогда вода тоже может ух��дить прямо через н��го.Совет: регулярно вынимайте и промывайте лоток для порошка и сам патруб��к ��одачи воды в бак. Если давление в водопроводе слишком сильное, воду может «выдавить» наружу – по��робу��те немного прикрыть кран подачи. Не используйте слишком м��ого моющего средства и только предназначенные для машин порошки – и��быток пены тоже выгоняет влагу наружу. При появлении лужи на полу во время набора воды стоит отключить машинк��, собра��ь бель��� и прочистить ��озатор: обычно это быстро решает проблему.
+                  Если после набора воды заметили под стиралкой воду в районе лотка для порошка, причиной часто бывает его засор. Тогда часть воды «уползает» мимо и вытекает наружу. Иногда лоток просто трескается или расслаивается со временем – тогда вода тоже может уходить прямо через него.Совет: регулярно вынимайте и промывайте лоток для порошка и сам патрубок подачи воды в бак. Если давление в водопроводе слишком сильное, воду может «выдавить» наружу – попробуйте немного прикрыть кран подачи. Не используйте слишком много моющего средства и только предназначенные для машин порошки – избыток пены тоже выгоняет влагу наружу. При появлении лужи на полу во время набора воды стоит отключить машинку, собрать бельё и прочистить дозатор: обычно это быстро решает проблему.
                 </p>
               </div>
             </section>
             <section id="2-2" className="page-thirdproblem1-duplicate2">
               <div className="page-container16 zagolovkiskorobkoy">
                 <h3 className="zagolovki2">
-                  3. Повр��ждение или пр��бой ��ака
+                  3. Повреждение или пробой бака
                 </h3>
                 <svg
                   width="330"
@@ -367,13 +186,13 @@ const Page = (props) => {
               <div className="page-container17">
                 <p className="vicetext">
                   {' '}
-                  Наиболее сер��ёзная причина – это наруш����ние целостности самого бака (е��кости) машины. Внутри может образоваться дырка из-за мелких острых предметов – чаще всего стальных косточек от ��юстгальтера, проскочивших в барабан. Такие пробоины вызывают неконтролируемый «фонтан»: ��ода течёт непрерывно �� из-под машины в любых режимах. ��ногда бак трескается по шву или по износу деформируется, что тоже даёт течь.Совет: к сожалению, отремонтировать корпус бака почти невозможн�� – ег�� об����чно заменяют целиком или вместе с барабаном. Чтобы не допустить такого сбоя, тщатель��о проверяйте и чистите внутренние карманы у белья. Раз в м��сяц запускайте режим самоочистки с пустым барабаном (если есть) или используйте специальные средства против накипи �� загрязнений. Это уме��ьшит н��к��пление частиц внутри бака и продлит его ресурс.
+                  Наиболее серьёзная причина – это нарушение целостности самого бака (емкости) машины. Внутри может образоваться дырка из-за мелких острых предметов – чаще всего стальных косточек от бюстгальтера, проскочивших в барабан. Такие пробоины вызывают неконтролируемый «фонтан»: вода течёт непрерывно и из-под машины в любых режимах. Иногда бак трескается по шву или по износу деформируется, что тоже даёт течь.Совет: к сожалению, отремонтировать корпус бака почти невозможно – его обычно заменяют целиком или вместе с барабаном. Чтобы не допустить такого сбоя, тщательно проверяйте и чистите внутренние карманы у белья. Раз в месяц запускайте режим самоочистки с пустым барабаном (если есть) или используйте специальные средства против накипи и загрязнений. Это уменьшит накопление частиц внутри бака и продлит его ресурс.
                 </p>
               </div>
             </section>
             <section id="3" className="page-thirdproblem2">
               <div className="page-container19 zagolovkiskorobkoy">
-                <h3 className="zagolovki2">4. И��нос сальника подшипника.</h3>
+                <h3 className="zagolovki2">4. Износ сальника подшипника.</h3>
                 <svg
                   width="330"
                   xmlns="http://www.w3.org/2000/svg"
@@ -401,13 +220,13 @@ const Page = (props) => {
                     className="page-image38230523"
                   />
                   <span className="page-text40">
-                    <span>Сальник стиральной ма��ины</span>
+                    <span>Сальник стиральной машины</span>
                     <br></br>
                   </span>
                 </figure>
                 <p className="vicetext">
                   {' '}
-                  В некоторых случаях вода под м��шиной появляет��я только во время отжима – это характерно для износа подшипни��ов и саль��ика барабана. Сальник (уплотнитель) насоса вращения постепенно истирается, из-за чего в��да попадает внутрь подшипников и ��ыходит наружу. Сначала заметно лишь учащённое включение помпы акв��стопа (если он есть), а потом ��� ржавая или �� маслянистыми пятнами вода снизу. При этом маши��а громко гремит и «гуляет» на отжиме.Сов��т: осмотреть это ��воими ��илами можно только сняв заднюю па��ель, но замена подшипников – задача масте��а: приходится разбирать весь бак. Если вы слышите новые скрежет и вибрацию в сочета��ии с лужей под стиралкой, лучше как можно скорее вызвать специалиста. Регулярное использование специальных очис��и��елей и держание м��шины в ровном положении может чуть замедлить износ, но окончательно ус��ранить течь сможет только замена сальника и подшипников.
+                  В некоторых случаях вода под машиной появляется только во время отжима – это характерно для износа подшипников и сальника барабана. Сальник (уплотнитель) насоса вращения постепенно истирается, из-за чего вода попадает внутрь подшипников и выходит наружу. Сначала заметно лишь учащённое включение помпы аквастопа (если он есть), а потом – ржавая или с маслянистыми пятнами вода снизу. При этом машина громко гремит и «гуляет» на отжиме.Совет: осмотреть это своими силами можно только сняв заднюю панель, но замена подшипников – задача мастера: приходится разбирать весь бак. Если вы слышите новые скрежет и вибрацию в сочетании с лужей под стиралкой, лучше как можно скорее вызвать специалиста. Регулярное использование специальных очистителей и держание машины в ровном положении может чуть замедлить износ, но окончательно устранить течь сможет только замена сальника и подшипников.
                 </p>
               </div>
             </section>
@@ -446,7 +265,7 @@ const Page = (props) => {
                 </figure>
                 <p className="page-text46 vicetext">
                   {' '}
-                  Внутри машины по-прежнему течёт вода – и эт�� легко замет��ть по лужице под ней при заливе. К аварийным патрубкам о��носятся труба от лотка доза��ора к баку и лю��ые трубочк�� между баком, насосом и фильтром. Со времен��м соединения этих патрубк��в ослабевают от пос��оянной вибрации, а сами трубки могут забиваться засохшей грязью и мелкими крошками п��рошка. Засорённая или неплотно подсоединённая труба начинает пропускать в��ду на стыках, которая капа��т в ��оддон или сразу на пол.
+                  Внутри машины по-прежнему течёт вода – и это легко заметить по лужице под ней при заливе. К аварийным патрубкам относятся труба от лотка дозатора к баку и любые трубочки между баком, насосом и фильтром. Со временем соединения этих патрубков ослабевают от постоянной вибрации, а сами трубки могут забиваться засохшей грязью и мелкими крошками порошка. Засорённая или неплотно подсоединённая труба начинает пропускать воду на стыках, которая капает в поддон или сразу на пол.
                   <span
                     dangerouslySetInnerHTML={{
                       __html: ' ',
@@ -464,19 +283,19 @@ const Page = (props) => {
               </div>
               <div className="page-container26">
                 <p className="page-text49 vicetext">
-                  <span className="tip-title">1. П��оверяйте ка���маны и бережн�� укладывайте бельё.</span> Мелкие детали одежды – ��уговицы, заклёпки, монеты – кладите в стиральные мешки.
+                  <span className="tip-title">1. Проверяйте карманы и бережно укладывайте бельё.</span> Мелкие детали одежды – пуговицы, заклёпки, монеты – кладите в стиральные мешки.
                   <br />
-                  <span className="tip-title">2. Регулярно очищайте дозатор и фильтр.</span> Снимайте и промывайте лоток для порошка, промывайте ме��кий сливной фильтр на передней панели.
+                  <span className="tip-title">2. Регулярно очищайте дозатор и фильтр.</span> Снимайте и промывайте лоток для порошка, промывайте мелкий сливной фильтр на передней панели.
                   <br />
-                  <span className="tip-title">3. Следите за шлангами и патрубками.</span> Убедитесь, что они хорошо закреплены и не имеют видимых повреждений. Меняйте шланги каждые н��скольк�� лет или пр�� первых признаках износа.
+                  <span className="tip-title">3. Следите за шлангами и патрубками.</span> Убедитесь, что они хорошо закреплены и не имеют видимых повреждений. Меняйте шланги каждые несколько лет или при первых признаках износа.
                   <br />
-                  <span className="tip-title">4. Держите манжету дверцы чистой.</span> Протирайте её после стирки, удаляя о��татки моющих ср��дств и ворса. Осматривайте манжету на предмет трещин и сразу меняйте при необходимости.
+                  <span className="tip-title">4. Держите манжету дверцы чистой.</span> Протирайте её после стирки, удаляя остатки моющих средств и ворса. Осматривайте манжету на предмет трещин и сразу меняйте при необходимости.
                   <br />
-                  <span className="tip-title">5. Обеспечьте ро��ную установку машины.</span> Стиральная машина должна стоят��� строго по уровню: е��ли она «гуляет», вибрации ускоряют износ деталей. Регулируйте ножки так, чтобы машина была неподвижна при работе.
+                  <span className="tip-title">5. Обеспечьте прочную установку машины.</span> Стиральная машина должна стоять строго по уровню: если она «гуляет», вибрации ускоряют износ деталей. Регулируйте ножки так, чтобы машина была неподвижна при работе.
                   <br />
-                  <span className="tip-title">6. Не перегружайт�� барабан.</span> Переполнение бельём нарушает баланс и уве��ичивает нагрузку на уплотните��и и подшипники. Загружайте ровно столько, с��олько ��екомендует производитель.
+                  <span className="tip-title">6. Не перегружайте барабан.</span> Переполнение бельем нарушает баланс и увеличивает нагрузку на уплотнители и подшипники. Загружайте ровно столько, сколько рекомендует производитель.
                   <br />
-                  <span className="tip-title">7. Проверяйте напор воды и фильтры водопровода.</span> Слишком сильный напор мо��ет выдавить воду через дозатор. Установите ��едуктор давления при необходимости и чистите ��етчатый фильтр на входном шланге.
+                  <span className="tip-title">7. Проверяйте напор воды и фильтры водопровода.</span> Слишком сильный напор может выдавить воду через дозатор. Установите редуктор давления при необходимости и чистите сетчатый фильтр на входном шланге.
                   <span
                     dangerouslySetInnerHTML={{
                       __html: ' ',
@@ -485,201 +304,7 @@ const Page = (props) => {
                 </p>
               </div>
             </section>
-            <section className="page-better-call-master">
-              <svg
-                width="100%"
-                xmlns="http://www.w3.org/2000/svg"
-                height="17"
-                viewBox="0 0 10 20"
-                preserveAspectRatio="none"
-                className="page-icon36"
-              >
-                <circle
-                  r="3.75"
-                  cx="5"
-                  cy="10"
-                  fill="#606060"
-                  vectorEffect="non-scaling-stroke"
-                ></circle>
-              </svg>
-              <svg
-                width="100%"
-                xmlns="http://www.w3.org/2000/svg"
-                height="17"
-                viewBox="0 0 10 20"
-                preserveAspectRatio="none"
-                className="page-icon38"
-              >
-                <circle
-                  r="3.75"
-                  cx="5"
-                  cy="10"
-                  fill="#606060"
-                  vectorEffect="non-scaling-stroke"
-                ></circle>
-              </svg>
-              <svg
-                width="100%"
-                xmlns="http://www.w3.org/2000/svg"
-                height="17"
-                viewBox="0 0 10 20"
-                preserveAspectRatio="none"
-                className="page-icon40"
-              >
-                <circle
-                  r="3.75"
-                  cx="5"
-                  cy="10"
-                  fill="#606060"
-                  vectorEffect="non-scaling-stroke"
-                ></circle>
-              </svg>
-              <svg
-                width="100%"
-                xmlns="http://www.w3.org/2000/svg"
-                height="17"
-                viewBox="0 0 10 20"
-                preserveAspectRatio="none"
-                className="page-icon42"
-              >
-                <circle
-                  r="3.75"
-                  cx="5"
-                  cy="10"
-                  fill="#606060"
-                  vectorEffect="non-scaling-stroke"
-                ></circle>
-              </svg>
-              <svg
-                width="330"
-                xmlns="http://www.w3.org/2000/svg"
-                height="20"
-                viewBox="0 0 330 20"
-                preserveAspectRatio="none"
-                className="page-icon44"
-              >
-                <path
-                  d="M0 10 H330"
-                  fill="none"
-                  stroke="#000000"
-                  strokeWidth="0.5"
-                  vectorEffect="non-scaling-stroke"
-                  strokeDasharray="11 11"
-                ></path>
-              </svg>
-              <svg
-                width="330"
-                xmlns="http://www.w3.org/2000/svg"
-                height="20"
-                viewBox="0 0 330 20"
-                preserveAspectRatio="none"
-                className="page-icon46"
-              >
-                <path
-                  d="M0 10 H330"
-                  fill="none"
-                  stroke="#000000"
-                  strokeWidth="0.5"
-                  vectorEffect="non-scaling-stroke"
-                  strokeDasharray="11 11"
-                ></path>
-              </svg>
-              <svg
-                width="20"
-                xmlns="http://www.w3.org/2000/svg"
-                height="110"
-                viewBox="0 0 20 110"
-                preserveAspectRatio="none"
-                className="page-icon48"
-              >
-                <path
-                  d="M10 0 V110"
-                  fill="none"
-                  stroke="#000000"
-                  strokeWidth="0.5"
-                  vectorEffect="non-scaling-stroke"
-                  strokeDasharray="11 11"
-                ></path>
-              </svg>
-              <svg
-                width="20"
-                xmlns="http://www.w3.org/2000/svg"
-                height="110"
-                viewBox="0 0 20 110"
-                preserveAspectRatio="none"
-                className="page-icon50"
-              >
-                <path
-                  d="M10 0 V110"
-                  fill="none"
-                  stroke="#000000"
-                  strokeWidth="0.5"
-                  vectorEffect="non-scaling-stroke"
-                  strokeDasharray="11 11"
-                ></path>
-              </svg>
-              <h2 className="page-text50">Когда ��ызывать мастера?</h2>
-              <p className="page-text51">
-                <span className="page-text52">
-                  Если вы выполнили все рекомендации, но проблема осталась —
-                  обратитесь в сервис
-                  <span
-                    dangerouslySetInnerHTML={{
-                      __html: ' ',
-                    }}
-                  />
-                </span>
-                <span className="page-text53">&quot;</span>
-                <span className="page-text54">РемCтирМаш</span>
-                <span className="page-text55">&quot;</span>
-                <span className="page-text56">.</span>
-                <span className="page-text57">
-                  {' '}
-                  Наши специалисты быстро пр��е��ут к вам в желаемое вами время в
-                  любой район Одессы и выполнят качественную диагностику и
-                  ремонт.
-                </span>
-              </p>
-              <svg
-                width="330"
-                xmlns="http://www.w3.org/2000/svg"
-                height="20"
-                viewBox="0 0 330 20"
-                preserveAspectRatio="none"
-                className="page-icon52"
-              >
-                <path
-                  d="M0 10 H330"
-                  fill="none"
-                  stroke="#000000"
-                  strokeWidth="0.5"
-                  vectorEffect="non-scaling-stroke"
-                  strokeDasharray="11 11"
-                ></path>
-              </svg>
-              <strong className="page-text58">Работаем ��ез выходных</strong>
-              <div className="page-container28">
-                <div className="page-container29">
-                  <div className="page-container30">
-                    <img
-                      alt="image"
-                      src="/image%203823106.svg"
-                      className="page-image3"
-                    />
-                    <strong className="page-text59">+38 (048) 253-23-23</strong>
-                  </div>
-                  <div className="page-container31">
-                    <img
-                      alt="image"
-                      src="/image%203823107.svg"
-                      className="page-image4"
-                    />
-                    <strong className="page-text60">+38 (048) 123-35-21</strong>
-                  </div>
-                </div>
-                <OrderButton onClick={openModal} text="Заказать мастера" />
-              </div>
-            </section>
+            <CallMasterSection onOrderClick={openModal} />
             <PageNavigation
               prevPage={{
                 href: '/negreetvodu',
@@ -709,8 +334,8 @@ const Page = (props) => {
             </svg>
             <RelatedArticles />
           </div>
-          <div className="page-dops-info">
-            <section className="page-frame1299">
+          <div className="page-dops-info"><InterestingAside />
+            <section className="page-frame1299" style={{display:"none"}}>
               <span className="page-text72">Вам будет интересно:</span>
               <div className="page-frame12981">
                 <span className="page-text73">
@@ -735,14 +360,14 @@ const Page = (props) => {
               </div>
               <div className="page-frame12984">
                 <span className="page-text76">
-                  Как сэкономить электричество и воду — реальные настройки и
+                  Как сэкономить электричество и воду �� реальные настройки и
                   лайфхаки
                 </span>
                 <div className="page-container48"></div>
               </div>
               <div className="page-frame12985">
                 <span className="page-text77">
-                  Как безопасно перевозить и хранить стиральную машину
+                  Как безопасно перевозить и хран��ть стиральную машину
                 </span>
                 <div className="page-container49"></div>
               </div>
@@ -846,6 +471,7 @@ const Page = (props) => {
             line-height: normal;
             font-stretch: normal;
             text-decoration: none;
+            margin: 0 0 8px 0;
           }
           .page-text11 {
             color: var(--dl-color-theme-neutral-dark);
@@ -1223,7 +849,7 @@ const Page = (props) => {
             font-family: 'Noto Serif SC';
             font-weight: 500;
             line-height: normal;
-            margin-bottom: 8px;
+            margin-bottom: calc(8px / 1.7);
           }
           .page-container16 {
             gap: var(--dl-layout-space-halfunit);
@@ -2291,6 +1917,9 @@ const Page = (props) => {
             .page-frame1299 {
               display: none;
             }
+            .page-dops-info {
+              display: none;
+            }
           }
           @media (max-width: 767px) {
             .page-left-main-box {
@@ -2400,21 +2029,8 @@ const Page = (props) => {
               width: auto;
               min-width: 100%;
             }
-            .page-container14 {
-              gap: var(--dl-layout-space-halfunit);
-              width: 100%;
-              height: 100%;
-              max-width: 100%;
-              min-width: 100%;
-              min-height: 100%;
-              margin-bottom: 14px;
-            }
-            .page-image38230521 {
-              width: auto;
-              max-width: auto;
-              min-width: auto;
-              min-height: 50px;
-            }
+            .page-container14 { gap: var(--dl-layout-space-halfunit); width: 280px; max-width: 280px; min-width: 280px; height: auto; min-height: 0; margin: 12px auto 16px; float: none; }
+            .page-image38230521 { width: 100%; height: 170px; object-fit: cover; min-width: 0; min-height: 0; }
             .page-text18 {
               width: 100%;
             }
@@ -2433,38 +2049,16 @@ const Page = (props) => {
             .page-text40 {
               font-size: 13px;
             }
-            .page-container24 {
-              gap: var(--dl-layout-space-halfunit);
-              height: 100%;
-              max-width: 100%;
-              min-width: 100%;
-              min-height: 100%;
-              margin-bottom: 14px;
-            }
-            .page-image38230524 {
-              width: 100%;
-              min-width: 50%;
-              min-height: 50px;
-            }
+            .page-container24 { gap: var(--dl-layout-space-halfunit); width: 280px; max-width: 280px; min-width: 280px; height: auto; min-height: 0; margin: 12px auto 16px; float: none; }
+            .page-image38230524 { width: 100%; height: 170px; object-fit: cover; min-width: 0; min-height: 0; }
             .page-text45 {
               font-size: 13px;
               font-style: normal;
               font-family: Roboto;
               font-weight: 400;
             }
-            .page-container27 {
-              gap: var(--dl-layout-space-halfunit);
-              height: 100%;
-              max-width: 100%;
-              min-width: 100%;
-              min-height: 100%;
-              margin-bottom: 14px;
-            }
-            .page-image38230525 {
-              width: 100%;
-              min-width: 50%;
-              min-height: 50px;
-            }
+            .page-container27 { gap: var(--dl-layout-space-halfunit); width: 280px; max-width: 280px; min-width: 280px; height: auto; min-height: 0; margin: 12px auto 16px; float: none; }
+            .page-image38230525 { width: 100%; height: 170px; object-fit: cover; min-width: 0; min-height: 0; }
             .page-text48 {
               font-size: 13px;
               font-style: normal;

@@ -2,10 +2,14 @@ import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import WashingMachineAnimation from './WashingMachineAnimation'
+import { PHONE_TEL, PHONE_DISPLAY, PHONE_TEL_2, PHONE_DISPLAY_2 } from '../utils/contacts'
+import dynamic from 'next/dynamic'
+const PhoneModal = dynamic(() => import('./PhoneModal'), { ssr: false })
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
+  const [phoneOpen, setPhoneOpen] = useState(false)
   const router = useRouter()
 
   useEffect(() => {
@@ -23,8 +27,8 @@ const Header = () => {
     setIsMenuOpen(!isMenuOpen)
   }
 
-  // Проверяем, явля�����ся ли текущая страница страницей проблемы
-  const isProblemPage = router.pathname && (
+  // Проверяем, является ли текущая страница страницей статей или проблемы
+  const isArticlesPage = router.pathname === '/articles' || (router.pathname && (
     router.pathname.includes('NESLIVAETIVODU') ||
     router.pathname.includes('NEGREETIVODU') ||
     router.pathname.includes('PROTEKAET') ||
@@ -33,12 +37,16 @@ const Header = () => {
     router.pathname.includes('ZAVISAETNAPROGRAMME') ||
     router.pathname.includes('NEOTJIMAET') ||
     router.pathname.includes('NENABIRRAETVODU') ||
-    router.pathname.includes('NEOTKRIVATSADVERCA')
-  )
+    router.pathname.includes('NEOTKRIVATSADVERCA') ||
+    router.pathname.includes('jirniepyatna') ||
+    router.pathname.includes('jvachka') ||
+    router.pathname.includes('vlapalisvkrov') ||
+    router.pathname.includes('puhovik')
+  ))
 
   return (
     <>
-      {/* Изолированный контейн��р для хедера */}
+      {/* Изолированный контейнер для хедера */}
       <div className="header-component">
         <header className="frame1196-container101">
           <div className="frame1196-container102">
@@ -60,11 +68,13 @@ const Header = () => {
             </div>
           </div>
           <div className="frame1196-container104">
-            <img
-              alt="image"
-              src="/ICONS/dla%20hedera%20trubka.svg"
-              className="frame1196-image11"
-            />
+            <button type="button" aria-label={`Открыть контакты ${PHONE_DISPLAY}`} className="phone-link" onClick={() => setPhoneOpen(true)}>
+              <img
+                alt="Позвонить"
+                src="/ICONS/dla%20hedera%20trubka.svg"
+                className="frame1196-image11"
+              />
+            </button>
             <div
               className={`frame1196-burger-menu ${isMenuOpen ? 'frame1196-burger-open' : ''}`}
               onClick={toggleMenu}
@@ -99,11 +109,11 @@ const Header = () => {
                 </div>
               </Link>
               <Link href="/articles">
-                <div className={`${isProblemPage ? 'frame1196-container105' : 'frame1196-container105-inactive'}`}>
+                <div className={`${isArticlesPage ? 'frame1196-container105' : 'frame1196-container105-inactive'}`}>
                   <span className="frame1196-text103">
                     <span
                       dangerouslySetInnerHTML={{
-                        __html: 'Ст��тьи',
+                        __html: 'Статьи',
                       }}
                     ></span>
                   </span>
@@ -112,26 +122,16 @@ const Header = () => {
             </div>
             <div className="frame1196-telephonadres">
               <div className="frame1196-container108">
-                <img
-                  alt="image"
-                  src="/ICONS/dla%20hedera%20trubka.svg"
-                  className="frame1196-image13"
-                />
+                <button type="button" aria-label={`Открыть контакты ${PHONE_DISPLAY}`} className="phone-link" onClick={() => setPhoneOpen(true)}>
+                  <img
+                    alt="Позвонить"
+                    src="/ICONS/dla%20hedera%20trubka.svg"
+                    className="frame1196-image13"
+                  />
+                </button>
                 <div className="frame1196-container109">
-                  <span className="frame1196-text104">
-                    <span
-                      dangerouslySetInnerHTML={{
-                        __html: '+38 (067) 123-45-67',
-                      }}
-                    ></span>
-                  </span>
-                  <span className="frame1196-text105">
-                    <span
-                      dangerouslySetInnerHTML={{
-                        __html: '+38 (067) 123-45-67',
-                      }}
-                    ></span>
-                  </span>
+                  <a href={`tel:${PHONE_TEL}`} className="frame1196-text104 phone-number">{PHONE_DISPLAY}</a>
+                  <a href={`tel:${PHONE_TEL_2}`} className="frame1196-text105 phone-number">{PHONE_DISPLAY_2}</a>
                 </div>
               </div>
               <div className="frame1196-container110">
@@ -246,8 +246,8 @@ const Header = () => {
               </Link>
               <Link href="/articles">
                 <a
-                  className={`frame1196-sidebar-link ${isProblemPage ? 'frame1196-sidebar-link-active' : ''}`}
-                  style={{ color: isProblemPage ? '#87ceeb !important' : 'white !important' }}
+                  className={`frame1196-sidebar-link ${isArticlesPage ? 'frame1196-sidebar-link-active' : ''}`}
+                  style={{ color: isArticlesPage ? '#87ceeb !important' : 'white !important' }}
                 >
                   Статьи
                 </a>
@@ -255,14 +255,16 @@ const Header = () => {
             </nav>
             <div className="frame1196-sidebar-contact">
               <div className="frame1196-sidebar-phones">
-                <img
-                  alt="image"
-                  src="/ICONS/dla%20hedera%20trubka.svg"
-                  className="frame1196-sidebar-phone-icon"
-                />
+                <button type="button" aria-label={`Открыть контакты ${PHONE_DISPLAY}`} className="phone-link" onClick={() => setPhoneOpen(true)}>
+                  <img
+                    alt="Позвонить"
+                    src="/ICONS/dla%20hedera%20trubka.svg"
+                    className="frame1196-sidebar-phone-icon"
+                  />
+                </button>
                 <div className="frame1196-sidebar-phone-numbers">
-                  <span className="frame1196-sidebar-phone">+38 (067) 123-45-67</span>
-                  <span className="frame1196-sidebar-phone">+38 (067) 123-45-67</span>
+                  <a href={`tel:${PHONE_TEL}`} className="frame1196-sidebar-phone">{PHONE_DISPLAY}</a>
+                  <a href={`tel:${PHONE_TEL_2}`} className="frame1196-sidebar-phone">{PHONE_DISPLAY_2}</a>
                 </div>
               </div>
               <div className="frame1196-sidebar-address">
@@ -282,7 +284,7 @@ const Header = () => {
 
       <style jsx global>
         {`
-          /* Глобальные стили для принужде��ия цвета в sidebar */
+          /* Глобальные стили для принуждения цвета в sidebar */
           .frame1196-sidebar-nav a {
             color: white !important;
             font-family: 'Roboto', sans-serif !important;
@@ -292,7 +294,87 @@ const Header = () => {
             color: #87ceeb !important;
           }
 
-          /* Глобальные стили для сти��альной машины на мобильных */
+          /* Синхронизированные отступы заголовков статей с контейнером "Полезные статьи" */
+          .page-main { padding-top: 0 !important; }
+          .page-headertextwashermachine { margin-top: 24px !important; padding-top: 0 !important; }
+          .page-text10 { margin-top: 0 !important; }
+
+          /* Переопределение ВСЕХ локальных медиа-запросов статей */
+          @media (max-width: 487px) {
+            .page-headertextwashermachine { margin-top: 66px !important; }
+          }
+          @media (max-width: 488px) {
+            .page-headertextwashermachine { margin-top: 66px !important; }
+          }
+
+          /* Большие экраны: нижний отступ заголовочного блока 54px (было 60) */
+          @media (min-width: 992px) {
+            .page-headertextwashermachine { margin-bottom: 27px !important; }
+          }
+          /* Доп. диапазон для средних (768–1150): тот же отступ что у "Полезные статьи" */
+          @media (min-width: 768px) and (max-width: 1150px) {
+            .page-headertextwashermachine { margin-top: 24px !important; }
+            .page-text10 { margin-top: 0 !important; }
+          }
+          /* Средние экраны: тот же отступ что у "Полезные статьи" */
+          @media (max-width: 991px) {
+            .page-headertextwashermachine { margin-top: 24px !important; margin-bottom: 15px !important; }
+            .page-text10 { margin-top: 0 !important; margin-bottom: 15px !important; }
+          }
+          /* Планшеты: тот же отступ что у "Полезные статьи" */
+          @media (max-width: 767px) {
+            .page-headertextwashermachine { margin-top: 24px !important; margin-bottom: 15px !important; }
+            .page-text10 { margin-top: 0 !important; margin-bottom: 15px !important; }
+          }
+          /* Мобилки: точно как у "Полезные статьи" - 50px + 16px padding = 66px общий отступ */
+          @media (max-width: 480px) {
+            .page-headertextwashermachine { margin-top: 66px !important; margin-bottom: 15px !important; }
+            .page-text10 { margin-top: 0 !important; margin-bottom: 15px !important; }
+          }
+
+          /* Настройка размера шрифта подписей к изображениям */
+          .page-text19,
+          .page-text20,
+          .page-text21,
+          .page-text22,
+          .page-text23,
+          .page-text40,
+          .page-text45,
+          .page-text48 {
+            font-size: 14px !important; /* на бол��ших экранах уменьшить на 1 (было 15px) */
+          }
+
+          /* На маленьких экранах уменьшить на 2 */
+          @media (max-width: 767px) {
+            .page-text19,
+            .page-text20,
+            .page-text21,
+            .page-text22,
+            .page-text23,
+            .page-text40,
+            .page-text45,
+            .page-text48 {
+              font-size: 13px !important; /* на маленьких экранах уменьшить на 2 (было 15px) */
+            }
+          }
+
+          /* Переопределение отступов для RelatedArticles внутри page-left-main-box */
+          .page-left-main-box .related-articles {
+            margin-bottom: 30px !important;
+            margin-top: var(--dl-layout-space-oneandhalfunits) !important;
+          }
+
+          /* Скрываем боковую панель в момент wrap'а */
+          @media (max-width: 1300px) {
+            .page-dops-info {
+              display: none !important;
+            }
+            .page-frame1299 {
+              display: none !important;
+            }
+          }
+
+          /* Глобальные сти��и для стиральной машины на мобильных */
           @media (max-width: 479px) {
             .frame1196-image10.washing-machine-wrapper {
               position: absolute !important;
@@ -394,7 +476,7 @@ const Header = () => {
             background-color: #87ceeb;
           }
 
-          /* Основные стили хе��ера */
+          /* Основные стили хедера */
           .frame1196-container101 {
             width: 100%;
             height: auto;
@@ -464,6 +546,9 @@ const Header = () => {
             object-fit: cover;
             animation: phoneAnimation 5s infinite;
           }
+          .phone-link { display: inline-flex; align-items: center; background: transparent; border: 0; padding: 0; cursor: pointer; }
+          .phone-number { background: transparent; border: 0; padding: 0; text-decoration: none; color: inherit; cursor: pointer; user-select: text; -webkit-user-select: text; }
+          .phone-number:hover { opacity: 0.9; }
           .frame1196-obshiy {
             gap: var(--dl-layout-space-threeunits);
             display: flex;
@@ -660,7 +745,7 @@ const Header = () => {
             position: absolute;
           }
 
-          /* С��или для бургер-меню */
+          /* Стили для бургер-меню */
           .frame1196-burger-menu {
             width: 35px;
             height: 35px;
@@ -698,7 +783,7 @@ const Header = () => {
             transform: rotate(-45deg) translate(6px, -6px);
           }
 
-          /* Сти��и для боковой панели */
+          /* Стили для боковой панели */
           .frame1196-sidebar {
             position: fixed;
             top: 0;
@@ -817,7 +902,7 @@ const Header = () => {
             color: #87ceeb !important;
           }
 
-          /* Стили ��ля контактной информации в sidebar */
+          /* Стили для контактной информации в sidebar */
           .frame1196-sidebar-contact {
             padding: 0 20px 20px 20px;
             margin-top: 30px;
@@ -856,6 +941,10 @@ const Header = () => {
             font-family: 'Roboto';
             font-weight: 400;
             letter-spacing: 1px;
+            text-decoration: none;
+            user-select: text;
+            -webkit-user-select: text;
+            cursor: text;
           }
 
           .frame1196-sidebar-address {
@@ -1092,6 +1181,7 @@ const Header = () => {
           }
         `}
       </style>
+      <PhoneModal isOpen={phoneOpen} onClose={() => setPhoneOpen(false)} />
     </>
   )
 }

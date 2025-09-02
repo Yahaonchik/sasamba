@@ -5,7 +5,8 @@ import { useRouter } from 'next/router'
 
 import Header from '../components/Header'
 import MainFooter from '../components/MainFooter'
-import OrderModal from '../components/OrderModal'
+import dynamic from 'next/dynamic'
+const OrderModal = dynamic(() => import('../components/OrderModal'), { ssr: false })
 import QuestionModal from '../components/QuestionModal'
 import SEOHead from '../components/SEOHead'
 import Breadcrumbs from '../components/Breadcrumbs'
@@ -56,14 +57,14 @@ const Articles = (props) => {
         />
         <Header />
 
+        <Breadcrumbs style="white-left" />
+
         <section className="articles-hero">
           <div className="articles-hero-content">
-            <h1 className="articles-main-title">Полезные статьи</h1>
+            <h1 className="articles-title"><span className="articles-title-blue">Полезные </span><span className="articles-title-black">статьи</span></h1>
             <p className="articles-subtitle">Экспертные советы по ремонту стиральных машин и уходу за одеждой</p>
           </div>
         </section>
-
-        <Breadcrumbs style="white-left" />
 
         <section className="articles-switcher-section">
           <div className="articles-tabs">
@@ -128,20 +129,23 @@ const Articles = (props) => {
           .articles-container {
             width: 100%;
             min-height: 100vh;
+            min-height: 100dvh;
             background-color: #f8f9fa;
             font-family: 'Noto Serif SC', serif;
           }
 
           /* Hero */
           .articles-hero {
-            background: linear-gradient(135deg, #232020 0%, #2e3337 100%);
-            padding: 32px 16px 24px;
+            background: transparent;
+            padding: 16px 16px 20px;
             text-align: center;
-            color: white;
+            margin-top: 8px;
           }
           .articles-hero-content { max-width: 800px; margin: 0 auto; }
-          .articles-main-title { font-size: 28px; font-weight: 400; margin-bottom: 16px; font-family: 'Noto Serif SC', serif; }
-          .articles-subtitle { font-size: 0.9rem; opacity: 0.9; font-family: 'Noto Serif SC', serif; line-height: 1.6; }
+          .articles-title { font-size: 35px; font-family: 'Noto Serif SC', serif; font-weight: 600; margin-bottom: 16px; text-align: center; }
+          .articles-title-blue { color: #87ceeb; font-weight: 700; }
+          .articles-title-black { color: #000000; }
+          .articles-subtitle { font-size: 0.9rem; opacity: 0.9; font-family: 'Noto Serif SC', serif; line-height: 1.6; color: #333333; }
 
           /* Tabs */
           .articles-switcher-section { padding: 24px 16px 16px; max-width: 1000px; margin: 0 auto; }
@@ -180,8 +184,8 @@ const Articles = (props) => {
           /* Responsive */
           @media (max-width: 768px) {
             .articles-container { background-color: white; }
-            .articles-hero { background: white; color: #232020; padding: 40px 15px 30px; margin-top: 90px; }
-            .articles-main-title { font-size: 28px; color: #232020; }
+            .articles-hero { background: transparent; padding: 16px 15px 18px; margin-top: 8px; }
+            .articles-title { font-size: 35px; }
             .articles-subtitle { color: #666; opacity: 1; font-size: 0.9rem; }
 
             .articles-tabs { grid-template-columns: 1fr; gap: 15px; }
@@ -197,8 +201,8 @@ const Articles = (props) => {
 
           @media (max-width: 480px) {
             .articles-container { background-color: white; }
-            .articles-hero { background: white; color: #232020; margin-top: 90px; }
-            .articles-main-title { font-size: 24px; color: #232020; }
+            .articles-hero { background: transparent; padding: 16px 15px 16px; margin-top: 50px; }
+            .articles-title { font-size: 24px; }
             .articles-subtitle { color: #666; opacity: 1; font-size: 0.85rem; }
 
             .tab-button { padding: 14px 12px; }

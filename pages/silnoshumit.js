@@ -5,10 +5,13 @@ import Header from '../components/Header'
 import MainFooter from '../components/MainFooter'
 import SEOHead from '../components/SEOHead'
 import PageNavigation from '../components/PageNavigation'
-import OrderButton from '../components/OrderButton'
-import OrderModal from '../components/OrderModal'
+const OrderModal = dynamic(() => import('../components/OrderModal'), { ssr: false })
 import Breadcrumbs from '../components/Breadcrumbs'
-import RelatedArticles from '../components/RelatedArticles'
+import dynamic from 'next/dynamic'
+const RelatedArticles = dynamic(() => import('../components/RelatedArticles'), { ssr: false })
+import AnchorLinksSection from '../components/AnchorLinksSection'
+const CallMasterSection = dynamic(() => import('../components/CallMasterSection'))
+const InterestingAside = dynamic(() => import('../components/InterestingAside'), { ssr: false })
 import { getSEOData } from '../utils/seoConfig'
 import { getProblemPageStructuredData } from '../utils/structuredData'
 
@@ -26,7 +29,7 @@ const Page = (props) => {
   const baseUrl = 'https://remstirmash.od.ua'
   const structuredData = getProblemPageStructuredData(
     'Ремонт шумной стиральной машины',
-    'Професс��ональный ремонт стиральных машин которые шумят и вибрируют в Одессе. Замена подшипников, амортизаторо��.',
+    'Профессиональный ремонт стиральных машин которые шумят и вибрируют в Одессе. Замена подшипников, амортизаторов.',
     `${baseUrl}/silnoshumit`
   )
 
@@ -41,9 +44,7 @@ const Page = (props) => {
           structuredData={structuredData}
         />
         <Header />
-        <div className="page-breadcrumbs-section">
-          <Breadcrumbs style="white-left" />
-        </div>
+        <Breadcrumbs style="white-left" />
         <main className="page-main">
           <div className="page-left-main-box">
             <div className="page-headertextwashermachine">
@@ -61,228 +62,29 @@ const Page = (props) => {
                 <span className="page-text13">что делать?</span>
               </h1>
             </div>
-            <section className="page-container11">
-              <svg
-                width="100%"
-                xmlns="http://www.w3.org/2000/svg"
-                height="17"
-                viewBox="0 0 10 20"
-                preserveAspectRatio="none"
-                className="page-icon10"
-              >
-                <circle
-                  r="3.75"
-                  cx="5"
-                  cy="10"
-                  fill="#606060"
-                  vectorEffect="non-scaling-stroke"
-                ></circle>
-              </svg>
-              <svg
-                width="100%"
-                xmlns="http://www.w3.org/2000/svg"
-                height="17"
-                viewBox="0 0 10 20"
-                preserveAspectRatio="none"
-                className="page-icon12"
-              >
-                <circle
-                  r="3.75"
-                  cx="5"
-                  cy="10"
-                  fill="#606060"
-                  vectorEffect="non-scaling-stroke"
-                ></circle>
-              </svg>
-              <svg
-                width="100%"
-                xmlns="http://www.w3.org/2000/svg"
-                height="17"
-                viewBox="0 0 10 20"
-                preserveAspectRatio="none"
-                className="page-icon14"
-              >
-                <circle
-                  r="3.75"
-                  cx="5"
-                  cy="10"
-                  fill="#606060"
-                  vectorEffect="non-scaling-stroke"
-                ></circle>
-              </svg>
-              <svg
-                width="100%"
-                xmlns="http://www.w3.org/2000/svg"
-                height="17"
-                viewBox="0 0 10 20"
-                preserveAspectRatio="none"
-                className="page-icon16"
-              >
-                <circle
-                  r="3.75"
-                  cx="5"
-                  cy="10"
-                  fill="#606060"
-                  vectorEffect="non-scaling-stroke"
-                ></circle>
-              </svg>
-              <strong className="page-text14">
-                <span>Основные причины сильного шум��:</span>
-                <br></br>
-              </strong>
-              <ul className="page-ul list">
-                <li className="page-li2 list-item">
-                  <img alt="image" src="/vector.svg" className="page-image2" />
-                  <a href="#2" className="page-link2">
-                    Неправильная подготовка и установка:
-                  </a>
-                </li>
-                <li className="page-li1 list-item">
-                  <img
-                    alt="Vector8669"
-                    src="/external/vector8669-r6fr.svg"
-                    className="page-vector1"
-                  />
-                  <a href="#1" className="page-link1 ge">
-                    1. Транспортировочные болты не сняты
-                  </a>
-                </li>
-                <li className="page-li1 list-item">
-                  <img
-                    alt="Vector8669"
-                    src="/external/vector8669-r6fr.svg"
-                    className="page-vector1"
-                  />
-                  <a href="#3" className="page-link1 ge">
-                    2. Неровный или скользкий пол
-                  </a>
-                </li>
-                <li className="page-li2 list-item">
-                  <img alt="image" src="/vector.svg" className="page-image2" />
-                  <a href="#4" className="page-link2">
-                    Износ и поломка деталей:
-                  </a>
-                </li>
-                <li className="page-li3 list-item">
-                  <img
-                    alt="Vector8669"
-                    src="/external/vector8669-r6fr.svg"
-                    className="page-vector2"
-                  />
-                  <a href="#4" className="page-link3 ge">
-                    1. Амортизаторы
-                  </a>
-                </li>
-                <li className="page-li4 list-item ge">
-                  <img
-                    alt="Vector8669"
-                    src="/external/vector8669-r6fr.svg"
-                    className="page-vector3"
-                  />
-                  <a href="#5" className="page-link4">
-                    2. Пружины подвески
-                  </a>
-                </li>
-                <li className="page-li5 list-item">
-                  <a href="#5-1" className="page-link5 ge">
-                    <img
-                      alt="Vector8669"
-                      src="/external/vector8669-r6fr.svg"
-                      className="page-vector4"
-                    />
-                    3. Противовесы
-                  </a>
-                </li>
-                <li className="page-li6 list-item">
-                  <a href="#5-2" className="page-link6 ge">
-                    <img
-                      alt="Vector8669"
-                      src="/external/vector8669-r6fr.svg"
-                      className="page-vector5"
-                    />
-                    4. Подшипники и сальник.
-                  </a>
-                </li>
-              </ul>
-              <svg
-                width="330"
-                xmlns="http://www.w3.org/2000/svg"
-                height="20"
-                viewBox="0 0 330 20"
-                preserveAspectRatio="none"
-                className="page-icon18"
-              >
-                <path
-                  d="M0 10 H330"
-                  fill="none"
-                  stroke="#000000"
-                  strokeWidth="0.5"
-                  vectorEffect="non-scaling-stroke"
-                  strokeDasharray="11 11"
-                ></path>
-              </svg>
-              <svg
-                width="330"
-                xmlns="http://www.w3.org/2000/svg"
-                height="20"
-                viewBox="0 0 330 20"
-                preserveAspectRatio="none"
-                className="page-icon20"
-              >
-                <path
-                  d="M0 10 H330"
-                  fill="none"
-                  stroke="#000000"
-                  strokeWidth="0.5"
-                  vectorEffect="non-scaling-stroke"
-                  strokeDasharray="11 11"
-                ></path>
-              </svg>
-              <svg
-                width="20"
-                xmlns="http://www.w3.org/2000/svg"
-                height="110"
-                viewBox="0 0 20 110"
-                preserveAspectRatio="none"
-                className="page-icon22"
-              >
-                <path
-                  d="M10 0 V110"
-                  fill="none"
-                  stroke="#000000"
-                  strokeWidth="0.5"
-                  vectorEffect="non-scaling-stroke"
-                  strokeDasharray="11 11"
-                ></path>
-              </svg>
-              <svg
-                width="20"
-                xmlns="http://www.w3.org/2000/svg"
-                height="110"
-                viewBox="0 0 20 110"
-                preserveAspectRatio="none"
-                className="page-icon24"
-              >
-                <path
-                  d="M10 0 V110"
-                  fill="none"
-                  stroke="#000000"
-                  strokeWidth="0.5"
-                  vectorEffect="non-scaling-stroke"
-                  strokeDasharray="11 11"
-                ></path>
-              </svg>
-            </section>
+            <AnchorLinksSection
+              title="Основные причины сильного шума:"
+              items={[
+                { icon: '/vector.svg', href: '#2', text: 'Неправильная подготовка и установка:' },
+                { icon: '/external/vector8669-r6fr.svg', href: '#1', text: '1. Транспортировочные болты не сняты' },
+                { icon: '/external/vector8669-r6fr.svg', href: '#3', text: '2. Неровный или скользкий пол' },
+                { icon: '/vector.svg', href: '#4', text: 'Износ и поломка деталей:' },
+                { icon: '/external/vector8669-r6fr.svg', href: '#4', text: '1. Амортизаторы' },
+                { icon: '/external/vector8669-r6fr.svg', href: '#5', text: '2. Пружины подвески' },
+                { icon: '/external/vector8669-r6fr.svg', href: '#5-1', text: '3. Противовесы' },
+                { icon: '/external/vector8669-r6fr.svg', href: '#5-2', text: '4. Подшипники и сальник.' },
+              ]}
+            />
             <div className="page-container15">
               <h2 className="page-text34">
-                <span>Неп��авильная подготовка и установка:</span>
+                <span>Неправильная подготовка и установка:</span>
                 <br></br>
               </h2>
             </div>
             <section id="2" className="page-thirdproblem1">
               <div className="page-container16 zagolovkiskorobkoy">
                 <h3 className="zagolovki2">
-                  1. Транспор��ировочные болты не сняты
+                  1. Транспороировочные болты не сняты
                 </h3>
                 <svg
                   width="330"
@@ -317,7 +119,7 @@ const Page = (props) => {
                 </figure>
                 <p className="vicetext">
                   {' '}
-                  При первой установке нов��й стиральной машин�� многие удивляются сильной вибрации и шуму во ��ремя работы. Чащ�� всего это связано с тем, что ��стаются установочные транспортировочные болты, фиксирующие барабан для безопасной перево��ки. Если их не снять до запуска, барабан не сможет свободно вр��щаться, что вызывает громкий грохот, подпрыгивание машины и ри��к по��режден��я деталей. Чтобы техника ра��отала корректно и служила долго, обязатель��о вы��рутите все транспор��ировочные болты и установите защитные заглушки.
+                  При первой установке новой стиральной машины многие удивляются сильной вибрации и шуму во время работы. Чаще всего это связано с тем, что остаются установочные транспортировочные болты, фиксирующие барабан для безопасной перевозки. Если их не снять до запуска, барабан не сможет свободно вращаться, что вызывает громкий грохот, подпрыгивание машины и риск повреждения деталей. Чтобы техника работала корректно и служила долго, обязательно выкрутите все транспортировочные болты и установите защитные заглушки.
                 </p>
               </div>
             </section>
@@ -351,19 +153,19 @@ const Page = (props) => {
                     className="page-image38230523"
                   />
                   <span className="page-text40">
-                    <span>Уровень ��ля выравнивания</span>
+                    <span>Уровень для выравнивания</span>
                     <br></br>
                   </span>
                 </figure>
                 <p className="vicetext">
                   {' '}
-                  ��тиральная машина очень требо��а��ельна к прочн��сти и горизонтальности места установки. Есл�� пол под ней н�� идеально ровный или сл��шком мягкий (нап��имер, с��арые деревянные доски), любая вибрация пр��ведёт к дополнительному «прыжку» техники. Аналогично, установка на оче��ь гл��дком покрытии (плитке или линолеуме) без фиксации позволит машинке подскальзывать.Совет: Проверьте положение машины уровнем – все ножк�� должны стоять устойчиво. Слегка раскачайте прибор руками, определите, какая опора «гуляет�� ��ольше, и по��крутите её гайкой против часовой стрелки до упора. Можно привлечь помощника или приподнять стиралку на бок, чтоб�� повернуть ножку удобнее. После этого ещё раз проконтролируйте ровность с уров��ем. Для дополнительной устойчивости и защи��ы пола рекомендует��я установить резиновые антиск��льзящие накладки или антивибраци��нные подставки под ножки. Они гасить час��ь вибрации и не позволяют машине «ездить» по комнат��.
+                  Стиральная машина очень требовательна к прочности и горизонтальности места установки. Если пол под ней не идеально ровный или слишком мягкий (например, старые деревянные доски), любая вибрация приведёт к дополнительному «прыжку» техники. Аналогично, установка на очень гладком покрытии (плитке или линолеуме) без фиксации позволит машинке подскальзывать.Совет: Проверьте положение машины уровнем – все ножки должны стоять устойчиво. Слегка раскачайте прибор руками, определите, какая опора «гуляет» больше, и подкрутите её гайкой против часовой стрелки до упора. Можно привлечь помощника или приподнять стиралку на бок, чтобы повернуть ножку удобнее. После этого ещё раз проконтролируйте ровность с уровнем. Для дополнительной устойчивости и защиты пола рекомендуется установить резиновые антискользящие накладки или антивибрационные подставки под ножки. Они гасить часть вибрации и не позволяют машине «ездить» по комнате.
                 </p>
               </div>
             </section>
             <div className="page-container15">
               <h2 className="page-text34">
-                <span>Износ �� поломка деталей</span>
+                <span>Износ и поломка деталей</span>
                 <br></br>
               </h2>
             </div>
@@ -402,7 +204,7 @@ const Page = (props) => {
                 </figure>
                 <p className="page-text46 vicetext">
                   {' '}
-                  Это пары демпферов с поршнем внутри, ко��орые гасят колебания бака. Со старением уплотнители рассыхаются, по��шень начинает свободно «гулять» в цилиндре и уже не гасит удары. Стиралка при этом будет «скакать» и издавать металлический ��тук. Если затрону��ы амортиз��торы, их меняют обе сразу (иначе н����равномерное гашение усуг��бит проблему). Замена обычно выполняется с��изу, после пер��во��ота корпуса.
+                  Это пары демпферов с поршнем внутри, которые гасят колебания бака. Со старением уплотнители рассыхаются, поршень начинает свободно «гулять» в цилиндре и уже не гасит удары. Стиралка при этом будет «скакать» и издавать металлический стук. Если затронуты амортизаторы, их меняют обе сразу (иначе неравномерное гашение усугубит проблему). Замена обычно выполняется снизу, после переворота корпуса.
                   <span
                     dangerouslySetInnerHTML={{
                       __html: ' ',
@@ -437,7 +239,7 @@ const Page = (props) => {
               <div className="page-container26">
                 <figure className="page-container27">
                   <img
-                    alt="блок уп��авления"
+                    alt="блок управления"
                     src="/image%203823045-900w.webp"
                     loading="lazy"
                     className="page-image38230525"
@@ -446,9 +248,9 @@ const Page = (props) => {
                 </figure>
                 <p className="page-text49 vicetext">
                   {' '}
-                  Пружины подвески играют ключевую роль в работе стиральной машины — они удерживают бак в подв��шенном состоянии и компенсируют вибрации при отжиме. Ког���� хотя бы одна пружина растянулась или сломала��ь, бак теряет устойчивость и начинает сильно раскачиваться. Из-за этого вы слышите громкий стук, глухие удары или даже металлический звон. Особе��но ярко проблема проявляетс�� на высоких оборотах, когда бак с бельём вращается �� макси��альной скоростью.
+                  Пружины подвески играют ключевую роль в работе стиральной машины — они удерживают бак в подвешенном состоянии и компенсируют вибрации при отжиме. Когда хотя бы одна пружина растянулась или сломалаль, бак теряет устойчивость и начинает сильно раскачиваться. Из-за этого вы слышите громкий стук, глухие удары или даже металлический звон. Особенно ярко проблема проявляется на высоких оборотах, когда бак с бельём вращается с максимальной скоростью.
 
-                  Почему это происходит? Со временем пружины изнашиваются — металл теряет упругость, появляются микротрещины, а иногда пружина может и вовсе лопнуть. В результате на��рузка распределяется н���равномерно, бак смещается и начинает «бить» по корп��су. Это не только неприятный шум, но и риск повреждения других деталей — амо��тизаторов, противовесов, даже бака.
+                  Почему это происходит? Со временем пружины изнашиваются — металл теряет упругость, появляются микротрещины, а иногда пружина может и вовсе лопнуть. В результате нагрузка распределяется неравномерно, бак смещается и начинает «бить» по корпусу. Это не только неприятный шум, но и риск повреждения других деталей — амортизаторов, противовесов, даже бака.
                   <span
                     dangerouslySetInnerHTML={{
                       __html: ' ',
@@ -488,11 +290,11 @@ const Page = (props) => {
                     loading="lazy"
                     className="page-image38230525"
                   />
-                  <span className="page-text48">Противо��ес</span>
+                  <span className="page-text48">Противовес</span>
                 </figure>
                 <p className="page-text49 vicetext">
                   {' '}
-                  Противовесы — это массивные блоки внутри стиральной машины, которые крепятся к баку и пом��гают ��асить вибрации при стирке и особенно при отжим��. Их задача — стабилизировать бак, чтобы он не раскачивался и не ударялся о кор��ус. Если один из противовесов ослаб, раскололся или открутился, баланс нарушается, и машина начинает сильно шуметь, греметь и «��рыгать» по пол��.Со временем крепёжные болты противовесов могут раскрутиться из-за постоянной вибрации. В некоторых случаях бетонный противовес трескается или крошится — это встречается ��а старых машинах или после сильных перегрузок бельём. Когда противовес не держи��ся плотно, при высоких оборотах бак с��ещается и начинает сильно стучать по корпусу.
+                  Противовесы — это массивные блоки внутри стиральной машины, которые крепятся к баку и помогают гасить вибрации при стирке и особенно при отжиме. Их задача — стабилизировать бак, чтобы он не раскачивался и не ударялся о корпус. Если один из противовесов ослаб, раскололся или открутился, баланс нарушается, и машина начинает сильно шуметь, греметь и «прыгать» по полу.Со временем крепёжные болты противовесов могут раскрутиться из-за постоянной вибрации. В некоторых случаях бетонный противовес трескается или крошится — это встречается на старых машинах или после сильных перегрузок бельём. Когда противовес не держится плотно, при высоких оборотах бак смещается и начинается сильно стучать по корпусу.
                   <span
                     dangerouslySetInnerHTML={{
                       __html: ' ',
@@ -504,7 +306,7 @@ const Page = (props) => {
             <section id="5-2" className="page-fiveproblem2-duplicate2">
               <div className="page-container25 zagolovkiskorobkoy">
                 <h3 className="zagolovki2">
-                  4. По����шипник�� и сальник
+                  4. Подшипники и сальник
                 </h3>
                 <svg
                   width="330"
@@ -536,7 +338,7 @@ const Page = (props) => {
                 </figure>
                 <p className="page-text49 vicetext">
                   {' '}
-                  В барабан встроен подшипниковый узел – обычно два ��арикоподшипника, ��акрытые резиновым уплотнителем (сальником). При длительной эксплуатации сальник протирается, внутрь попадает вода, ��мазка вымывается и подшипники ржавеют. Это вызывает люфт барабана �� неравномерное вращение. В итоге при отжиме машина может ��ильно шуметь и «прыгать», а иногд�� барабан клинит. Признаки износа подшипников – топот под ��ашиной, подтеки ржавой воды и разболт����ность бака при ручном движении. Починка ����ребу��т замены подшипников (и сальника) – в б��льшинстве моделей это комплексная работа, выпол��яемая в сервисе.
+                  В барабан встроен подшипниковый узел – обычно два шарикоподшипника, закрытые резиновым уплотнителем (сальником). При длительной эксплуатации сальник протирается, внутрь попадает вода, смазка вымывается и подшипники ржавеют. Это вызывает люфт барабана и неравномерное вращение. В итоге при отжиме машина может сильно шуметь и «прыгать», а иногда барабан клинит. Признаки износа подшипников – топот под машиной, подтеки ржавой воды и разболтанность бака при ручном движении. Починка требует замены подшипников (и сальника) – в большинстве моделей это комплексная работа, выполняемая в сервисе.
                   <span
                     dangerouslySetInnerHTML={{
                       __html: ' ',
@@ -545,201 +347,7 @@ const Page = (props) => {
                 </p>
               </div>
             </section>
-            <section className="page-better-call-master">
-              <svg
-                width="100%"
-                xmlns="http://www.w3.org/2000/svg"
-                height="17"
-                viewBox="0 0 10 20"
-                preserveAspectRatio="none"
-                className="page-icon36"
-              >
-                <circle
-                  r="3.75"
-                  cx="5"
-                  cy="10"
-                  fill="#606060"
-                  vectorEffect="non-scaling-stroke"
-                ></circle>
-              </svg>
-              <svg
-                width="100%"
-                xmlns="http://www.w3.org/2000/svg"
-                height="17"
-                viewBox="0 0 10 20"
-                preserveAspectRatio="none"
-                className="page-icon38"
-              >
-                <circle
-                  r="3.75"
-                  cx="5"
-                  cy="10"
-                  fill="#606060"
-                  vectorEffect="non-scaling-stroke"
-                ></circle>
-              </svg>
-              <svg
-                width="100%"
-                xmlns="http://www.w3.org/2000/svg"
-                height="17"
-                viewBox="0 0 10 20"
-                preserveAspectRatio="none"
-                className="page-icon40"
-              >
-                <circle
-                  r="3.75"
-                  cx="5"
-                  cy="10"
-                  fill="#606060"
-                  vectorEffect="non-scaling-stroke"
-                ></circle>
-              </svg>
-              <svg
-                width="100%"
-                xmlns="http://www.w3.org/2000/svg"
-                height="17"
-                viewBox="0 0 10 20"
-                preserveAspectRatio="none"
-                className="page-icon42"
-              >
-                <circle
-                  r="3.75"
-                  cx="5"
-                  cy="10"
-                  fill="#606060"
-                  vectorEffect="non-scaling-stroke"
-                ></circle>
-              </svg>
-              <svg
-                width="330"
-                xmlns="http://www.w3.org/2000/svg"
-                height="20"
-                viewBox="0 0 330 20"
-                preserveAspectRatio="none"
-                className="page-icon44"
-              >
-                <path
-                  d="M0 10 H330"
-                  fill="none"
-                  stroke="#000000"
-                  strokeWidth="0.5"
-                  vectorEffect="non-scaling-stroke"
-                  strokeDasharray="11 11"
-                ></path>
-              </svg>
-              <svg
-                width="330"
-                xmlns="http://www.w3.org/2000/svg"
-                height="20"
-                viewBox="0 0 330 20"
-                preserveAspectRatio="none"
-                className="page-icon46"
-              >
-                <path
-                  d="M0 10 H330"
-                  fill="none"
-                  stroke="#000000"
-                  strokeWidth="0.5"
-                  vectorEffect="non-scaling-stroke"
-                  strokeDasharray="11 11"
-                ></path>
-              </svg>
-              <svg
-                width="20"
-                xmlns="http://www.w3.org/2000/svg"
-                height="110"
-                viewBox="0 0 20 110"
-                preserveAspectRatio="none"
-                className="page-icon48"
-              >
-                <path
-                  d="M10 0 V110"
-                  fill="none"
-                  stroke="#000000"
-                  strokeWidth="0.5"
-                  vectorEffect="non-scaling-stroke"
-                  strokeDasharray="11 11"
-                ></path>
-              </svg>
-              <svg
-                width="20"
-                xmlns="http://www.w3.org/2000/svg"
-                height="110"
-                viewBox="0 0 20 110"
-                preserveAspectRatio="none"
-                className="page-icon50"
-              >
-                <path
-                  d="M10 0 V110"
-                  fill="none"
-                  stroke="#000000"
-                  strokeWidth="0.5"
-                  vectorEffect="non-scaling-stroke"
-                  strokeDasharray="11 11"
-                ></path>
-              </svg>
-              <h2 className="page-text50">Ког��а вызывать мастера?</h2>
-              <p className="page-text51">
-                <span className="page-text52">
-                  Если вы выполнили все рекомендации, но проблема осталась —
-                  обра��итесь в сервис
-                  <span
-                    dangerouslySetInnerHTML={{
-                      __html: ' ',
-                    }}
-                  />
-                </span>
-                <span className="page-text53">&quot;</span>
-                <span className="page-text54">РемCтирМаш</span>
-                <span className="page-text55">&quot;</span>
-                <span className="page-text56">.</span>
-                <span className="page-text57">
-                  {' '}
-                  Наши специалисты быс��ро прие��ут к вам в желаемое вами время в
-                  любой район Одессы и выполнят качествен��ую диагностику и
-                  ремонт.
-                </span>
-              </p>
-              <svg
-                width="330"
-                xmlns="http://www.w3.org/2000/svg"
-                height="20"
-                viewBox="0 0 330 20"
-                preserveAspectRatio="none"
-                className="page-icon52"
-              >
-                <path
-                  d="M0 10 H330"
-                  fill="none"
-                  stroke="#000000"
-                  strokeWidth="0.5"
-                  vectorEffect="non-scaling-stroke"
-                  strokeDasharray="11 11"
-                ></path>
-              </svg>
-              <strong className="page-text58">Работаем без выходных</strong>
-              <div className="page-container28">
-                <div className="page-container29">
-                  <div className="page-container30">
-                    <img
-                      alt="image"
-                      src="/image%203823106.svg"
-                      className="page-image3"
-                    />
-                    <strong className="page-text59">+38 (048) 253-23-23</strong>
-                  </div>
-                  <div className="page-container31">
-                    <img
-                      alt="image"
-                      src="/image%203823107.svg"
-                      className="page-image4"
-                    />
-                    <strong className="page-text60">+38 (048) 123-35-21</strong>
-                  </div>
-                </div>
-                <OrderButton onClick={openModal} text="Заказать мастера" />
-              </div>
-            </section>
+            <CallMasterSection onOrderClick={openModal} />
             <PageNavigation
               prevPage={{
                 href: '/protekaet',
@@ -747,7 +355,7 @@ const Page = (props) => {
               }}
               nextPage={{
                 href: '/nevkluchaetsa',
-                title: 'Стиральна�� машина не включается'
+                title: 'Стиральная машина не включается'
               }}
             />
             <svg
@@ -769,8 +377,8 @@ const Page = (props) => {
             </svg>
             <RelatedArticles />
           </div>
-          <div className="page-dops-info">
-            <section className="page-frame1299">
+          <div className="page-dops-info"><InterestingAside />
+            <section className="page-frame1299" style={{display:"none"}}>
               <span className="page-text72">Вам будет интересно:</span>
               <div className="page-frame12981">
                 <span className="page-text73">
@@ -781,7 +389,7 @@ const Page = (props) => {
               </div>
               <div className="page-frame12982">
                 <span className="page-text74">
-                  Как продлить жизнь машин�� на 3–5 лет — простые привычки,
+                  Как продлить ��изнь маш��н�� на 3–5 лет — простые привычки,
                   которые сэкономят деньги
                 </span>
                 <div className="page-container46"></div>
@@ -824,6 +432,7 @@ const Page = (props) => {
             width: 100%;
             display: flex;
             min-height: 100vh;
+            min-height: 100dvh;
             align-items: center;
             flex-direction: column;
             background-color: #ffffff;
@@ -898,7 +507,7 @@ const Page = (props) => {
             color: rgb(80, 80, 80);
             width: 100%;
             height: auto;
-            font-size: 32px;
+            font-size: 35px;
             align-self: flex-start;
             text-align: left;
             font-family: 'Noto Serif SC';
@@ -906,6 +515,7 @@ const Page = (props) => {
             line-height: normal;
             font-stretch: normal;
             text-decoration: none;
+            margin: 0 0 8px 0;
           }
           .page-text11 {
             color: var(--dl-color-theme-neutral-dark);
@@ -1463,7 +1073,7 @@ const Page = (props) => {
             font-family: 'Noto Serif SC';
             font-weight: 500;
             line-height: normal;
-            margin-bottom: 8px;
+            margin-bottom: calc(8px / 1.7);
           }
           .page-container25 {
             gap: var(--dl-layout-space-halfunit);
@@ -2359,6 +1969,9 @@ const Page = (props) => {
             .page-frame1299 {
               display: none;
             }
+            .page-dops-info {
+              display: none;
+            }
           }
           @media (max-width: 767px) {
             .page-left-main-box {
@@ -2421,7 +2034,7 @@ const Page = (props) => {
             .page-text10 {
               fill: #373333;
               color: rgb(55, 51, 51);
-              font-size: 25px;
+              font-size: 24px;
               font-style: normal;
               text-align: center;
               font-family: Noto Serif SC;
@@ -2496,54 +2109,21 @@ const Page = (props) => {
             }
             .page-container18 { gap: var(--dl-layout-space-halfunit); width: 280px; max-width: 280px; min-width: 280px; height: auto; min-height: 0; margin: 12px auto 16px; float: none; }
             .page-image38230522 { width: 100%; height: 170px; object-fit: cover; min-width: 0; min-height: 0; }
-            .page-container21 {
-              gap: var(--dl-layout-space-halfunit);
-              height: 100%;
-              max-width: var(--dl-layout-size-xxlarge);
-              min-width: 100%;
-              min-height: 100%;
-              margin-bottom: 14px;
-            }
-            .page-image38230523 {
-              width: 100%;
-              min-width: 50%;
-              min-height: 50px;
-            }
+            .page-container21 { gap: var(--dl-layout-space-halfunit); width: 280px; max-width: 280px; min-width: 280px; height: auto; min-height: 0; margin: 12px auto 16px; float: none; }
+            .page-image38230523 { width: 100%; height: 170px; object-fit: cover; min-width: 0; min-height: 0; }
             .page-text40 {
               font-size: 13px;
             }
-            .page-container24 {
-              gap: var(--dl-layout-space-halfunit);
-              height: 100%;
-              max-width: 100%;
-              min-width: 100%;
-              min-height: 100%;
-              margin-bottom: 14px;
-            }
-            .page-image38230524 {
-              width: 100%;
-              min-width: 50%;
-              min-height: 50px;
-            }
+            .page-container24 { gap: var(--dl-layout-space-halfunit); width: 280px; max-width: 280px; min-width: 280px; height: auto; min-height: 0; margin: 12px auto 16px; float: none; }
+            .page-image38230524 { width: 100%; height: 170px; object-fit: cover; min-width: 0; min-height: 0; }
             .page-text45 {
               font-size: 13px;
               font-style: normal;
               font-family: Roboto;
               font-weight: 400;
             }
-            .page-container27 {
-              gap: var(--dl-layout-space-halfunit);
-              height: 100%;
-              max-width: 100%;
-              min-width: 100%;
-              min-height: 100%;
-              margin-bottom: 14px;
-            }
-            .page-image38230525 {
-              width: 100%;
-              min-width: 50%;
-              min-height: 50px;
-            }
+            .page-container27 { gap: var(--dl-layout-space-halfunit); width: 280px; max-width: 280px; min-width: 280px; height: auto; min-height: 0; margin: 12px auto 16px; float: none; }
+            .page-image38230525 { width: 100%; height: 170px; object-fit: cover; min-width: 0; min-height: 0; }
             .page-text48 {
               font-size: 13px;
               font-style: normal;

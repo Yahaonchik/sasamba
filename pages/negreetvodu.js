@@ -6,9 +6,13 @@ import MainFooter from '../components/MainFooter'
 import SEOHead from '../components/SEOHead'
 import PageNavigation from '../components/PageNavigation'
 import OrderButton from '../components/OrderButton'
-import OrderModal from '../components/OrderModal'
+const OrderModal = dynamic(() => import('../components/OrderModal'), { ssr: false })
 import Breadcrumbs from '../components/Breadcrumbs'
-import RelatedArticles from '../components/RelatedArticles'
+import dynamic from 'next/dynamic'
+const RelatedArticles = dynamic(() => import('../components/RelatedArticles'), { ssr: false })
+import AnchorLinksSection from '../components/AnchorLinksSection'
+const CallMasterSection = dynamic(() => import('../components/CallMasterSection'))
+const InterestingAside = dynamic(() => import('../components/InterestingAside'), { ssr: false })
 import { getSEOData } from '../utils/seoConfig'
 import { getProblemPageStructuredData } from '../utils/structuredData'
 
@@ -41,9 +45,7 @@ const Page = (props) => {
           structuredData={structuredData}
         />
         <Header />
-        <div className="page-breadcrumbs-section">
-          <Breadcrumbs style="white-left" />
-        </div>
+        <Breadcrumbs style="white-left" />
         <main className="page-main">
           <div className="page-left-main-box">
             <div className="page-headertextwashermachine">
@@ -61,215 +63,21 @@ const Page = (props) => {
                 <span className="page-text13">что делать?</span>
               </h1>
             </div>
-            <section className="page-container11">
-              <svg
-                width="100%"
-                xmlns="http://www.w3.org/2000/svg"
-                height="17"
-                viewBox="0 0 10 20"
-                preserveAspectRatio="none"
-                className="page-icon10"
-              >
-                <circle
-                  r="3.75"
-                  cx="5"
-                  cy="10"
-                  fill="#606060"
-                  vectorEffect="non-scaling-stroke"
-                ></circle>
-              </svg>
-              <svg
-                width="100%"
-                xmlns="http://www.w3.org/2000/svg"
-                height="17"
-                viewBox="0 0 10 20"
-                preserveAspectRatio="none"
-                className="page-icon12"
-              >
-                <circle
-                  r="3.75"
-                  cx="5"
-                  cy="10"
-                  fill="#606060"
-                  vectorEffect="non-scaling-stroke"
-                ></circle>
-              </svg>
-              <svg
-                width="100%"
-                xmlns="http://www.w3.org/2000/svg"
-                height="17"
-                viewBox="0 0 10 20"
-                preserveAspectRatio="none"
-                className="page-icon14"
-              >
-                <circle
-                  r="3.75"
-                  cx="5"
-                  cy="10"
-                  fill="#606060"
-                  vectorEffect="non-scaling-stroke"
-                ></circle>
-              </svg>
-              <svg
-                width="100%"
-                xmlns="http://www.w3.org/2000/svg"
-                height="17"
-                viewBox="0 0 10 20"
-                preserveAspectRatio="none"
-                className="page-icon16"
-              >
-                <circle
-                  r="3.75"
-                  cx="5"
-                  cy="10"
-                  fill="#606060"
-                  vectorEffect="non-scaling-stroke"
-                ></circle>
-              </svg>
-              <strong className="page-text14">
-                <span>Стиральная машина не греет воду:</span>
-                <br></br>
-              </strong>
-              <ul className="page-ul list">
-                <li className="page-li2 list-item">
-                  <img alt="image" src="/vector.svg" className="page-image2" />
-                  <a href="#2" className="page-link2">
-                    Ос��овные причины поломки:
-                  </a>
-                </li>
-                <li className="page-li3 list-item">
-                  <img
-                    alt="Vector8669"
-                    src="/external/vector8669-r6fr.svg"
-                    className="page-vector2"
-                  />
-                  <a href="#2" className="page-link3 ge">
-                    1. Поломка ТЭНА.
-                  </a>
-                </li>
-                <li className="page-li4 list-item ge">
-                  <img
-                    alt="Vector8669"
-                    src="/external/vector8669-r6fr.svg"
-                    className="page-vector3"
-                  />
-                  <a href="#2-1" className="page-link4">
-                    2. Сломан датчик температу��ы (термостат)
-                  </a>
-                </li>
-                <li className="page-li5 list-item">
-                  <img
-                    alt="Vector8669"
-                    src="/external/vector8669-r6fr.svg"
-                    className="page-vector4"
-                  />
-                  <a href="#2-2" className="page-link5 ge">
-                    3. Неисп��авен датчик уровня воды (��рессостат)
-                  </a>
-                </li>
-                <li className="page-li6 list-item">
-                  <img
-                    alt="Vector8669"
-                    src="/external/vector8669-r6fr.svg"
-                    className="page-vector5"
-                  />
-                  <a href="#3" className="page-link6 ge">
-                    4. Повреждена электропроводка
-                  </a>
-                </li>
-                <li className="page-li6 list-item">
-                  <img
-                    alt="Vector8669"
-                    src="/external/vector8669-r6fr.svg"
-                    className="page-vector5"
-                  />
-                  <a href="#4" className="page-link6 ge">
-                    5. Сбой или поломка м��дуля управления
-                  </a>
-                </li>
-                <li className="page-li6 list-item">
-                  <img
-                    alt="Vector8669"
-                    src="/external/vector8669-r6fr.svg"
-                    className="page-vector5"
-                  />
-                  <a href="#5" className="page-link6 ge">
-                    6. Невер��о выбран режим стирки
-                  </a>
-                </li>
-              </ul>
-              <svg
-                width="330"
-                xmlns="http://www.w3.org/2000/svg"
-                height="20"
-                viewBox="0 0 330 20"
-                preserveAspectRatio="none"
-                className="page-icon18"
-              >
-                <path
-                  d="M0 10 H330"
-                  fill="none"
-                  stroke="#000000"
-                  strokeWidth="0.5"
-                  vectorEffect="non-scaling-stroke"
-                  strokeDasharray="11 11"
-                ></path>
-              </svg>
-              <svg
-                width="330"
-                xmlns="http://www.w3.org/2000/svg"
-                height="20"
-                viewBox="0 0 330 20"
-                preserveAspectRatio="none"
-                className="page-icon20"
-              >
-                <path
-                  d="M0 10 H330"
-                  fill="none"
-                  stroke="#000000"
-                  strokeWidth="0.5"
-                  vectorEffect="non-scaling-stroke"
-                  strokeDasharray="11 11"
-                ></path>
-              </svg>
-              <svg
-                width="20"
-                xmlns="http://www.w3.org/2000/svg"
-                height="110"
-                viewBox="0 0 20 110"
-                preserveAspectRatio="none"
-                className="page-icon22"
-              >
-                <path
-                  d="M10 0 V110"
-                  fill="none"
-                  stroke="#000000"
-                  strokeWidth="0.5"
-                  vectorEffect="non-scaling-stroke"
-                  strokeDasharray="11 11"
-                ></path>
-              </svg>
-              <svg
-                width="20"
-                xmlns="http://www.w3.org/2000/svg"
-                height="110"
-                viewBox="0 0 20 110"
-                preserveAspectRatio="none"
-                className="page-icon24"
-              >
-                <path
-                  d="M10 0 V110"
-                  fill="none"
-                  stroke="#000000"
-                  strokeWidth="0.5"
-                  vectorEffect="non-scaling-stroke"
-                  strokeDasharray="11 11"
-                ></path>
-              </svg>
-            </section>
+            <AnchorLinksSection
+              title="Стиральная машина не греет воду:"
+              items={[
+                { icon: '/vector.svg', href: '#2', text: 'Основные причины поломки:' },
+                { icon: '/external/vector8669-r6fr.svg', href: '#2', text: '1. Поломка ТЭНА.' },
+                { icon: '/external/vector8669-r6fr.svg', href: '#2-1', text: '2. Сломан датчик температуры (термостат)' },
+                { icon: '/external/vector8669-r6fr.svg', href: '#2-2', text: '3. Неисправен датчик уровня воды (Прессостат)' },
+                { icon: '/external/vector8669-r6fr.svg', href: '#3', text: '4. Повреждена электропроводка' },
+                { icon: '/external/vector8669-r6fr.svg', href: '#4', text: '5. Сбой или поломка модуля управления' },
+                { icon: '/external/vector8669-r6fr.svg', href: '#5', text: '6. Неверно выбран режим стирки' },
+              ]}
+            />
             <div className="page-container15">
               <h2 className="page-text34">
-                <span>Основные пр��чины поломки:</span>
+                <span>Основные причины поломки:</span>
                 <br></br>
               </h2>
             </div>
@@ -299,7 +107,7 @@ const Page = (props) => {
               <div className="page-container17">
                 <figure className="page-container18">
                   <img
-                    alt="тэн стиральной ма��ины"
+                    alt="тэн стиральной машины"
                     src="/2/ten.webp"
                     loading="lazy"
                     className="page-image38230522"
@@ -311,14 +119,14 @@ const Page = (props) => {
                 </figure>
                 <p className="vicetext">
                   {' '}
-                  Чащ�� всего причина кроется в самом нагревательном элем����нте (ТЭНе). Накипь или остатки моющего средства, оседа��щие на ТЭНе, уме��ьшают ег���� теплоотдачу и со временем приводят к перегоранию. Чтобы проверить ТЭН, испо��ьзуют мультиметр: у исправного сопротивление между выводами составляет около 20–40 ОМ. Если измерение показывает обрыв и��и короткое замы��ание, ТЭН однозначно нужно менять. Если же просто накопилась накипь, элемент вынимаю�� и очищают меха��ически (щёткой и��и абразивом) и раствором лимонной кислоты. После чистки проверяют нагрев повт��рно. Иными словам��, при выявлении дефектов ��ЭН заменяют новым. а при лёгких отложениях – очищают от налёта.
+                  Чаще всего причина кроется в самом нагревательном элементе (ТЭНе). Накипь или остатки моющего средства, оседающие на ТЭНе, уменьшают его теплоотдачу и со временем приводят к перегоранию. Чтобы проверить ТЭН, используют мультиметр: у исправного сопротивление между выводами составляет около 20–40 ОМ. Если измерение показывает обрыв или короткое замыкание, ТЭН однозначно нужно менять. Если же просто накопилась накипь, элемент вынимают и очищают механически (щёткой или абразивом) и раствором лимонной кислоты. После чистки проверяют нагрев повторно. Иными словами, при выявлении дефектов ТЭН заменяют новым. а при лёгких отложениях – очищают от налёта.
                 </p>
               </div>
             </section>
             <section id="2-1" className="page-thirdproblem1-duplicate1">
               <div className="page-container16 zagolovkiskorobkoy">
                 <h3 className="zagolovki2">
-                  2. Сломан датчик температур�� (тер��ост��т)
+                  2. Сломан датчик температуры (термостат)
                 </h3>
                 <svg
                   width="330"
@@ -353,7 +161,7 @@ const Page = (props) => {
                 </figure>
                 <p className="vicetext">
                   {' '}
-                  Датчик темп��р��туры (термостат) следит за нагревом воды и ��ри перегреве отключает ТЭН. Если т��рмостат выходит ��з строя, питание на ТЭН не поступает, и вода остаётся холодной. Симптомы неисправности могут проявляться по-разному: ��н��шние пане��и машины перегреваются, цикл стирки длится аномально долго или м��шина выдаёт ошибку по перегреву. Выяснить ��оломку помогает прозвон��а: мультиметром проверяют сопротивление термостата в ��холодном» состоянии (оно должно быть конечн��м, а при н��греве – расти). Если оказывается, что датчик не замыкает цепь пр�� нагреве, его меняют на аналогичный.Исправный термостат просто заменяют – обычно это несложная операция, и после замены машина вновь на��нёт ���реть воду нормальным образом.
+                  Датчик температуры (термостат) следит за нагревом воды и при перегреве отключает ТЭН. Если термостат выходит из строя, питание на ТЭН не поступает, и вода остаётся холодной. Симптомы неисправности могут проявляться по-разному: внешние панели машины перегреваются, цикл стирки длится аномально долго или машина выдаёт ошибку по перегреву. Выяснить поломку помогает прозвонка: мультиметром проверяют сопротивление термостата в «холодном» состоянии (оно должно быть конечным, а при нагреве – расти). Если оказывается, что датчик не замыкает цепь при нагреве, его меняют на аналогичный.Исправный термостат просто заменяют – обычно это несложная операция, и после замены машина вновь начнёт греть воду нормальным образом.
                 </p>
               </div>
             </section>
@@ -389,19 +197,19 @@ const Page = (props) => {
                     className="page-image38230522"
                   />
                   <span className="page-text19">
-                    <span>Датчик уро��ня воды</span>
+                    <span>Датчик уровня воды</span>
                     <br></br>
                   </span>
                 </figure>
                 <p className="vicetext">
                   {' '}
-                  Прессостат (датчик уровн�� воды) сообщает моду���� управления о наполнении бака, и по сигналам датчика регулируется п��дача воды. Если прессостат забит или сломан, ��ашина может не начать нагревать воду – она не «увидит» необходимый уровень, чтобы включить ТЭН. Для прове��ки открывают переднюю панель и визуально осматривают трубку к прессоста��у (обычно видно под п��нелью или около насоса) на засор��� и перетяжки. Кроме того, прозванивают контакты датчика тестером. В большинстве случаев чистят внутреннюю трубку ��т гр��зи и мелкого мусора (н��пример, нитей или монет). Если же да��чик повреждён (нет реакци�� или неправильные показания), его заменяют новым
+                  Прессостат (датчик уровня воды) сообщает модулю управления о наполнении бака, и по сигналам датчика регулируется подача воды. Если прессостат забит или сломан, машина может не начать нагревать воду – она не «увидит» необходимый уровень, чтобы включить ТЭН. Для проверки открывают переднюю панель и визуально осматривают трубку к прессостату (обычно видно под панелью или около насоса) на засоры и перетяжки. Кроме того, прозванивают контакты датчика тестером. В большинстве случаев чистят внутреннюю трубку от грязи и мелкого мусора (например, нитей или монет). Если же датчик повреждён (нет реакции или неправильные показания), его заменяют новым
                 </p>
               </div>
             </section>
             <section id="3" className="page-thirdproblem2">
               <div className="page-container19 zagolovkiskorobkoy">
-                <h3 className="zagolovki2">4. По��ре��дена электропроводка</h3>
+                <h3 className="zagolovki2">4. Повреждена электропроводка</h3>
                 <svg
                   width="330"
                   xmlns="http://www.w3.org/2000/svg"
@@ -420,22 +228,10 @@ const Page = (props) => {
                   ></path>
                 </svg>
               </div>
-              <div className="page-container17">
-                <figure className="page-container18">
-                  <img
-                    alt="ремень стиральной машины"
-                    src="/10/image%2038230551-800h.webp"
-                    loading="lazy"
-                    className="page-image38230522"
-                  />
-                  <span className="page-text19">
-                    <span>Поврежденная проводка</span>
-                    <br></br>
-                  </span>
-                </figure>
+              <div className="page-container20">
                 <p className="vicetext">
                   {' '}
-                  Часто бывает, чт�� клеммы или провода, идущие к ТЭНу и датчикам, ослабе��ают или окисляются. Например, плохой контакт на клеммах ТЭНа приводит к т��му, что элемент вообще не вклю��ается (или греется местно – проверяйте по почерневшей изоляции и оплавленным клеммам). Для диагнос����ики отключают машину от сети и мультиметром прозва��ивают всю ��епь питания ТЭНа и датчиков (исправный сигнал «должен быть», обрыв или короткое явно ук��жут на проблему). Визуально проверяют целостность проводов и коннекто��ов. При обнаружении плохого контакта или обрыв�� пров��дов провода меняют, а клеммы зачищают и плотно затягивают. После этого вновь ��роверяют нагрев – если проводка и вилка исправны, Т��Н снова н��чнёт греться.
+                  Часто бывает, что клеммы или провода, идущие к ТЭНу и датчикам, ослабевают или окисляются. Например, плохой контакт на клеммах ТЭНа приводит к тому, что элемент вообще не включается (или греется местно – проверяйте по почерневшей изоляции и оплавленным клеммам). Для диагностики отключают машину от сети и мультиметром прозванивают всю цепь питания ТЭНа и датчиков (исправный сигнал «должен быть», обрыв или короткое явно укажут на проблему). Визуально проверяют целостность проводов и коннекторов. При обнаружении плохого контакта или обрыва проводов провода меняют, а клеммы зачищают и плотно затягивают. После этого вновь проверяют нагрев – если проводка и вилка исправны, ТЭН снова начнёт греться.
                 </p>
               </div>
             </section>
@@ -477,7 +273,7 @@ const Page = (props) => {
                 </figure>
                 <p className="page-text46 vicetext">
                   {' '}
-                  Электронный блок управления (ЭБУ) — это «мо��г» машины. Если в нём выходят из строя силовые реле, повреждается плата или программируется ош��бка, то команда на нагрев мож��т просто не подаваться. Распознать такую неисправность самостоятельно сложно: чаще всего на дисплее п��является соответствующий код, либо машина не реагирует на любые настройки. Проверку и ремонт модуля обыч��о доверяют специалисту, однако ясно одно: при любой проблеме с платой подачу напряжени�� на ТЭН прекращают, и новая плата или ремонт старой полностью ре��ают проблему. Самостоятельно можно т��лько убедиться, что напряжение в розетке подаётся и модули питания целы; для сложного ремонта платы лучше пригласить мастера.
+              Электронный блок управления (ЭБУ) — это «мозг» машины. Если в нём выходят из строя силовые реле, повреждается плата или программируется ошибка, то команда на нагрев может просто не подаваться. Распознать такую неисправность самостоятельно сложно: чаще всего на дисплее появляется соответствующий код, либо машина не реагирует на любые настройки. Проверку и ремонт модуля обычно доверяют специалисту, однако ясно одно: при любой проблеме с платой подачу напряжения на ТЭН прекращают, и новая плата или ремонт старой полностью решают проблему. Самостоятельно можно только убедиться, что напряжение в розетке подаётся и модули питания целы; для сложного ремонта платы лучше пригласить мастера.
                   <span
                     dangerouslySetInnerHTML={{
                       __html: ' ',
@@ -512,7 +308,7 @@ const Page = (props) => {
               <div className="page-container17">
                 <p className="page-text49 vicetext">
                   {' '}
-                  Иногда причиной «холодн��й» стирки оказывается банальная оши��ка в настройках. Если выставлен режим быстрой или энергосберегающей стирки без подогрева (или выбран ми��имальный температурный режим), машина просто не включит ТЭН. Например, регулятор температуры на панели должен соответствовать выбранной программ��. Чтобы проверить, достаточно заново установить режим с высоким подогревом (40–60 °C). После корректировки настроек проблема исчезнет – функция нагрева будет работать как положено. Такой простой совет иногда спасает до обращ��ния в сервис.
+              Иногда причиной «холодной» стирки оказывается банальная ошибка в настройках. Если выставлен режим быстрой или энергосберегающей стирки без подогрева (или выбран минимальный температурный режим), машина просто не включит ТЭН. Например, регулятор температуры на панели должен соответствовать выбранной программе. Чтобы проверить, достаточно заново установить режим с высоким подогревом (40–60 °C). После корректировки настроек проблема исчезнет – функция нагрева будет работать как положено. Такой простой совет иногда спасает до обращения в сервис.
                   <span
                     dangerouslySetInnerHTML={{
                       __html: ' ',
@@ -521,209 +317,15 @@ const Page = (props) => {
                 </p>
               </div>
             </section>
-            <section className="page-better-call-master">
-              <svg
-                width="100%"
-                xmlns="http://www.w3.org/2000/svg"
-                height="17"
-                viewBox="0 0 10 20"
-                preserveAspectRatio="none"
-                className="page-icon36"
-              >
-                <circle
-                  r="3.75"
-                  cx="5"
-                  cy="10"
-                  fill="#606060"
-                  vectorEffect="non-scaling-stroke"
-                ></circle>
-              </svg>
-              <svg
-                width="100%"
-                xmlns="http://www.w3.org/2000/svg"
-                height="17"
-                viewBox="0 0 10 20"
-                preserveAspectRatio="none"
-                className="page-icon38"
-              >
-                <circle
-                  r="3.75"
-                  cx="5"
-                  cy="10"
-                  fill="#606060"
-                  vectorEffect="non-scaling-stroke"
-                ></circle>
-              </svg>
-              <svg
-                width="100%"
-                xmlns="http://www.w3.org/2000/svg"
-                height="17"
-                viewBox="0 0 10 20"
-                preserveAspectRatio="none"
-                className="page-icon40"
-              >
-                <circle
-                  r="3.75"
-                  cx="5"
-                  cy="10"
-                  fill="#606060"
-                  vectorEffect="non-scaling-stroke"
-                ></circle>
-              </svg>
-              <svg
-                width="100%"
-                xmlns="http://www.w3.org/2000/svg"
-                height="17"
-                viewBox="0 0 10 20"
-                preserveAspectRatio="none"
-                className="page-icon42"
-              >
-                <circle
-                  r="3.75"
-                  cx="5"
-                  cy="10"
-                  fill="#606060"
-                  vectorEffect="non-scaling-stroke"
-                ></circle>
-              </svg>
-              <svg
-                width="330"
-                xmlns="http://www.w3.org/2000/svg"
-                height="20"
-                viewBox="0 0 330 20"
-                preserveAspectRatio="none"
-                className="page-icon44"
-              >
-                <path
-                  d="M0 10 H330"
-                  fill="none"
-                  stroke="#000000"
-                  strokeWidth="0.5"
-                  vectorEffect="non-scaling-stroke"
-                  strokeDasharray="11 11"
-                ></path>
-              </svg>
-              <svg
-                width="330"
-                xmlns="http://www.w3.org/2000/svg"
-                height="20"
-                viewBox="0 0 330 20"
-                preserveAspectRatio="none"
-                className="page-icon46"
-              >
-                <path
-                  d="M0 10 H330"
-                  fill="none"
-                  stroke="#000000"
-                  strokeWidth="0.5"
-                  vectorEffect="non-scaling-stroke"
-                  strokeDasharray="11 11"
-                ></path>
-              </svg>
-              <svg
-                width="20"
-                xmlns="http://www.w3.org/2000/svg"
-                height="110"
-                viewBox="0 0 20 110"
-                preserveAspectRatio="none"
-                className="page-icon48"
-              >
-                <path
-                  d="M10 0 V110"
-                  fill="none"
-                  stroke="#000000"
-                  strokeWidth="0.5"
-                  vectorEffect="non-scaling-stroke"
-                  strokeDasharray="11 11"
-                ></path>
-              </svg>
-              <svg
-                width="20"
-                xmlns="http://www.w3.org/2000/svg"
-                height="110"
-                viewBox="0 0 20 110"
-                preserveAspectRatio="none"
-                className="page-icon50"
-              >
-                <path
-                  d="M10 0 V110"
-                  fill="none"
-                  stroke="#000000"
-                  strokeWidth="0.5"
-                  vectorEffect="non-scaling-stroke"
-                  strokeDasharray="11 11"
-                ></path>
-              </svg>
-              <h2 className="page-text50">Когда вызывать мастера?</h2>
-              <p className="page-text51">
-                <span className="page-text52">
-                  Если вы выполн��ли все рекомендации, но проблема осталась —
-                  обратитесь �� сервис
-                  <span
-                    dangerouslySetInnerHTML={{
-                      __html: ' ',
-                    }}
-                  />
-                </span>
-                <span className="page-text53">&quot;</span>
-                <span className="page-text54">РемCтирМаш</span>
-                <span className="page-text55">&quot;</span>
-                <span className="page-text56">.</span>
-                <span className="page-text57">
-                  {' '}
-                  Наши специалисты быстро прие��ут к ва�� в желаемое вами время в
-                  любой район Одессы и выполнят качественную диагностику и
-                  ремонт.
-                </span>
-              </p>
-              <svg
-                width="330"
-                xmlns="http://www.w3.org/2000/svg"
-                height="20"
-                viewBox="0 0 330 20"
-                preserveAspectRatio="none"
-                className="page-icon52"
-              >
-                <path
-                  d="M0 10 H330"
-                  fill="none"
-                  stroke="#000000"
-                  strokeWidth="0.5"
-                  vectorEffect="non-scaling-stroke"
-                  strokeDasharray="11 11"
-                ></path>
-              </svg>
-              <strong className="page-text58">Ра��о��аем без выходных</strong>
-              <div className="page-container28">
-                <div className="page-container29">
-                  <div className="page-container30">
-                    <img
-                      alt="image"
-                      src="/image%203823106.svg"
-                      className="page-image3"
-                    />
-                    <strong className="page-text59">+38 (048) 253-23-23</strong>
-                  </div>
-                  <div className="page-container31">
-                    <img
-                      alt="image"
-                      src="/image%203823107.svg"
-                      className="page-image4"
-                    />
-                    <strong className="page-text60">+38 (048) 123-35-21</strong>
-                  </div>
-                </div>
-                <OrderButton onClick={openModal} text="Заказать мастера" />
-              </div>
-            </section>
+            <CallMasterSection onOrderClick={openModal} />
             <PageNavigation
               prevPage={{
                 href: '/neslivaetvodu',
-                title: 'Стиральн��я машина н�� сливает воду'
+                title: 'Стиральная машина не наливает воду'
               }}
               nextPage={{
                 href: '/protekaet',
-                title: 'Стиральная маши��а протекает'
+                title: 'Стиральная машина протекает'
               }}
             />
             <svg
@@ -745,8 +347,8 @@ const Page = (props) => {
             </svg>
             <RelatedArticles />
           </div>
-          <div className="page-dops-info">
-            <section className="page-frame1299">
+          <div className="page-dops-info"><InterestingAside />
+            <section className="page-frame1299" style={{display:"none"}}>
               <span className="page-text72">Вам будет интересно:</span>
               <div className="page-frame12981">
                 <span className="page-text73">
@@ -771,8 +373,8 @@ const Page = (props) => {
               </div>
               <div className="page-frame12984">
                 <span className="page-text76">
-                  Как ��экономить электричество и воду — реальные настройки и
-                  лайфхаки
+                  Как ��экономить электричество и воду — ��еальные настройки и
+                  лайфх��ки
                 </span>
                 <div className="page-container48"></div>
               </div>
@@ -880,7 +482,7 @@ const Page = (props) => {
             color: rgb(80, 80, 80);
             width: 100%;
             height: auto;
-            font-size: 32px;
+            font-size: 35px;
             align-self: flex-start;
             text-align: left;
             font-family: 'Noto Serif SC';
@@ -888,6 +490,7 @@ const Page = (props) => {
             line-height: normal;
             font-stretch: normal;
             text-decoration: none;
+            margin: 0 0 8px 0;
           }
           .page-text11 {
             color: var(--dl-color-theme-neutral-dark);
@@ -1265,7 +868,7 @@ const Page = (props) => {
             font-family: 'Noto Serif SC';
             font-weight: 500;
             line-height: normal;
-            margin-bottom: 8px;
+            margin-bottom: calc(8px / 1.7);
           }
           .page-container16 {
             gap: var(--dl-layout-space-halfunit);
@@ -2333,6 +1936,9 @@ const Page = (props) => {
             .page-frame1299 {
               display: none;
             }
+            .page-dops-info {
+              display: none;
+            }
           }
           @media (max-width: 767px) {
             .page-breadcrumbs-section {
@@ -2402,7 +2008,7 @@ const Page = (props) => {
             .page-text10 {
               fill: #373333;
               color: rgb(55, 51, 51);
-              font-size: 25px;
+              font-size: 24px;
               font-style: normal;
               text-align: center;
               font-family: Noto Serif SC;

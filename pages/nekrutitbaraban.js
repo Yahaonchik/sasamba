@@ -5,10 +5,13 @@ import Header from '../components/Header'
 import MainFooter from '../components/MainFooter'
 import SEOHead from '../components/SEOHead'
 import PageNavigation from '../components/PageNavigation'
-import OrderButton from '../components/OrderButton'
-import OrderModal from '../components/OrderModal'
+const OrderModal = dynamic(() => import('../components/OrderModal'), { ssr: false })
 import Breadcrumbs from '../components/Breadcrumbs'
-import RelatedArticles from '../components/RelatedArticles'
+import dynamic from 'next/dynamic'
+const RelatedArticles = dynamic(() => import('../components/RelatedArticles'), { ssr: false })
+import AnchorLinksSection from '../components/AnchorLinksSection'
+const CallMasterSection = dynamic(() => import('../components/CallMasterSection'))
+import InterestingAside from '../components/InterestingAside'
 import { getSEOData } from '../utils/seoConfig'
 import { getProblemPageStructuredData } from '../utils/structuredData'
 
@@ -26,7 +29,7 @@ const Page = (props) => {
   const baseUrl = 'https://remstirmash.od.ua'
   const structuredData = getProblemPageStructuredData(
     'Ремонт стиральной машины которая не крутит барабан',
-    'Профессиональ��ый ремонт стиральных машин с неработающим барабаном в Одессе. Замена ремня, ремонт двигателя.',
+    'Профессиональный ремонт стиральных машин с неработающим барабаном в Одессе. Замена ремня, ремонт двигателя.',
     `${baseUrl}/nekrutitbaraban`
   )
 
@@ -41,15 +44,13 @@ const Page = (props) => {
           structuredData={structuredData}
         />
         <Header />
-        <div className="page-breadcrumbs-section">
-          <Breadcrumbs style="white-left" />
-        </div>
+        <Breadcrumbs style="white-left" />
         <main className="page-main">
           <div className="page-left-main-box">
             <div className="page-headertextwashermachine">
               <h1 className="page-text10">
                 <span className="page-text11">
-                  Стиральная машина не ��рутит барабан —
+                  Стиральная машина не крутит барабан —
                 </span>
                 <span className="page-text12">
                   <span
@@ -58,205 +59,20 @@ const Page = (props) => {
                     }}
                   />
                 </span>
-                <span className="page-text13">ч��о делать?</span>
+                <span className="page-text13">что делать?</span>
               </h1>
             </div>
-            <section className="page-container11">
-              <svg
-                width="100%"
-                xmlns="http://www.w3.org/2000/svg"
-                height="17"
-                viewBox="0 0 10 20"
-                preserveAspectRatio="none"
-                className="page-icon10"
-              >
-                <circle
-                  r="3.75"
-                  cx="5"
-                  cy="10"
-                  fill="#606060"
-                  vectorEffect="non-scaling-stroke"
-                ></circle>
-              </svg>
-              <svg
-                width="100%"
-                xmlns="http://www.w3.org/2000/svg"
-                height="17"
-                viewBox="0 0 10 20"
-                preserveAspectRatio="none"
-                className="page-icon12"
-              >
-                <circle
-                  r="3.75"
-                  cx="5"
-                  cy="10"
-                  fill="#606060"
-                  vectorEffect="non-scaling-stroke"
-                ></circle>
-              </svg>
-              <svg
-                width="100%"
-                xmlns="http://www.w3.org/2000/svg"
-                height="17"
-                viewBox="0 0 10 20"
-                preserveAspectRatio="none"
-                className="page-icon14"
-              >
-                <circle
-                  r="3.75"
-                  cx="5"
-                  cy="10"
-                  fill="#606060"
-                  vectorEffect="non-scaling-stroke"
-                ></circle>
-              </svg>
-              <svg
-                width="100%"
-                xmlns="http://www.w3.org/2000/svg"
-                height="17"
-                viewBox="0 0 10 20"
-                preserveAspectRatio="none"
-                className="page-icon16"
-              >
-                <circle
-                  r="3.75"
-                  cx="5"
-                  cy="10"
-                  fill="#606060"
-                  vectorEffect="non-scaling-stroke"
-                ></circle>
-              </svg>
-              <strong className="page-text14">
-                <span>Стиральн��я машина не крутит барабан:</span>
-                <br></br>
-              </strong>
-              <ul className="page-ul list">
-                <li className="page-li1 list-item">
-                  <img
-                    alt="Vector8669"
-                    src="/external/vector8669-r6fr.svg"
-                    className="page-vector1"
-                  />
-                  <a href="#1" className="page-link1 ge">
-                    ��то делать, если машина не крутит барабан
-                  </a>
-                </li>
-                <li className="page-li2 list-item">
-                  <img alt="image" src="/vector.svg" className="page-image2" />
-                  <a href="#2" className="page-link2">
-                    Основные причины поломки:
-                  </a>
-                </li>
-                <li className="page-li3 list-item">
-                  <img
-                    alt="Vector8669"
-                    src="/external/vector8669-r6fr.svg"
-                    className="page-vector2"
-                  />
-                  <a href="#2" className="page-link3 ge">
-                    1. Дверца не з��крыта или не заблокирована.
-                  </a>
-                </li>
-                <li className="page-li4 list-item ge">
-                  <img
-                    alt="Vector8669"
-                    src="/external/vector8669-r6fr.svg"
-                    className="page-vector3"
-                  />
-                  <a href="#3" className="page-link4">
-                    2. Проблемы с приводным ремнём.
-                  </a>
-                </li>
-                <li className="page-li5 list-item">
-                  <img
-                    alt="Vector8669"
-                    src="/external/vector8669-r6fr.svg"
-                    className="page-vector4"
-                  />
-                  <a href="#4" className="page-link5 ge">
-                    3. Неиспр��вность двигателя или щёток.
-                  </a>
-                </li>
-                <li className="page-li6 list-item">
-                  <img
-                    alt="Vector8669"
-                    src="/external/vector8669-r6fr.svg"
-                    className="page-vector5"
-                  />
-                  <a href="#5" className="page-link6 ge">
-                    4. Сбои в электрон��ом блоке управления
-                  </a>
-                </li>
-              </ul>
-              <svg
-                width="330"
-                xmlns="http://www.w3.org/2000/svg"
-                height="20"
-                viewBox="0 0 330 20"
-                preserveAspectRatio="none"
-                className="page-icon18"
-              >
-                <path
-                  d="M0 10 H330"
-                  fill="none"
-                  stroke="#000000"
-                  strokeWidth="0.5"
-                  vectorEffect="non-scaling-stroke"
-                  strokeDasharray="11 11"
-                ></path>
-              </svg>
-              <svg
-                width="330"
-                xmlns="http://www.w3.org/2000/svg"
-                height="20"
-                viewBox="0 0 330 20"
-                preserveAspectRatio="none"
-                className="page-icon20"
-              >
-                <path
-                  d="M0 10 H330"
-                  fill="none"
-                  stroke="#000000"
-                  strokeWidth="0.5"
-                  vectorEffect="non-scaling-stroke"
-                  strokeDasharray="11 11"
-                ></path>
-              </svg>
-              <svg
-                width="20"
-                xmlns="http://www.w3.org/2000/svg"
-                height="110"
-                viewBox="0 0 20 110"
-                preserveAspectRatio="none"
-                className="page-icon22"
-              >
-                <path
-                  d="M10 0 V110"
-                  fill="none"
-                  stroke="#000000"
-                  strokeWidth="0.5"
-                  vectorEffect="non-scaling-stroke"
-                  strokeDasharray="11 11"
-                ></path>
-              </svg>
-              <svg
-                width="20"
-                xmlns="http://www.w3.org/2000/svg"
-                height="110"
-                viewBox="0 0 20 110"
-                preserveAspectRatio="none"
-                className="page-icon24"
-              >
-                <path
-                  d="M10 0 V110"
-                  fill="none"
-                  stroke="#000000"
-                  strokeWidth="0.5"
-                  vectorEffect="non-scaling-stroke"
-                  strokeDasharray="11 11"
-                ></path>
-              </svg>
-            </section>
+            <AnchorLinksSection
+              title="Стиральная машина не крутит барабан:"
+              items={[
+                { icon: '/external/vector8669-r6fr.svg', href: '#1', text: 'Что делать, если машина не крутит барабан' },
+                { icon: '/vector.svg', href: '#2', text: 'Основные причины поломки:' },
+                { icon: '/external/vector8669-r6fr.svg', href: '#2', text: '1. Дверца не закрыта или не заблокирована.' },
+                { icon: '/external/vector8669-r6fr.svg', href: '#3', text: '2. Проблемы с приводным ремнём.' },
+                { icon: '/external/vector8669-r6fr.svg', href: '#4', text: '3. Неисправность двигателя или щёток.' },
+                { icon: '/external/vector8669-r6fr.svg', href: '#5', text: '4. Сбои в электронном блоке управления' },
+              ]}
+            />
             <section id="1" className="page-firstproblem">
               <div className="page-container12 zagolovkiskorobkoy">
                 <h2 className="zagolovki2">
@@ -283,42 +99,30 @@ const Page = (props) => {
               <div className="page-container17">
                 <div className="vicetext">
                   <p>
-                    <strong>1. ��бесточьте машину и слейте воду.</strong><br />
-                    Выключите стиральную ма��ину и отключите её от сети. Слейте
-                    воду из барабана с помощью аварийного шланга или через
-                    фильтр (если таковой имеется). ��то необходимо сделать перед
-                    любыми проверками, ч��обы вода не помешала осмотру и не
-                    повредила пол под машиной.
+                    <strong>1. Обесточьте машину и слейте воду.</strong><br />
+                    Выключите стиральную машину и отключите её от сети. Слейте воду из барабана с помощью аварийного шланга или через фильтр (если таковой имеется). Это необходимо сделать перед любыми проверками, чтобы вода не помешала осмотру и не повредила пол под машиной.
                   </p>
 
                   <p>
-                    <strong>2. Перераспределите или уберите часть б��лья.</strong><br />
-                    Откройте дверцу и выньте часть белья. При необходимости
-                    уменьшите загрузку, если она была слишком большой. Если
-                    белья совсем мало, до��авьте ещё 2–3 вещи равного веса.
-                    ��стряхните оставшиеся вещи, равномерно распределив их по
-                    барабану.
+                    <strong>2. Перераспределите или уберите часть белья.</strong><br />
+                    Откройте дверцу и выньте часть белья. При необходимости уменьшите загрузку, если она была слишком большой. Если белья совсем мало, добавьте ещё 2–3 вещи равного веса. Встряхните оставшиеся вещи, равномерно распределив их по барабану.
                   </p>
 
                   <p>
                     <strong>3. Проверьте барабан вручную.</strong><br />
-                    Попробуйте покрутить ба��абан рукой (после слива воды барабан
-                    должен свободно вращаться). Если при вращении чувствуются
-                    заедания или слышится посторонний шум, возможно, внутри
-                    чт��-то застряло ��ли заклинило. В эт��м случае снова осмотрите
-                    барабан �� бак, удалите посторонние предметы.
+                    Попробуйте покрутить барабан рукой (после слива воды барабан должен свободно вращаться). Если при вращении чувствуются заедания или слышится посторонний шум, возможно, внутри что-то застряло или заклинило. В этом случае снова осмотрите барабан и бак, удалите посторонние предметы.
                   </p>
 
                   <p>
                     <strong>4. Закройте дверцу.</strong><br />
                     Убедитесь, что дверца люка закрыта плотно. Откройте и
-                    закройте её до характерного щелчка. ��ез плотной фиксации
+                    закройте её до характерного щелчка. Без плотной фиксации
                     дверца остаётся разблокированной – машина не начнёт цикл
                     стирки.
                   </p>
 
                   <p>
-                    <strong>5. Запустите тестовый цикл без бе��ья.</strong><br />
+                    <strong>5. Запустите тестовый цикл без белья.</strong><br />
                     Включите любой короткий цикл (например, «хлопок») на обычной
                     мощности без загрузки белья. Проследите, начнётся ли
                     вращение барабана на этапе отжима. Если барабан по-прежнему
@@ -329,14 +133,14 @@ const Page = (props) => {
             </section>
             <div className="page-container15">
               <h2 className="page-text34">
-                <span>Основные пр���чины поломки:</span>
+                <span>Основные причины поломки:</span>
                 <br></br>
               </h2>
             </div>
             <section id="2" className="page-thirdproblem1">
               <div className="page-container16 zagolovkiskorobkoy">
                 <h3 className="zagolovki2">
-                  1. Дверца не закр��та или не заблокирована.
+                  1. Дверца не закрыта или не заблокирована.
                 </h3>
                 <svg
                   width="330"
@@ -371,21 +175,13 @@ const Page = (props) => {
                 </figure>
                 <p className="vicetext">
                   {' '}
-                  Если люк не закрыт «до щелчка» или что-то мешает защёлке —
-                  например, тка���� прилипла к уплотнител�� — машина распознает это
-                  как не��справность и не запустит программу; отсутствие
-                  характерного щелч���� или свобод��о болтающаяс�� дверца могут
-                  указывать на механическую поломку замка. В таких случаях нужно
-                  убедиться, что люк закрыт плотно и ничего не зажато; при
-                  признаках повреждения замка или его ненадёжной ��иксации замена
-                  узла в сервисе решит проблему, поскольку продолж��ть работу с
-                  неисправной защёлкой опасно и неэффективно.
+                  Если люк не закрыт «до щелчка» или что-то мешает защёлке — например, ткань прилипла к уплотнителю — машина распознает это как неисправность и не запустит программу; отсутствие характерного щелчка или свободно болтающаяся дверца могут указывать на механическую поломку замка. В таких случаях нужно убедиться, что люк закрыт плотно и ничего не зажато; при признаках повреждения замка или его ненадёжной фиксации замена узла в сервисе решит проблему, поскольку продолжать работу с неисправной защёлкой опасно и неэффективно.
                 </p>
               </div>
             </section>
             <section id="3" className="page-thirdproblem2">
               <div className="page-container19 zagolovkiskorobkoy">
-                <h3 className="zagolovki2">2. Проблемы с прив��дным ремнём.</h3>
+                <h3 className="zagolovki2">2. Проблемы с приводным ремнём.</h3>
                 <svg
                   width="330"
                   xmlns="http://www.w3.org/2000/svg"
@@ -407,7 +203,7 @@ const Page = (props) => {
               <div className="page-container17">
                 <figure className="page-container18">
                   <img
-                    alt="ремень стиральной маш��ны"
+                    alt="ремень стиральной машины"
                     src="/10/image%2038230551-800h.webp"
                     loading="lazy"
                     className="page-image38230522"
@@ -419,16 +215,7 @@ const Page = (props) => {
                 </figure>
                 <p className="vicetext">
                   {' '}
-                  Если двигатель работает, слышен гул, н�� барабан не вращ��ется
-                  или вращается вяло, ве��оятно, слетел или порван приводной
-                  ремен��; пр�� этом машина может выполнять другие эт���пы цик����
-                  (налив, нагрев), но не передавать вращение на барабан. В таких
-                  ситуациях при доступе к задней панели можно визуально
-                  осмотреть ремень: если он перекинул��я, его аккуратно
-                  во����ращают на шкив, а при ��вных повреждения�� ремень меняют —
-                  при от��утствии уверенност�� в своих навыках лучше доверить
-                  замену мастеру, чтобы избежать невер��ой установки или
-                  дополнительного повреждения.
+                  Если двигатель работает, слышен гул, но барабан не вращается или вращается вяло, вероятно, слетел или порван приводной ремень; при этом машина может выполнять другие этапы цикла (налив, нагрев), но не передавать вращение на барабан. В таких ситуациях при доступе к задней панели можно визуально осмотреть ремень: если он перекинулся, его аккуратно возвращают на шкив, а при явных повреждениях ремень меняют — при отсутствии уверенности в своих навыках лучше доверить замену мастеру, чтобы избежать неверной установки или дополнительного повреждения.
                 </p>
               </div>
             </section>
@@ -470,15 +257,7 @@ const Page = (props) => {
                 </figure>
                 <p className="vicetext">
                   {' '}
-                  В коллекторных двигателях со врем��нем изнашиваются угольные
-                  щётки, и при плохом контакте мотор теряет мощность или вообще
-                  не ��апускается; иногда слышен только гул мотора без д��ижения
-                  барабана, а при серьёзном ��овреждении обмоток возможен и
-                  полный отказ. При подоз����нии на изн��с щёток или внутренние
-                  проблемы мотор�� самостоятельный р��монт не рекомендуется —
-                  точную диагн��стику и замену выполняет мастер, который пров��рит
-                  состояние щёток, обмоток и подшипников и при необходимости
-                  выполни�� квалифицированную замену.
+                  В коллекторных двигателях со временем изнашиваются угольные щётки, и при плохом контакте мотор теряет мощность или вообще не запускается; иногда слышен только гул мотора без движения барабана, а при серьёзном повреждении обмоток возможен и полный отказ. При подозрении на износ щёток или внутренние проблемы мотора самостоятельный ремонт не рекомендуется — точную диагностику и замену выполняет мастер, который проверит состояние щёток, обмоток и подшипников и при необходимости выполнит квалифицированную замену.
                   <span
                     dangerouslySetInnerHTML={{
                       __html: ' ',
@@ -490,7 +269,7 @@ const Page = (props) => {
             <section id="5" className="page-fiveproblem2">
               <div className="page-container25 zagolovkiskorobkoy">
                 <h3 className="zagolovki2">
-                  4. Сбои в э��ектронном блоке упра��ления
+                  4. Сбои в электронном блоке управления
                 </h3>
                 <svg
                   width="330"
@@ -519,22 +298,13 @@ const Page = (props) => {
                     className="page-image38230522"
                   />
                   <span className="page-text19">
-                    <span>��лок управления</span>
+                    <span>Блок управления</span>
                     <br></br>
                   </span>
                 </figure>
                 <p className="page-text49 vicetext">
                   {' '}
-                  Отказ платы управления, неисправность та��одатчика или ��ругих
-                  сенсоров может приводить к тому, что контроллер не получает
-                  корректных данных о поло��ении и оборотах барабана и блокирует
-                  отжим; проявления варьирую��ся от мигающих ошибок на д��сплее до
-                  полной не��аботос��особности на отдельных этапах. В таких
-                  случаях перезагрузка — кратковременное отключение питания —
-                  иногда устраняет временные сбои, но при повторяющихся ошибках
-                  требуется профессиональная диагностика и ремонт элек��роники,
-                  так как сам��стоятел��ные вмешательства в плату без опыта
-                  чреваты усугублением ��еисправно��ти.
+                  Отказ платы управления, неисправность таходатчика или других сенсоров может приводить к тому, что контроллер не получает корректных данных о положении и оборотах барабана и блокирует отжим; проявления варьируются от мигающих ошибок на дисплее до полной неработоспособности на отдельных этапах. В таких случаях перезагрузка — кратковременное отключение питания — иногда устраняет временные сбои, но при повторяющихся ошибках требуется профессиональная диагностика и ремонт электроники, так как самостоятельные вмешательства в плату без опыта чреваты усугублением неисправности.
                   <span
                     dangerouslySetInnerHTML={{
                       __html: ' ',
@@ -543,205 +313,11 @@ const Page = (props) => {
                 </p>
               </div>
             </section>
-            <section className="page-better-call-master">
-              <svg
-                width="100%"
-                xmlns="http://www.w3.org/2000/svg"
-                height="17"
-                viewBox="0 0 10 20"
-                preserveAspectRatio="none"
-                className="page-icon36"
-              >
-                <circle
-                  r="3.75"
-                  cx="5"
-                  cy="10"
-                  fill="#606060"
-                  vectorEffect="non-scaling-stroke"
-                ></circle>
-              </svg>
-              <svg
-                width="100%"
-                xmlns="http://www.w3.org/2000/svg"
-                height="17"
-                viewBox="0 0 10 20"
-                preserveAspectRatio="none"
-                className="page-icon38"
-              >
-                <circle
-                  r="3.75"
-                  cx="5"
-                  cy="10"
-                  fill="#606060"
-                  vectorEffect="non-scaling-stroke"
-                ></circle>
-              </svg>
-              <svg
-                width="100%"
-                xmlns="http://www.w3.org/2000/svg"
-                height="17"
-                viewBox="0 0 10 20"
-                preserveAspectRatio="none"
-                className="page-icon40"
-              >
-                <circle
-                  r="3.75"
-                  cx="5"
-                  cy="10"
-                  fill="#606060"
-                  vectorEffect="non-scaling-stroke"
-                ></circle>
-              </svg>
-              <svg
-                width="100%"
-                xmlns="http://www.w3.org/2000/svg"
-                height="17"
-                viewBox="0 0 10 20"
-                preserveAspectRatio="none"
-                className="page-icon42"
-              >
-                <circle
-                  r="3.75"
-                  cx="5"
-                  cy="10"
-                  fill="#606060"
-                  vectorEffect="non-scaling-stroke"
-                ></circle>
-              </svg>
-              <svg
-                width="330"
-                xmlns="http://www.w3.org/2000/svg"
-                height="20"
-                viewBox="0 0 330 20"
-                preserveAspectRatio="none"
-                className="page-icon44"
-              >
-                <path
-                  d="M0 10 H330"
-                  fill="none"
-                  stroke="#000000"
-                  strokeWidth="0.5"
-                  vectorEffect="non-scaling-stroke"
-                  strokeDasharray="11 11"
-                ></path>
-              </svg>
-              <svg
-                width="330"
-                xmlns="http://www.w3.org/2000/svg"
-                height="20"
-                viewBox="0 0 330 20"
-                preserveAspectRatio="none"
-                className="page-icon46"
-              >
-                <path
-                  d="M0 10 H330"
-                  fill="none"
-                  stroke="#000000"
-                  strokeWidth="0.5"
-                  vectorEffect="non-scaling-stroke"
-                  strokeDasharray="11 11"
-                ></path>
-              </svg>
-              <svg
-                width="20"
-                xmlns="http://www.w3.org/2000/svg"
-                height="110"
-                viewBox="0 0 20 110"
-                preserveAspectRatio="none"
-                className="page-icon48"
-              >
-                <path
-                  d="M10 0 V110"
-                  fill="none"
-                  stroke="#000000"
-                  strokeWidth="0.5"
-                  vectorEffect="non-scaling-stroke"
-                  strokeDasharray="11 11"
-                ></path>
-              </svg>
-              <svg
-                width="20"
-                xmlns="http://www.w3.org/2000/svg"
-                height="110"
-                viewBox="0 0 20 110"
-                preserveAspectRatio="none"
-                className="page-icon50"
-              >
-                <path
-                  d="M10 0 V110"
-                  fill="none"
-                  stroke="#000000"
-                  strokeWidth="0.5"
-                  vectorEffect="non-scaling-stroke"
-                  strokeDasharray="11 11"
-                ></path>
-              </svg>
-              <h2 className="page-text50">��огда вы��ывать мастера?</h2>
-              <p className="page-text51">
-                <span className="page-text52">
-                  Если вы выполни��и все рекомендации, но пробл��ма осталась —
-                  обратитесь в серв��с
-                  <span
-                    dangerouslySetInnerHTML={{
-                      __html: ' ',
-                    }}
-                  />
-                </span>
-                <span className="page-text53">&quot;</span>
-                <span className="page-text54">РемCтирМаш</span>
-                <span className="page-text55">&quot;</span>
-                <span className="page-text56">.</span>
-                <span className="page-text57">
-                  {' '}
-                  Наши специалисты быс��ро прие��ут к вам в желаемое вами вре��я в
-                  любой район Одессы и выполнят качественн����ю диагностику и
-                  ремонт.
-                </span>
-              </p>
-              <svg
-                width="330"
-                xmlns="http://www.w3.org/2000/svg"
-                height="20"
-                viewBox="0 0 330 20"
-                preserveAspectRatio="none"
-                className="page-icon52"
-              >
-                <path
-                  d="M0 10 H330"
-                  fill="none"
-                  stroke="#000000"
-                  strokeWidth="0.5"
-                  vectorEffect="non-scaling-stroke"
-                  strokeDasharray="11 11"
-                ></path>
-              </svg>
-              <strong className="page-text58">Работаем без выходных</strong>
-              <div className="page-container28">
-                <div className="page-container29">
-                  <div className="page-container30">
-                    <img
-                      alt="image"
-                      src="/image%203823106.svg"
-                      className="page-image3"
-                    />
-                    <strong className="page-text59">+38 (048) 253-23-23</strong>
-                  </div>
-                  <div className="page-container31">
-                    <img
-                      alt="image"
-                      src="/image%203823107.svg"
-                      className="page-image4"
-                    />
-                    <strong className="page-text60">+38 (048) 123-35-21</strong>
-                  </div>
-                </div>
-                <OrderButton onClick={openModal} text="Заказать мастера" />
-              </div>
-            </section>
+            <CallMasterSection onOrderClick={openModal} />
             <PageNavigation
               prevPage={{
                 href: '/neotkrivaetsadverca',
-                title: 'У стиральной маш��ны не открывается дверца'
+                title: 'У стиральной машины не открывается дверца'
               }}
               nextPage={{
                 href: '/neslivaetvodu',
@@ -767,8 +343,8 @@ const Page = (props) => {
             </svg>
             <RelatedArticles />
           </div>
-          <div className="page-dops-info">
-            <section className="page-frame1299">
+          <div className="page-dops-info"><InterestingAside />
+            <section className="page-frame1299" style={{display:"none"}}>
               <span className="page-text72">Вам будет ��нтересно:</span>
               <div className="page-frame12981">
                 <span className="page-text73">
@@ -896,7 +472,7 @@ const Page = (props) => {
             color: rgb(80, 80, 80);
             width: 100%;
             height: auto;
-            font-size: 32px;
+            font-size: 35px;
             align-self: flex-start;
             text-align: left;
             font-family: 'Noto Serif SC';
@@ -904,6 +480,7 @@ const Page = (props) => {
             line-height: normal;
             font-stretch: normal;
             text-decoration: none;
+            margin: 0 0 8px 0;
           }
           .page-text11 {
             color: var(--dl-color-theme-neutral-dark);
@@ -2317,6 +1894,9 @@ const Page = (props) => {
             .page-frame1299 {
               display: none;
             }
+            .page-dops-info {
+              display: none;
+            }
           }
           @media (max-width: 767px) {
             .page-left-main-box {
@@ -2379,7 +1959,7 @@ const Page = (props) => {
             .page-text10 {
               fill: #373333;
               color: rgb(55, 51, 51);
-              font-size: 25px;
+              font-size: 24px;
               font-style: normal;
               text-align: center;
               font-family: Noto Serif SC;

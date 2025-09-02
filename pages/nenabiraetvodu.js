@@ -5,10 +5,13 @@ import Header from '../components/Header'
 import MainFooter from '../components/MainFooter'
 import SEOHead from '../components/SEOHead'
 import PageNavigation from '../components/PageNavigation'
-import OrderButton from '../components/OrderButton'
-import OrderModal from '../components/OrderModal'
+const OrderModal = dynamic(() => import('../components/OrderModal'), { ssr: false })
 import Breadcrumbs from '../components/Breadcrumbs'
-import RelatedArticles from '../components/RelatedArticles'
+import dynamic from 'next/dynamic'
+const RelatedArticles = dynamic(() => import('../components/RelatedArticles'), { ssr: false })
+const CallMasterSection = dynamic(() => import('../components/CallMasterSection'))
+import InterestingAside from '../components/InterestingAside'
+import AnchorLinksSection from '../components/AnchorLinksSection'
 import { getSEOData } from '../utils/seoConfig'
 import { getProblemPageStructuredData } from '../utils/structuredData'
 
@@ -26,8 +29,8 @@ const Page = (props) => {
   const seoData = getSEOData('/nenabiraetvodu')
   const baseUrl = 'https://remstirmash.od.ua'
   const structuredData = getProblemPageStructuredData(
-    'Ремонт стиральной машины которая не н��бирает воду',
-    'Профессиональный ремонт стир��льных машин которые не набирают во��у в Одессе. Чистка фильтров, ремонт клапанов.',
+    'Ремонт стиральной машины которая не набирает воду',
+    'Профессиональный ремонт стиральных машин которые не набирают воду в Одессе. Чистка фильтров, ремонт клапанов.',
     `${baseUrl}/nenabiraetvodu`
   )
 
@@ -42,15 +45,13 @@ const Page = (props) => {
           structuredData={structuredData}
         />
         <Header />
-        <div className="page-breadcrumbs-section">
-          <Breadcrumbs style="white-left" />
-        </div>
+        <Breadcrumbs style="white-left" />
         <main className="page-main">
           <div className="page-left-main-box">
             <div className="page-headertextwashermachine">
               <h1 className="page-text10">
                 <span className="page-text11">
-                  Ст��ральная машина не набирает воду —
+                  Стиральная машина не набирает воду —
                 </span>
                 <span className="page-text12">
                   <span
@@ -62,222 +63,19 @@ const Page = (props) => {
                 <span className="page-text13">что делать?</span>
               </h1>
             </div>
-            <section className="page-container11">
-              <svg
-                width="100%"
-                xmlns="http://www.w3.org/2000/svg"
-                height="17"
-                viewBox="0 0 10 20"
-                preserveAspectRatio="none"
-                className="page-icon10"
-              >
-                <circle
-                  r="3.75"
-                  cx="5"
-                  cy="10"
-                  fill="#606060"
-                  vectorEffect="non-scaling-stroke"
-                ></circle>
-              </svg>
-              <svg
-                width="100%"
-                xmlns="http://www.w3.org/2000/svg"
-                height="17"
-                viewBox="0 0 10 20"
-                preserveAspectRatio="none"
-                className="page-icon12"
-              >
-                <circle
-                  r="3.75"
-                  cx="5"
-                  cy="10"
-                  fill="#606060"
-                  vectorEffect="non-scaling-stroke"
-                ></circle>
-              </svg>
-              <svg
-                width="100%"
-                xmlns="http://www.w3.org/2000/svg"
-                height="17"
-                viewBox="0 0 10 20"
-                preserveAspectRatio="none"
-                className="page-icon14"
-              >
-                <circle
-                  r="3.75"
-                  cx="5"
-                  cy="10"
-                  fill="#606060"
-                  vectorEffect="non-scaling-stroke"
-                ></circle>
-              </svg>
-              <svg
-                width="100%"
-                xmlns="http://www.w3.org/2000/svg"
-                height="17"
-                viewBox="0 0 10 20"
-                preserveAspectRatio="none"
-                className="page-icon16"
-              >
-                <circle
-                  r="3.75"
-                  cx="5"
-                  cy="10"
-                  fill="#606060"
-                  vectorEffect="non-scaling-stroke"
-                ></circle>
-              </svg>
-              <strong className="page-text14">
-                <span>Стиральная машина не набирает воду:</span>
-                <br></br>
-              </strong>
-              <ul className="page-ul list">
-                <li className="page-li1 list-item">
-                  <img
-                    alt="Vector8669"
-                    src="/external/vector8669-r6fr.svg"
-                    className="page-vector1"
-                  />
-                  <a href="#1" className="page-link1 ge">
-                    ����то делать, если машина не набирает воду?
-                  </a>
-                </li>
-                <li className="page-li2 list-item">
-                  <img alt="image" src="/vector.svg" className="page-image2" />
-                  <a href="#2" className="page-link2">
-                    Ос��овные причины поломки:
-                  </a>
-                </li>
-                <li className="page-li3 list-item">
-                  <img
-                    alt="Vector8669"
-                    src="/external/vector8669-r6fr.svg"
-                    className="page-vector2"
-                  />
-                  <a href="#2" className="page-link3 ge">
-                    1. Закрыт кран подачи воды / ��изкое давление
-                  </a>
-                </li>
-                <li className="page-li4 list-item ge">
-                  <img
-                    alt="Vector8669"
-                    src="/external/vector8669-r6fr.svg"
-                    className="page-vector3"
-                  />
-                  <a href="#3" className="page-link4">
-                    2. Повреждён замок дверцы (блокировка люка).
-                  </a>
-                </li>
-                <li className="page-li5 list-item">
-                  <img
-                    alt="Vector8669"
-                    src="/external/vector8669-r6fr.svg"
-                    className="page-vector4"
-                  />
-                  <a href="#4" className="page-link5 ge">
-                    3. Пе��ежат или перекручен заливной шланг
-                  </a>
-                </li>
-                <li className="page-li6 list-item">
-                  <img
-                    alt="Vector8669"
-                    src="/external/vector8669-r6fr.svg"
-                    className="page-vector5"
-                  />
-                  <a href="#5" className="page-link6 ge">
-                    4. ��еисправен впускной клапан
-                  </a>
-                </li>
-                <li className="page-li6 list-item">
-                  <img
-                    alt="Vector8669"
-                    src="/external/vector8669-r6fr.svg"
-                    className="page-vector5"
-                  />
-                  <a href="#5-1" className="page-link6 ge">
-                    5. Неисправность датчика уровня воды (прессостата)
-                  </a>
-                </li>
-                <li className="page-li6 list-item">
-                  <img
-                    alt="Vector8669"
-                    src="/external/vector8669-r6fr.svg"
-                    className="page-vector5"
-                  />
-                  <a href="#5-2" className="page-link6 ge">
-                    6. Повреждён модуль управления
-                  </a>
-                </li>
-              </ul>
-              <svg
-                width="330"
-                xmlns="http://www.w3.org/2000/svg"
-                height="20"
-                viewBox="0 0 330 20"
-                preserveAspectRatio="none"
-                className="page-icon18"
-              >
-                <path
-                  d="M0 10 H330"
-                  fill="none"
-                  stroke="#000000"
-                  strokeWidth="0.5"
-                  vectorEffect="non-scaling-stroke"
-                  strokeDasharray="11 11"
-                ></path>
-              </svg>
-              <svg
-                width="330"
-                xmlns="http://www.w3.org/2000/svg"
-                height="20"
-                viewBox="0 0 330 20"
-                preserveAspectRatio="none"
-                className="page-icon20"
-              >
-                <path
-                  d="M0 10 H330"
-                  fill="none"
-                  stroke="#000000"
-                  strokeWidth="0.5"
-                  vectorEffect="non-scaling-stroke"
-                  strokeDasharray="11 11"
-                ></path>
-              </svg>
-              <svg
-                width="20"
-                xmlns="http://www.w3.org/2000/svg"
-                height="110"
-                viewBox="0 0 20 110"
-                preserveAspectRatio="none"
-                className="page-icon22"
-              >
-                <path
-                  d="M10 0 V110"
-                  fill="none"
-                  stroke="#000000"
-                  strokeWidth="0.5"
-                  vectorEffect="non-scaling-stroke"
-                  strokeDasharray="11 11"
-                ></path>
-              </svg>
-              <svg
-                width="20"
-                xmlns="http://www.w3.org/2000/svg"
-                height="110"
-                viewBox="0 0 20 110"
-                preserveAspectRatio="none"
-                className="page-icon24"
-              >
-                <path
-                  d="M10 0 V110"
-                  fill="none"
-                  stroke="#000000"
-                  strokeWidth="0.5"
-                  vectorEffect="non-scaling-stroke"
-                  strokeDasharray="11 11"
-                ></path>
-              </svg>
-            </section>
+            <AnchorLinksSection
+              title="Стиральная машина не набирает воду:"
+              items={[
+                { icon: '/external/vector8669-r6fr.svg', href: '#1', text: 'Что делать, если машина не набирает воду?' },
+                { icon: '/vector.svg', href: '#2', text: 'Основные причины поломки:' },
+                { icon: '/external/vector8669-r6fr.svg', href: '#2', text: '1. Закрыт кран подачи воды / Низкое давление' },
+                { icon: '/external/vector8669-r6fr.svg', href: '#3', text: '2. Повреждён замок дверцы (блокировка люка).' },
+                { icon: '/external/vector8669-r6fr.svg', href: '#4', text: '3. Пережат или перекручен заливной шланг' },
+                { icon: '/external/vector8669-r6fr.svg', href: '#5', text: '4. Неисправен впускной клапан' },
+                { icon: '/external/vector8669-r6fr.svg', href: '#5-1', text: '5. Неисправность датчика уровня воды (прессостата)' },
+                { icon: '/external/vector8669-r6fr.svg', href: '#5-2', text: '6. Повреждён модуль управления' },
+              ]}
+            />
             <section id="1" className="page-firstproblem">
               <div className="page-container12 zagolovkiskorobkoy">
                 <h2 className="zagolovki2">
@@ -305,46 +103,46 @@ const Page = (props) => {
                 <div className="vicetext">
                   <p>
                     <strong>1. Выключите питание и закройте кран.</strong><br />
-                    Прежде чем проверять узлы машины, отключите её от электросети и перекройте подачу воды. Так ��ы обезопасите себя и технику.
+                    Прежде чем проверять узлы машины, отключите её от электросети и перекройте подачу воды. Так вы обезопасите себя и технику.
                   </p>
 
                   <p>
                     <strong>2. Проверьте кран и напор.</strong><br />
-                    Откройте кран на полную мощность и оцените напор. Если воды нет в кране, позвоните в коммунальную службу. Если вентиль был за��рыт, полностью его откройте.
+                    Откройте кран на полную мощность и оцените напор. Если воды нет в кране, позвоните в коммунальную службу. Если вентиль был закрыт, полностью его откройте.
                   </p>
 
                   <p>
                     <strong>3. Осмотрите заливной шланг.</strong><br />
-                    Убедитесь, что на шланг ничего не давит и нет перегибов. Открутите его от машины (не забудьте поставить под него таз) и проверьте, идёт ли из него вода. Если шл��нг пережат или перекручен, распрямите его или замените.
+                    Убедитесь, что на шланг ничего не давит и нет перегибов. Открутите его от машины (не забудьте поставить под него таз) и проверьте, идёт ли из него вода. Если шланг пережат или перекручен, распрямите его или замените.
                   </p>
 
                   <p>
                     <strong>4. Очистите сетчатый фильтр.</strong><br />
-                    Перекройте воду, аккуратно открутите шланг у машины и достаньте сеточку-фильтр. Промойте её от загрязне��ий под сильной струёй или почистите щёткой. Соберите всё обратно.
+                    Перекройте воду, аккуратно открутите шланг у машины и достаньте сеточку-фильтр. Промойте её от загрязнений под сильной струёй или почистите щёткой. Соберите всё обратно.
                   </p>
 
                   <p>
                     <strong>5. Проверьте дверцу.</strong><br />
-                    Убедитесь, что люк закрывается плотно и фиксируется. Если бе��ьё мешает закрытию, правильно уложите вещи. Маши��а не начнёт залив, пока замок не сработает.
+                    Убедитесь, что люк закрывается плотно и фиксируется. Если бельё мешает закрытию, правильно уложите вещи. Машина не начнёт залив, пока замок не сработает.
                   </p>
 
                   <p>
                     <strong>6. Перезагрузите машину.</strong><br />
-                    Иногда помог��ет простой сброс: отключите СМА от сети на 10–15 секунд, затем включите з��ново. Это снимает случ��йные ошибки бл��ка управления.
+                    Иногда помогает простой сброс: отключите СМА от сети на 10–15 секунд, затем включите заново. Это снимает случайные ошибки бллка управления.
                   </p>
                 </div>
               </div>
             </section>
             <div className="page-container15">
               <h2 className="page-text34">
-                <span>Основны�� пр��ч��ны поломки:</span>
+                <span>Основные причины неисправности:</span>
                 <br></br>
               </h2>
             </div>
             <section id="2" className="page-thirdproblem1">
               <div className="page-container16 zagolovkiskorobkoy">
                 <h3 className="zagolovki2">
-                  1. Закрыт кран подачи воды / ��изкое давление
+                  1. Закрыт кран подачи воды / низкое давление
                 </h3>
                 <svg
                   width="330"
@@ -379,7 +177,7 @@ const Page = (props) => {
                 </figure>
                 <p className="vicetext">
                   {' '}
-                  Водяной кран – это вент��ль на трубе, подающей воду к машинке. Если он закрыт или нап��р воды очень слабый, вода в машину просто не поступает. Признак тако�� неисправн��сти: машина пытается начать работу (гудит), но вода не набирается или идёт очень медленно. Убедит��сь, что вентиль п��лностью открыт (ручка параллельна трубе).Если напор в кране ��лабый, попробуйте подождать стабилизации давления или сообщить об этом в ЖКХ. Если кран сломан или не держит герметичность, вызовите сантехника или мастера.
+                  Водяной кран – это вентиль на трубе, подающей воду к машинке. Если он закрыт или напор воды очень слабый, вода в машину просто не поступает. Признак такой неисправности: машина пытается начать работу (гудит), но вода не набирается или идёт очень медленно. Убедитесь, что вентиль полностью открыт (ручка параллельна трубе).Если напор в кране слабый, попробуйте подождать стабилизации давления или сообщить об этом в ЖКХ. Если кран сломан или не держит герметичность, вызовите сантехника или мастера.
                 </p>
               </div>
             </section>
@@ -419,14 +217,14 @@ const Page = (props) => {
                 </figure>
                 <p className="vicetext">
                   {' '}
-                  Устройство блокировки люка (УБЛ) фиксирует дверцу перед стартом. Если оно изношено или сломано, дверца не закрывается плот��о и стирка не начнётся. Симптом: машинка не запускается вообще, лю�� может остаться незаблокированным, часто загорается ошибка. Пр��верьте, плотно ли закрывается лю�� – он должен щёлкать. Если замок не срабатывает, машина «гудит», но воды не ��абирается. Осмотрите упл��тнитель и корпус замка: при деформации или поломке ну��ен мастер.
+                  Устройство блокировки люка (УБЛ) фиксирует дверцу перед стартом. Если оно изношено или сломано, дверца не закрывается плотно и стирка не начнётся. Симптом: машинка не запускается вообще, люк может остаться незаблокированным, часто загорается ошибка. Проверьте, плотно ли закрывается люк – он должен щёлкать. Если замок не срабатывает, машина «гудит», но воды не набирается. Осмотрите уплотнитель и корпус замка: при деформации или поломке нужен мастер.
                 </p>
               </div>
             </section>
             <section id="4" className="page-fiveproblem1">
               <div className="page-container22 zagolovkiskorobkoy">
                 <h3 className="zagolovki2">
-                  3. Пережат или перекруче�� заливной шл��нг
+                  3. Пережат или перекручен заливной шланг
                 </h3>
                 <svg
                   width="330"
@@ -458,7 +256,7 @@ const Page = (props) => {
                 </figure>
                 <p className="page-text46 vicetext">
                   {' '}
-                  Заливной шланг – гибкая т��убка от крана к машине. Он не должен быть перегибом, пережатием или смятием. Если на шланг наступили или он перекручен, вода не пойдёт. Симптом – машинка «жужжит», но залив не начинается. Остановите ��ашину, отключите воду, осмотрите шланг. При обнаружении изгиба или зажима распрямите шланг и уберите преп��тствие. Если шланг повреждён (порван, сильно изношен), замените его.
+                  Заливной шланг – гибкая трубка от крана к машине. Он не должен быть перегибом, пережатием или смятием. Если на шланг наступили или он перекручен, вода не пойдёт. Симптом – машинка «жужжит», но залив не начинается. Остановите машину, отключите воду, осмотрите шланг. При обнаружении изгиба или зажима распрямите шланг и уберите препятствие. Если шланг повреждён (порван, сильно изношен), замените его.
                   <span
                     dangerouslySetInnerHTML={{
                       __html: ' ',
@@ -493,7 +291,7 @@ const Page = (props) => {
               <div className="page-container26">
                 <figure className="page-container27">
                   <img
-                    alt="впу��кной клапан"
+                    alt="впускной клапан"
                     src="5/klapan.webp"
                     loading="lazy"
                     className="page-image38230525"
@@ -502,7 +300,7 @@ const Page = (props) => {
                 </figure>
                 <p className="page-text49 vicetext">
                   {' '}
-                  Впус��ной клапан – электромагнитный клапан внутри машины, к��торый открывает и закрывает поток воды по команде платы. При его поломке клапан не открывается полностью и машина ��изически не может набрать нужное количество воды. Признаки: люк закрыт, машина включается, но вода не пост��пает или поступает очень мало, на дисплее может загореться код ош��бки набора воды. Этот узел ��е подлежит ремонту — при подозрении на его поломку нужно вызвать мастера, который заменит клапан
+                  Впускной клапан – электромагнитный клапан внутри машины, который открывает и закрывает поток воды по команде платы. При его поломке клапан не открывается полностью и машина физически не может набрать нужное количество воды. Признаки: люк закрыт, машина включается, но вода не поступает или поступает очень мало, на дисплее может загореться код ошибки набора воды. Этот узел не подлежит ремонту — при подозрении на его поломку нужно вызвать мастера, который заменит клапан.
                   <span
                     dangerouslySetInnerHTML={{
                       __html: ' ',
@@ -514,7 +312,7 @@ const Page = (props) => {
             <section id="5-1" className="page-fiveproblem2">
               <div className="page-container25 zagolovkiskorobkoy">
                 <h3 className="zagolovki2">
-                  5. Неисправность датчика уров��я воды (прессостата)
+                  5. Неисправность датчика уровня воды (прессостата)
                 </h3>
                 <svg
                   width="330"
@@ -546,7 +344,7 @@ const Page = (props) => {
                 </figure>
                 <p className="page-text49 vicetext">
                   {' '}
-                  Прессостат ��� да��чик, ��пределяющий уровень воды в баке. Если прессостат «залип» (считал бак полным) или вышел из строя, машина не начнёт зали�� воды вообще. Симптомы сх��жи с клапаном: л��к блокируется, но залива нет, появляется ошибка «набор воды» или «прессостат» на дисплее. Иногда вода может сливаться сразу, создаётся ложная сигнализация об избыточном уровне. Пользователь может прове��ить шланг прессостата на засор (и прочистить его), но обычно требуется замена датчика.
+                  Прессостат – датчик, определяющий уровень воды в баке. Если прессостат «залип» (считал бак полным) или вышел из строя, машина не начнёт залив воды вообще. Симптомы схожи с клапаном: люк блокируется, но залива нет, появляется ошибка «набор воды» или «прессостат» на дисплее. Иногда вода может сливаться сразу, создаётся ложная сигнализация об избыточном уровне. Пользователь может проверить шланг прессостата на засор (и прочистить его), но обычно требуется замена датчика.
                   <span
                     dangerouslySetInnerHTML={{
                       __html: ' ',
@@ -586,11 +384,11 @@ const Page = (props) => {
                     loading="lazy"
                     className="page-image38230525"
                   />
-                  <span className="page-text48">Бл��к управления</span>
+                  <span className="page-text48">Блок управления</span>
                 </figure>
                 <p className="page-text49 vicetext">
                   {' '}
-                  Плата управле��ия — «мозг» стиральной машины. Ес��и она с��оит (из-за перепада напряжения или попа��ания влаги), команды на залив воды могут не передаваться. Призна��и: после включения стирки ма��ина блокирует люк, но воды не набирает, нередко выскакивает ��шибка набора воды. Эта неисправность требует диагностики и ремонта.
+                  Плата управления — «мозг» стиральной машины. Если она сбоит (из-за перепада напряжения или попадания влаги), команды на залив воды могут не передаваться. Признаки: после включения стирки машина блокирует люк, но воды не набирает, нередко выскакивает ошибка набора воды. Эта неисправность требует диагностики и ремонта.
                   <span
                     dangerouslySetInnerHTML={{
                       __html: ' ',
@@ -599,205 +397,11 @@ const Page = (props) => {
                 </p>
               </div>
             </section>
-            <section className="page-better-call-master">
-              <svg
-                width="100%"
-                xmlns="http://www.w3.org/2000/svg"
-                height="17"
-                viewBox="0 0 10 20"
-                preserveAspectRatio="none"
-                className="page-icon36"
-              >
-                <circle
-                  r="3.75"
-                  cx="5"
-                  cy="10"
-                  fill="#606060"
-                  vectorEffect="non-scaling-stroke"
-                ></circle>
-              </svg>
-              <svg
-                width="100%"
-                xmlns="http://www.w3.org/2000/svg"
-                height="17"
-                viewBox="0 0 10 20"
-                preserveAspectRatio="none"
-                className="page-icon38"
-              >
-                <circle
-                  r="3.75"
-                  cx="5"
-                  cy="10"
-                  fill="#606060"
-                  vectorEffect="non-scaling-stroke"
-                ></circle>
-              </svg>
-              <svg
-                width="100%"
-                xmlns="http://www.w3.org/2000/svg"
-                height="17"
-                viewBox="0 0 10 20"
-                preserveAspectRatio="none"
-                className="page-icon40"
-              >
-                <circle
-                  r="3.75"
-                  cx="5"
-                  cy="10"
-                  fill="#606060"
-                  vectorEffect="non-scaling-stroke"
-                ></circle>
-              </svg>
-              <svg
-                width="100%"
-                xmlns="http://www.w3.org/2000/svg"
-                height="17"
-                viewBox="0 0 10 20"
-                preserveAspectRatio="none"
-                className="page-icon42"
-              >
-                <circle
-                  r="3.75"
-                  cx="5"
-                  cy="10"
-                  fill="#606060"
-                  vectorEffect="non-scaling-stroke"
-                ></circle>
-              </svg>
-              <svg
-                width="330"
-                xmlns="http://www.w3.org/2000/svg"
-                height="20"
-                viewBox="0 0 330 20"
-                preserveAspectRatio="none"
-                className="page-icon44"
-              >
-                <path
-                  d="M0 10 H330"
-                  fill="none"
-                  stroke="#000000"
-                  strokeWidth="0.5"
-                  vectorEffect="non-scaling-stroke"
-                  strokeDasharray="11 11"
-                ></path>
-              </svg>
-              <svg
-                width="330"
-                xmlns="http://www.w3.org/2000/svg"
-                height="20"
-                viewBox="0 0 330 20"
-                preserveAspectRatio="none"
-                className="page-icon46"
-              >
-                <path
-                  d="M0 10 H330"
-                  fill="none"
-                  stroke="#000000"
-                  strokeWidth="0.5"
-                  vectorEffect="non-scaling-stroke"
-                  strokeDasharray="11 11"
-                ></path>
-              </svg>
-              <svg
-                width="20"
-                xmlns="http://www.w3.org/2000/svg"
-                height="110"
-                viewBox="0 0 20 110"
-                preserveAspectRatio="none"
-                className="page-icon48"
-              >
-                <path
-                  d="M10 0 V110"
-                  fill="none"
-                  stroke="#000000"
-                  strokeWidth="0.5"
-                  vectorEffect="non-scaling-stroke"
-                  strokeDasharray="11 11"
-                ></path>
-              </svg>
-              <svg
-                width="20"
-                xmlns="http://www.w3.org/2000/svg"
-                height="110"
-                viewBox="0 0 20 110"
-                preserveAspectRatio="none"
-                className="page-icon50"
-              >
-                <path
-                  d="M10 0 V110"
-                  fill="none"
-                  stroke="#000000"
-                  strokeWidth="0.5"
-                  vectorEffect="non-scaling-stroke"
-                  strokeDasharray="11 11"
-                ></path>
-              </svg>
-              <h2 className="page-text50">Когда вызывать мастера?</h2>
-              <p className="page-text51">
-                <span className="page-text52">
-                  Если вы выполнили все рекомендации, но проблема осталась —
-                  обрати��есь в сервис
-                  <span
-                    dangerouslySetInnerHTML={{
-                      __html: ' ',
-                    }}
-                  />
-                </span>
-                <span className="page-text53">&quot;</span>
-                <span className="page-text54">��емCтирМаш</span>
-                <span className="page-text55">&quot;</span>
-                <span className="page-text56">.</span>
-                <span className="page-text57">
-                  {' '}
-                  Наши специалисты быстро прие��ут к вам в желаемое вами время в
-                  любой район О��ессы и выполнят качественную диагностику ��
-                  ремонт.
-                </span>
-              </p>
-              <svg
-                width="330"
-                xmlns="http://www.w3.org/2000/svg"
-                height="20"
-                viewBox="0 0 330 20"
-                preserveAspectRatio="none"
-                className="page-icon52"
-              >
-                <path
-                  d="M0 10 H330"
-                  fill="none"
-                  stroke="#000000"
-                  strokeWidth="0.5"
-                  vectorEffect="non-scaling-stroke"
-                  strokeDasharray="11 11"
-                ></path>
-              </svg>
-              <strong className="page-text58">Работаем без выходных</strong>
-              <div className="page-container28">
-                <div className="page-container29">
-                  <div className="page-container30">
-                    <img
-                      alt="image"
-                      src="/image%203823106.svg"
-                      className="page-image3"
-                    />
-                    <strong className="page-text59">+38 (048) 253-23-23</strong>
-                  </div>
-                  <div className="page-container31">
-                    <img
-                      alt="image"
-                      src="/image%203823107.svg"
-                      className="page-image4"
-                    />
-                    <strong className="page-text60">+38 (048) 123-35-21</strong>
-                  </div>
-                </div>
-                <OrderButton onClick={openModal} text="Заказать мастера" />
-              </div>
-            </section>
+            <CallMasterSection onOrderClick={openModal} />
             <PageNavigation
               prevPage={{
                 href: '/neotjimaet',
-                title: 'Стиральна�� машина не отжимает'
+                title: 'Стиральная машина не отжимает'
               }}
               nextPage={{
                 href: '/neotkrivaetsadverca',
@@ -823,12 +427,12 @@ const Page = (props) => {
             </svg>
             <RelatedArticles />
           </div>
-          <div className="page-dops-info">
-            <section className="page-frame1299">
+          <div className="page-dops-info"><InterestingAside />
+            <section className="page-frame1299" style={{display:"none"}}>
               <span className="page-text72">Вам б��дет интересно:</span>
               <div className="page-frame12981">
                 <span className="page-text73">
-                  Ошибки, котор��е приводят к дорогостоящему ремонту (и как их
+                  Ошибки, ��отор��е приводят к дорогостоящему ремонту (и как их
                   избежать)
                 </span>
                 <div className="page-container45"></div>
@@ -878,6 +482,7 @@ const Page = (props) => {
             width: 100%;
             display: flex;
             min-height: 100vh;
+            min-height: 100dvh;
             align-items: center;
             flex-direction: column;
             background-color: #ffffff;
@@ -952,7 +557,7 @@ const Page = (props) => {
             color: rgb(80, 80, 80);
             width: 100%;
             height: auto;
-            font-size: 32px;
+            font-size: 35px;
             align-self: flex-start;
             text-align: left;
             font-family: 'Noto Serif SC';
@@ -960,6 +565,7 @@ const Page = (props) => {
             line-height: normal;
             font-stretch: normal;
             text-decoration: none;
+            margin: 0 0 8px 0;
           }
           .page-text11 {
             color: var(--dl-color-theme-neutral-dark);
@@ -2383,6 +1989,9 @@ const Page = (props) => {
             .page-frame1299 {
               display: none;
             }
+            .page-dops-info {
+              display: none;
+            }
           }
           @media (max-width: 767px) {
             .page-left-main-box {
@@ -2445,7 +2054,7 @@ const Page = (props) => {
             .page-text10 {
               fill: #373333;
               color: rgb(55, 51, 51);
-              font-size: 25px;
+              font-size: 24px;
               font-style: normal;
               text-align: center;
               font-family: Noto Serif SC;
@@ -2520,54 +2129,21 @@ const Page = (props) => {
             }
             .page-container18 { gap: var(--dl-layout-space-halfunit); width: 280px; max-width: 280px; min-width: 280px; height: auto; min-height: 0; margin: 12px auto 16px; float: none; }
             .page-image38230522 { width: 100%; height: 170px; object-fit: cover; min-width: 0; min-height: 0; }
-            .page-container21 {
-              gap: var(--dl-layout-space-halfunit);
-              height: 100%;
-              max-width: var(--dl-layout-size-xxlarge);
-              min-width: 100%;
-              min-height: 100%;
-              margin-bottom: 14px;
-            }
-            .page-image38230523 {
-              width: 100%;
-              min-width: 50%;
-              min-height: 50px;
-            }
+            .page-container21 { gap: var(--dl-layout-space-halfunit); width: 280px; max-width: 280px; min-width: 280px; height: auto; min-height: 0; margin: 12px auto 16px; float: none; }
+            .page-image38230523 { width: 100%; height: 170px; object-fit: cover; min-width: 0; min-height: 0; }
             .page-text40 {
               font-size: 13px;
             }
-            .page-container24 {
-              gap: var(--dl-layout-space-halfunit);
-              height: 100%;
-              max-width: 100%;
-              min-width: 100%;
-              min-height: 100%;
-              margin-bottom: 14px;
-            }
-            .page-image38230524 {
-              width: 100%;
-              min-width: 50%;
-              min-height: 50px;
-            }
+            .page-container24 { gap: var(--dl-layout-space-halfunit); width: 280px; max-width: 280px; min-width: 280px; height: auto; min-height: 0; margin: 12px auto 16px; float: none; }
+            .page-image38230524 { width: 100%; height: 170px; object-fit: cover; min-width: 0; min-height: 0; }
             .page-text45 {
               font-size: 13px;
               font-style: normal;
               font-family: Roboto;
               font-weight: 400;
             }
-            .page-container27 {
-              gap: var(--dl-layout-space-halfunit);
-              height: 100%;
-              max-width: 100%;
-              min-width: 100%;
-              min-height: 100%;
-              margin-bottom: 14px;
-            }
-            .page-image38230525 {
-              width: 100%;
-              min-width: 50%;
-              min-height: 50px;
-            }
+            .page-container27 { gap: var(--dl-layout-space-halfunit); width: 280px; max-width: 280px; min-width: 280px; height: auto; min-height: 0; margin: 12px auto 16px; float: none; }
+            .page-image38230525 { width: 100%; height: 170px; object-fit: cover; min-width: 0; min-height: 0; }
             .page-text48 {
               font-size: 13px;
               font-style: normal;

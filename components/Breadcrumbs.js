@@ -25,13 +25,13 @@ const Breadcrumbs = ({ customItems = null, style = 'default', className = '' }) 
       breadcrumbs.push({ name: 'Выкуп б/у машин', href: '/vikup' })
     }
 
-    // Проблемы с��иральных машин
+    // Проблемы стиральных машин
     const problemPages = {
-      '/neslivaetvodu': 'Стиральная машина не сли��ает воду',
-      '/negreetvodu': 'Стиральная м��шина не греет воду',
+      '/neslivaetvodu': 'Стиральная машина не сливает воду',
+      '/negreetvodu': 'Стиральная машина не греет воду',
       '/protekaet': 'Стиральная машина протекает',
-      '/silnoshumit': 'С��иральная машина шумит при отжиме',
-      '/nevkluchaetsa': 'Стиральн��я машина не включается',
+      '/silnoshumit': 'Стиральная машина шумит при отжиме',
+      '/nevkluchaetsa': 'Стиральная машина не включается',
       '/zavisaetnaprogramme': 'Стиральная машина зависает на программе',
       '/neotjimaet': 'Стиральная машина не отжимает',
       '/nenabiraetvodu': 'Стиральная машина не набирает воду',
@@ -48,7 +48,7 @@ const Breadcrumbs = ({ customItems = null, style = 'default', className = '' }) 
     const generalArticles = {
       '/jirniepyatna': 'Как избавиться от жирных пятен на одежде',
       '/jvachka': 'Как самостоятельно удалить жвачку с одежды',
-      '/vlapalisvkrov': 'Как удалить пятна крови с одеж��ы',
+      '/vlapalisvkrov': 'Как удалить пятна крови с одежды',
       '/puhovik': 'Как правильно стирать пуховик'
     }
 
@@ -62,6 +62,15 @@ const Breadcrumbs = ({ customItems = null, style = 'default', className = '' }) 
 
   const breadcrumbs = getBreadcrumbs()
 
+  const baseUrl = 'https://remstirmash.od.ua'
+  const itemListElement = breadcrumbs.map((item, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    name: item.name,
+    item: `${baseUrl}${item.href}`
+  }))
+  const jsonLd = { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement }
+
   // Убираем текущую страницу из крошек - показываем только путь к ней
   const breadcrumbsWithoutCurrent = breadcrumbs.slice(0, -1)
 
@@ -71,7 +80,7 @@ const Breadcrumbs = ({ customItems = null, style = 'default', className = '' }) 
   }
 
   return (
-    <nav className={`breadcrumbs-container ${style} ${className}`}>
+    <nav aria-label="breadcrumb" className={`breadcrumbs-container ${style} ${className}`}>
       <div className={`breadcrumbs-wrapper ${isLeft ? 'left' : ''}`}>
         <ol className={`breadcrumbs-list ${isLeft ? 'align-left' : ''}`}>
           {breadcrumbsWithoutCurrent.map((item, index) => (
@@ -89,6 +98,7 @@ const Breadcrumbs = ({ customItems = null, style = 'default', className = '' }) 
             </li>
           ))}
         </ol>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       </div>
 
       <style jsx>
@@ -96,17 +106,23 @@ const Breadcrumbs = ({ customItems = null, style = 'default', className = '' }) 
           .breadcrumbs-container {
             background-color: transparent;
             border-bottom: none;
-            padding: 12px 0;
+            padding: 6px 0;
             margin-top: 0;
+            width: 100%;
+            text-align: left;
+            display: block;
           }
 
           /* Стиль с выравниванием слева */
           .breadcrumbs-container.white-left {
             background-color: transparent;
             border-bottom: none;
-            padding: 15px 0;
+            padding: 8px 0;
             box-shadow: none;
             margin-top: 0;
+            width: 100%;
+            text-align: left;
+            display: block;
           }
 
           .breadcrumbs-container.white-left .breadcrumbs-wrapper {
@@ -118,12 +134,17 @@ const Breadcrumbs = ({ customItems = null, style = 'default', className = '' }) 
           .breadcrumbs-container.white-left .breadcrumbs-list {
             justify-content: flex-start;
           }
+          .breadcrumbs-container.white-left .breadcrumbs-wrapper {
+            text-align: left;
+          }
 
           .breadcrumbs-wrapper {
-            max-width: 1400px;
+            max-width: 1300px;
+            width: auto;
             margin: 0 auto;
             padding: 0 var(--dl-layout-space-unit);
-            text-align: center;
+            text-align: left;
+            display: block;
           }
 
           .breadcrumbs-list {
@@ -134,7 +155,11 @@ const Breadcrumbs = ({ customItems = null, style = 'default', className = '' }) 
             padding: 0;
             flex-wrap: wrap;
             gap: 2px;
-            justify-content: center;
+            justify-content: flex-start;
+          }
+          /* Force left align when white-left variant is used */
+          .breadcrumbs-container.white-left .breadcrumbs-list {
+            justify-content: flex-start;
           }
 
           .breadcrumbs-wrapper.left {
@@ -177,6 +202,18 @@ const Breadcrumbs = ({ customItems = null, style = 'default', className = '' }) 
 
 
           /* Адаптивность */
+          @media (min-width: 992px) and (max-width: 1199px) {
+            .breadcrumbs-wrapper,
+            .breadcrumbs-container.white-left .breadcrumbs-wrapper {
+              transform: translateX(-6px);
+            }
+          }
+          @media (min-width: 1200px) {
+            .breadcrumbs-wrapper,
+            .breadcrumbs-container.white-left .breadcrumbs-wrapper {
+              transform: translateX(-10px);
+            }
+          }
           @media (min-width: 488px) {
             .breadcrumbs-container {
               margin-top: 0;
@@ -187,15 +224,25 @@ const Breadcrumbs = ({ customItems = null, style = 'default', className = '' }) 
             .breadcrumbs-container {
               padding: 8px 0;
               margin-top: 0;
+              width: 100%;
+              display: block;
+              text-align: left;
             }
 
             .breadcrumbs-wrapper {
               padding: 0 15px;
+              width: auto;
+              margin: 0 auto;
+              text-align: left;
+              transform: none;
             }
 
             .breadcrumb-item {
               font-size: 0.75rem;
+              display: flex;
             }
+            .breadcrumb-item:not(:last-child) { display: none; }
+            .breadcrumb-separator { display: none; }
 
 
             .breadcrumb-separator {
@@ -216,15 +263,25 @@ const Breadcrumbs = ({ customItems = null, style = 'default', className = '' }) 
             .breadcrumbs-container {
               padding: 6px 0;
               margin-top: 0;
+              width: 100%;
+              display: block;
+              text-align: left;
             }
 
             .breadcrumbs-wrapper {
               padding: 0 10px;
+              width: auto;
+              margin: 0 auto;
+              text-align: left;
+              transform: none;
             }
 
             .breadcrumb-item {
               font-size: 0.7rem;
+              display: flex;
             }
+            .breadcrumb-item:not(:last-child) { display: none; }
+            .breadcrumb-separator { display: none; }
 
 
             .breadcrumb-separator {
@@ -240,10 +297,6 @@ const Breadcrumbs = ({ customItems = null, style = 'default', className = '' }) 
               padding: 1px 3px;
             }
 
-            /* На очень маленьких экранах показываем только последний элемент */
-            .breadcrumb-item:not(:last-child) {
-              display: none;
-            }
           }
         `}
       </style>

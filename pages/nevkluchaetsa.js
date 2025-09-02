@@ -6,9 +6,13 @@ import MainFooter from '../components/MainFooter'
 import SEOHead from '../components/SEOHead'
 import PageNavigation from '../components/PageNavigation'
 import OrderButton from '../components/OrderButton'
-import OrderModal from '../components/OrderModal'
+import dynamic from 'next/dynamic'
+const OrderModal = dynamic(() => import('../components/OrderModal'), { ssr: false })
 import Breadcrumbs from '../components/Breadcrumbs'
-import RelatedArticles from '../components/RelatedArticles'
+const RelatedArticles = dynamic(() => import('../components/RelatedArticles'), { ssr: false })
+import AnchorLinksSection from '../components/AnchorLinksSection'
+import CallMasterSection from '../components/CallMasterSection'
+import InterestingAside from '../components/InterestingAside'
 import { getSEOData } from '../utils/seoConfig'
 import { getProblemPageStructuredData } from '../utils/structuredData'
 
@@ -26,7 +30,7 @@ const Page = (props) => {
   const baseUrl = 'https://remstirmash.od.ua'
   const structuredData = getProblemPageStructuredData(
     'Ремонт стиральной машины которая не включается',
-    'Профессиональный ремонт с��иральных машин которые не включаются в Одессе. Диагностика блока питания, ремонт управления.',
+    'Профессиональный ремонт стиральных машин которые не включаются в Одессе. Диагностика блока питания, ремонт управления.',
     `${baseUrl}/nevkluchaetsa`
   )
 
@@ -49,7 +53,7 @@ const Page = (props) => {
             <div className="page-headertextwashermachine">
               <h1 className="page-text10">
                 <span className="page-text11">
-                  Стиральная машина не включ��ется: —
+                  Стиральная машина не включается: —
                 </span>
                 <span className="page-text12">
                   <span
@@ -61,226 +65,23 @@ const Page = (props) => {
                 <span className="page-text13">что делать?</span>
               </h1>
             </div>
-            <section className="page-container11">
-              <svg
-                width="100%"
-                xmlns="http://www.w3.org/2000/svg"
-                height="17"
-                viewBox="0 0 10 20"
-                preserveAspectRatio="none"
-                className="page-icon10"
-              >
-                <circle
-                  r="3.75"
-                  cx="5"
-                  cy="10"
-                  fill="#606060"
-                  vectorEffect="non-scaling-stroke"
-                ></circle>
-              </svg>
-              <svg
-                width="100%"
-                xmlns="http://www.w3.org/2000/svg"
-                height="17"
-                viewBox="0 0 10 20"
-                preserveAspectRatio="none"
-                className="page-icon12"
-              >
-                <circle
-                  r="3.75"
-                  cx="5"
-                  cy="10"
-                  fill="#606060"
-                  vectorEffect="non-scaling-stroke"
-                ></circle>
-              </svg>
-              <svg
-                width="100%"
-                xmlns="http://www.w3.org/2000/svg"
-                height="17"
-                viewBox="0 0 10 20"
-                preserveAspectRatio="none"
-                className="page-icon14"
-              >
-                <circle
-                  r="3.75"
-                  cx="5"
-                  cy="10"
-                  fill="#606060"
-                  vectorEffect="non-scaling-stroke"
-                ></circle>
-              </svg>
-              <svg
-                width="100%"
-                xmlns="http://www.w3.org/2000/svg"
-                height="17"
-                viewBox="0 0 10 20"
-                preserveAspectRatio="none"
-                className="page-icon16"
-              >
-                <circle
-                  r="3.75"
-                  cx="5"
-                  cy="10"
-                  fill="#606060"
-                  vectorEffect="non-scaling-stroke"
-                ></circle>
-              </svg>
-              <strong className="page-text14">
-                <span>Стиральная машина н�� включается:</span>
-                <br></br>
-              </strong>
-              <ul className="page-ul list">
-                <li className="page-li1 list-item">
-                  <img
-                    alt="Vector8669"
-                    src="/external/vector8669-r6fr.svg"
-                    className="page-vector1"
-                  />
-                  <a href="#1" className="page-link1 ge">
-                    1. Что делать, если машина не включается?
-                  </a>
-                </li>
-                <li className="page-li2 list-item">
-                  <img alt="image" src="/vector.svg" className="page-image2" />
-                  <a href="#2" className="page-link2">
-                    Основные ��ричины поломки:
-                  </a>
-                </li>
-                <li className="page-li3 list-item">
-                  <img
-                    alt="Vector8669"
-                    src="/external/vector8669-r6fr.svg"
-                    className="page-vector2"
-                  />
-                  <a href="#2" className="page-link3 ge">
-                    1. Нет питания
-                  </a>
-                </li>
-                <li className="page-li4 list-item ge">
-                  <img
-                    alt="Vector8669"
-                    src="/external/vector8669-r6fr.svg"
-                    className="page-vector3"
-                  />
-                  <a href="#3" className="page-link4">
-                    2. Перегорел сетевой фильтр
-                  </a>
-                </li>
-                <li className="page-li5 list-item">
-                  <img
-                    alt="Vector8669"
-                    src="/external/vector8669-r6fr.svg"
-                    className="page-vector4"
-                  />
-                  <a href="#4" className="page-link5 ge">
-                    3. Вы��ел из строя центральный модуль управления
-                  </a>
-                </li>
-                <li className="page-li6 list-item">
-                  <img
-                    alt="Vector8669"
-                    src="/external/vector8669-r6fr.svg"
-                    className="page-vector5"
-                  />
-                  <a href="#5" className="page-link6 ge">
-                    4. ��зносились щётки ��вигателя
-                  </a>
-                </li>
-                <li className="page-li6 list-item">
-                  <img
-                    alt="Vector8669"
-                    src="/external/vector8669-r6fr.svg"
-                    className="page-vector5"
-                  />
-                  <a href="#5-1" className="page-link6 ge">
-                    5. Неисправность замка люка (УБЛ)
-                  </a>
-                </li>
-                <li className="page-li6 list-item">
-                  <img
-                    alt="Vector8669"
-                    src="/external/vector8669-r6fr.svg"
-                    className="page-vector5"
-                  />
-                  <a href="#5-2" className="page-link6 ge">
-                    6. Неисправен впускной клапан или нет подачи воды
-                  </a>
-                </li>
-              </ul>
-              <svg
-                width="330"
-                xmlns="http://www.w3.org/2000/svg"
-                height="20"
-                viewBox="0 0 330 20"
-                preserveAspectRatio="none"
-                className="page-icon18"
-              >
-                <path
-                  d="M0 10 H330"
-                  fill="none"
-                  stroke="#000000"
-                  strokeWidth="0.5"
-                  vectorEffect="non-scaling-stroke"
-                  strokeDasharray="11 11"
-                ></path>
-              </svg>
-              <svg
-                width="330"
-                xmlns="http://www.w3.org/2000/svg"
-                height="20"
-                viewBox="0 0 330 20"
-                preserveAspectRatio="none"
-                className="page-icon20"
-              >
-                <path
-                  d="M0 10 H330"
-                  fill="none"
-                  stroke="#000000"
-                  strokeWidth="0.5"
-                  vectorEffect="non-scaling-stroke"
-                  strokeDasharray="11 11"
-                ></path>
-              </svg>
-              <svg
-                width="20"
-                xmlns="http://www.w3.org/2000/svg"
-                height="110"
-                viewBox="0 0 20 110"
-                preserveAspectRatio="none"
-                className="page-icon22"
-              >
-                <path
-                  d="M10 0 V110"
-                  fill="none"
-                  stroke="#000000"
-                  strokeWidth="0.5"
-                  vectorEffect="non-scaling-stroke"
-                  strokeDasharray="11 11"
-                ></path>
-              </svg>
-              <svg
-                width="20"
-                xmlns="http://www.w3.org/2000/svg"
-                height="110"
-                viewBox="0 0 20 110"
-                preserveAspectRatio="none"
-                className="page-icon24"
-              >
-                <path
-                  d="M10 0 V110"
-                  fill="none"
-                  stroke="#000000"
-                  strokeWidth="0.5"
-                  vectorEffect="non-scaling-stroke"
-                  strokeDasharray="11 11"
-                ></path>
-              </svg>
-            </section>
+            <AnchorLinksSection
+              title="Стиральная машина не включается:"
+              items={[
+                { icon: '/external/vector8669-r6fr.svg', href: '#1', text: '1. Что делать, если машина не включается?' },
+                { icon: '/vector.svg', href: '#2', text: 'Основные причины поломки:' },
+                { icon: '/external/vector8669-r6fr.svg', href: '#2', text: '1. Нет питания' },
+                { icon: '/external/vector8669-r6fr.svg', href: '#3', text: '2. Перегорел сетевой фильтр' },
+                { icon: '/external/vector8669-r6fr.svg', href: '#4', text: '3. Вышел из строя центральный модуль управления' },
+                { icon: '/external/vector8669-r6fr.svg', href: '#5', text: '4. Износились щётки двигателя' },
+                { icon: '/external/vector8669-r6fr.svg', href: '#5-1', text: '5. Неисправность замка люка (УБЛ)' },
+                { icon: '/external/vector8669-r6fr.svg', href: '#5-2', text: '6. Неисправен впускной клапан или нет подачи воды' },
+              ]}
+            />
             <section id="1" className="page-firstproblem">
               <div className="page-container12 zagolovkiskorobkoy">
                 <h2 className="zagolovki2">
-                  Что дел��ть, если машина не включается:
+                  Что делать, если машина не включается:
                 </h2>
                 <svg
                   width="330"
@@ -309,24 +110,24 @@ const Page = (props) => {
                     className="page-image38230521"
                   />
                   <span className="page-text19">
-                    <span>Машин�� не ��ключается</span>
+                    <span>Машина не включается</span>
                     <br></br>
                   </span>
                 </figure>
                 <div className="vicetext">
                   <p>
-                    <strong>1. Отключите машинку от сети и бе��опасно��ти.</strong><br />
+                    <strong>1. Отключите машинку от сети</strong><br />
                     Прежде чем разбирать что-либо, обязательно вытащите вилку из розетки и перекройте водоподачу. Это защитит вас от удара током и подтопления.
                   </p>
 
                   <p>
                     <strong>2. Проверьте электрическую цепь.</strong><br />
-                    Убедит��сь, что автомат в электрощите включён, а ��ровод п��тания и розетка не повреждены. Подключите к той же розетке дру����й прибор, чтобы убедиться, что питание ��сть.
+                    Убедитесь, что автомат в электрощите включён, а провод питания и розетка не повреждены. Подключите к той же розетке другой прибор, чтобы убедиться, что питание есть.
                   </p>
 
                   <p>
                     <strong>3. Осмотрите дверцу.</strong><br />
-                    Откройте люк и закройте его заново до характерного щелчка. Иногда про��тое неп��отное закрытие блокирует пуск. Проверьте, не мешают ли защёлке посторонние предметы или грязь.
+                    Откройте люк и закройте его заново до характерного щелчка. Иногда простое неплотное закрытие блокирует пуск. Проверьте, не мешают ли защёлке посторонние предметы или грязь.
                   </p>
 
                   <p>
@@ -336,19 +137,19 @@ const Page = (props) => {
 
                   <p>
                     <strong>5. Перезапустите оборудование.</strong><br />
-                    Отключите машину от сети на несколько минут (примерно на 10–15), за��ем включите снова. Иногда одно��ратный «глюк» электроники устраняется сбросом питания.
+                    Отключите машину от сети на несколько минут (примерно на 10–15), затем включите снова. Иногда однократный «глюк» электроники устраняется сбросом питания.
                   </p>
 
                   <p>
-                    <strong>6. Проверьте фи��ьтры и шланги.</strong><br />
-                    Если машинка всё е��ё н�� подаёт признаков ж��зни, осмотрите сетевой фильтр и впус��ной клапан. Для фильтра ну��ен мультиметр, для клап��на — визуальный осмотр или звон мастеру. Часто эти детали меняют полностью.
+                    <strong>6. Проверьте фильтры и шланги.</strong><br />
+                    Если машинка всё ещё не подаёт признаков жизни, осмотрите сетевой фильтр и впускной клапан. Для фильтра нужен мультиметр, для клапана — визуальный осмотр или звон мастеру. Часто эти детали меняют полностью.
                   </p>
                 </div>
               </div>
             </section>
             <div className="page-container15">
               <h2 className="page-text34">
-                <span>Основные пр��чины неисправности:</span>
+                <span>Основные причины неисправности:</span>
                 <br></br>
               </h2>
             </div>
@@ -390,7 +191,7 @@ const Page = (props) => {
                 </figure>
                 <p className="vicetext">
                   {' '}
-                  Иногда причина банальна — машинка не получа��т электричество. Сначала проверьте автомат в щитке и предохранитель. Убедитесь, ��то шнур ��елый, а розетка рабочая. Для проверки можно включить в неё, например, фен или зарядку. Если другие приборы тоже не работают, значит, проблема не в самой машинке, а в электросети. В простых случаях дост��точно поднять автомат или заменить предохранитель. Если же электричество есть, а техника «��олчит», стоит искать дальше.
+                  Иногда причина банальна — машинка не получает электричество. Сначала проверьте автомат в щитке и предохранитель. Убедитесь, что шнур целый, а розетка рабочая. Для проверки можно включить в неё, например, фен или зарядку. Если другие приборы тоже не работают, значит, проблема не в самой машинке, а в электросети. В простых случаях достаточно поднять автомат или заменить предохранитель. Если же электричество есть, а техника «молчит», стоит искать дальше.
                 </p>
               </div>
             </section>
@@ -418,7 +219,7 @@ const Page = (props) => {
               <div className="page-container20">
                 <figure className="page-container21">
                   <img
-                    alt="��етевой филь��р"
+                    alt="сетевой фильтр"
                     src="/5/filtrsetevoy.webp"
                     loading="lazy"
                     className="page-image38230523"
@@ -430,7 +231,7 @@ const Page = (props) => {
                 </figure>
                 <p className="vicetext">
                   {' '}
-                  В большинстве современных машин стоит сетевой фильтр, который защищает электронику от скачков напряжения. Когд�� он выходит из строя, машинка переста��т реаги��овать на в��лючение. Симптомы — шнур и ��озетка исправны, но техника полностью «мертва». Проверить фильтр можно мультиметром (или доверить мастеру). Иногда на корпусе фильтра ��идны следы п��дгорания. Если элемент неисправен, его просто меняют на новый.
+                  В большинстве современных машин стоит сетевой фильтр, который защищает электронику от скачков напряжения. Когда он выходит из строя, машинка перестаёт реагировать на включение. Симптомы — шнур и розетка исправны, но техника полностью «мертва». Проверить фильтр можно мультиметром (или доверить мастеру). Иногда на корпусе фильтра видны следы подгорания. Если элемент неисправен, его просто меняют на новый.
                 </p>
               </div>
             </section>
@@ -469,7 +270,7 @@ const Page = (props) => {
                 </figure>
                 <p className="page-text46 vicetext">
                   {' '}
-                  Мозг ст��ральной машины — это управляющая плата. Именно она хранит программы стирки и управляет всеми процессами. Если ��на выходит из строя, техника не запускается, индикаторы не горят или ведут себя странно. Иногда помогает простой сброс: отключите питани�� на 10–20 минут и попробуйте снова. Если не помогло — скорее всего, нужна прошивк��, ��емонт или замена модуля. Этим обычно занимается специалист.
+                  Мозг стиральной машины — это управляющая плата. Именно она хранит программы стирки и управляет всеми процессами. Если она выходит из строя, техника не запускается, индикаторы не горят или ведут себя странно. Иногда помогает простой сброс: отключите питание на 10–20 минут и попробуйте снова. Если не помогло — скорее всего, нужна прошивка, ремонт или замена модуля. Этим обычно занимается специалист.
                   <span
                     dangerouslySetInnerHTML={{
                       __html: ' ',
@@ -481,7 +282,7 @@ const Page = (props) => {
             <section id="5" className="page-fiveproblem2">
               <div className="page-container25 zagolovkiskorobkoy">
                 <h3 className="zagolovki2">
-                  4. Износились щётки двиг��теля
+                  4. Износились щётки двигателя
                 </h3>
                 <svg
                   width="330"
@@ -509,11 +310,11 @@ const Page = (props) => {
                     loading="lazy"
                     className="page-image38230525"
                   />
-                  <span className="page-text48">Ще��ки двигателя</span>
+                  <span className="page-text48">Щетки двигателя</span>
                 </figure>
                 <p className="page-text49 vicetext">
                   {' '}
-                  Двигатель стиралки питается ��т э��ектрических щёток на коллекторе ротор��. При сильном износе щё��ок двигатель либо не запуска��тся совсем, либо работает с перебоями. Яркий признак неисправности щёток — барабан перестаёт вращаться: машина вкл��чен��, напор воды есть, н�� барабан «не крутит». Ещё один симптом — искры или необычные «скрежещущие» звуки при попытке запустить стирку. Обычно это происходит из-за плохого контакта щёток с ротором (они коротко замк��уты или стёрлись). На дисплее в таких случаях могут появляться сервисные коды (хотя обычно исчезают, к��гда машина остывает). Проверьте щётки двигателя: в большинстве моделей это доступно после снятия задней крышк�� и корпуса мотора. Если щетки сильно короткие или имею�� сколы, их нужно замен��ть. Это относительно прос��ая и недорогая операция — её выполняе�� мастер или даже домашний умелец. Пока щетки не заменены, стиралк�� не запустится (особенно при больших нагрузках).
+                  Двигатель стиралки питается от электрических щёток на коллекторе ротора. При сильном износе щёток двигатель либо не запускается совсем, либо работает с перебоями. Яркий признак неисправности щёток — барабан перестаёт вращаться: машина включена, напор воды есть, но барабан «не крутит». Ещё один симптом — искры или необычные «скрежещущие» звуки при попытке запустить стирку. Обычно это происходит из-за плохого контакта щёток с ротором (они коротко замкнуты или стёрлись). На дисплее в таких случаях могут появляться сервисные коды (хотя обычно исчезают, когда машина остывает). Проверьте щётки двигателя: в большинстве моделей это доступно после снятия задней крышки и корпуса мотора. Если щетки сильно короткие или имеют сколы, их нужно заменить. Это относительно простая и недорогая операция — её выполняет мастер или даже домашний умелец. Пока щетки не заменены, стиралка не запустится (особенно при больших нагрузках).
                   <span
                     dangerouslySetInnerHTML={{
                       __html: ' ',
@@ -557,7 +358,7 @@ const Page = (props) => {
                 </figure>
                 <p className="page-text49 vicetext">
                   {' '}
-                  Практически все стиралки блокируют дверцу перед стартом (из с��ображений безопасности). Если замок (Устройс��во Блокировки Люка, УБЛ) сломан или п����сто ��е фиксирует дверцу, машина не даст себя включить. Проявляется это тем, что при попытке старта ничего не происходит — машинка не отвечает на нажатия. На некоторых моделях на экране появляется код ошибки, с��язанный с дверцей: на��ример, LG выд��ёт «dE», Samsung — «DC». Часто бывает и просто «виснет»: люк не захлопну�� до конца. Попробуйте отк��ыть и затем сильно закрыть дверцу до ще��чка – иногда достаточно убедиться, что она плотно заперта. Если же замок д��йствительно сломан, ��го придётся заменить. Устройство состоит из микровыключателя и заслонки — ремонт нецелесообразен, заменять нужно весь узел. До замены машина работать н�� будет (ее «кидает»: ни вода не набирается, ни барабан ��е крутится).
+                  Практически все стиралки блокируют дверцу перед стартом (из соображений безопасности). Если замок (Устройство Блокировки Люка, УБЛ) сломан или просто не фиксирует дверцу, машина не даст себя включить. Проявляется это тем, что при попытке старта ничего не происходит — машинка не отвечает на нажатия. На некоторых моделях на экране появляется код ошибки, связанный с дверцей: например, LG выдаёт «dE», Samsung — «DC». Часто бывает и просто «виснет»: люк не захлопнут до конца. Попробуйте открыть и затем сильно закрыть дверцу до щелчка – иногда достаточно убедиться, что она плотно заперта. Если же замок действительно сломан, его придётся заменить. Устройство состоит из микровыключателя и заслонки — ремонт нецелесообразен, заменять нужно весь узел. До замены машина работать не будет (ее «кидает»: ни вода не набирается, ни барабан не крутится).
                   <span
                     dangerouslySetInnerHTML={{
                       __html: ' ',
@@ -569,7 +370,7 @@ const Page = (props) => {
             <section id="5-2" className="page-fiveproblem2">
               <div className="page-container25 zagolovkiskorobkoy">
                 <h3 className="zagolovki2">
-                  6. Не��справен впускной клапан или не�� подачи воды
+                  6. Неисправен впускной клапан или нет подачи воды
                 </h3>
                 <svg
                   width="330"
@@ -601,7 +402,7 @@ const Page = (props) => {
                 </figure>
                 <p className="page-text49 vicetext">
                   {' '}
-                  Если индикаторы на панели загораются, но после включения программа не стартует, обр��тите внимание на подачу воды. Во время цикла маши��ка должна заблокировать люк и тут же начать залив воды. Если воды нет (или не подаётся), стирка ��е начнётся. Сначала проверьте, отк��ыт ли кран водо��набжения для машины и не пережат ли заливной шланг. Без наличия воды стиралка просто не запустится. Если с подачей воды вс�� в по��ядке, возможен отказ впускного (заливного) клапана. Это электромагнит, открывающий подачу воды при команде блока управлен��я. Признаки: ��ашинка ��локирует л����, пытается набрать воду (можно услышать гудение), но бак ��стаётся пустым. На дисплее может мигать ошибка «нет воды» (например, код H2O у Indesit или F02 у Bosch). Иногда заливается вода только на некоторые программы (например, полоскание) — это из-за того, что современные стиралки используют д����ойной клапан и может выходить из строя только один из его патрубков. Что делать: убедит��сь, что кран открыт и шланг не изогнут. Если вода есть, но машинка всё равно не набирает, скорее всего, впускной клапан неисправен или забит мусором. Нередко в корпусе клапана устанавливается мелкая сеточка-фильтр — её можно очистить. Если проверка не помогла, потребуется заменить клапан на новый. Это уже задача мастера: самост��ятельно без оп��т�� лучше не рисковать.
+                  Если индикаторы на панели загораются, но после включения программа не стартует, обратите внимание на подачу воды. Во время цикла машинка должна заблокировать люк и тут же начать залив воды. Если воды нет (или не подаётся), стирка не начнётся. Сначала проверьте, открыт ли кран водоснабжения для машины и не пережат ли заливной шланг. Без наличия воды стиралка просто не запустится. Если с подачей воды всё в порядке, возможен отказ впускного (заливного) клапана. Это электромагнит, открывающий подачу воды при команде блока управления. Признаки: машинка блокирует люк, пытается набрать воду (можно услышать гудение), но бак остаётся пустым. На дисплее может мигать ошибка «нет воды» (например, код H2O у Indesit или F02 у Bosch). Иногда заливается вода только на некоторые программы (например, полоскание) — это из-за того, что современные стиралки используют двойной клапан и может выходить из строя только один из его патрубков. Что делать: убедитесь, что кран открыт и шланг не изогнут. Если вода есть, но машинка всё равно не набирает, скорее всего, впускной клапан неисправен или забит мусором. Нередко в корпусе клапана устанавливается мелкая сеточка-фильтр — её можно очистить. Если проверка не помогла, потребуется заменить клапан на новый. Это уже задача мастера: самостоятельно без опыта лучше не рисковать.
                   <span
                     dangerouslySetInnerHTML={{
                       __html: ' ',
@@ -610,201 +411,7 @@ const Page = (props) => {
                 </p>
               </div>
             </section>
-            <section className="page-better-call-master">
-              <svg
-                width="100%"
-                xmlns="http://www.w3.org/2000/svg"
-                height="17"
-                viewBox="0 0 10 20"
-                preserveAspectRatio="none"
-                className="page-icon36"
-              >
-                <circle
-                  r="3.75"
-                  cx="5"
-                  cy="10"
-                  fill="#606060"
-                  vectorEffect="non-scaling-stroke"
-                ></circle>
-              </svg>
-              <svg
-                width="100%"
-                xmlns="http://www.w3.org/2000/svg"
-                height="17"
-                viewBox="0 0 10 20"
-                preserveAspectRatio="none"
-                className="page-icon38"
-              >
-                <circle
-                  r="3.75"
-                  cx="5"
-                  cy="10"
-                  fill="#606060"
-                  vectorEffect="non-scaling-stroke"
-                ></circle>
-              </svg>
-              <svg
-                width="100%"
-                xmlns="http://www.w3.org/2000/svg"
-                height="17"
-                viewBox="0 0 10 20"
-                preserveAspectRatio="none"
-                className="page-icon40"
-              >
-                <circle
-                  r="3.75"
-                  cx="5"
-                  cy="10"
-                  fill="#606060"
-                  vectorEffect="non-scaling-stroke"
-                ></circle>
-              </svg>
-              <svg
-                width="100%"
-                xmlns="http://www.w3.org/2000/svg"
-                height="17"
-                viewBox="0 0 10 20"
-                preserveAspectRatio="none"
-                className="page-icon42"
-              >
-                <circle
-                  r="3.75"
-                  cx="5"
-                  cy="10"
-                  fill="#606060"
-                  vectorEffect="non-scaling-stroke"
-                ></circle>
-              </svg>
-              <svg
-                width="330"
-                xmlns="http://www.w3.org/2000/svg"
-                height="20"
-                viewBox="0 0 330 20"
-                preserveAspectRatio="none"
-                className="page-icon44"
-              >
-                <path
-                  d="M0 10 H330"
-                  fill="none"
-                  stroke="#000000"
-                  strokeWidth="0.5"
-                  vectorEffect="non-scaling-stroke"
-                  strokeDasharray="11 11"
-                ></path>
-              </svg>
-              <svg
-                width="330"
-                xmlns="http://www.w3.org/2000/svg"
-                height="20"
-                viewBox="0 0 330 20"
-                preserveAspectRatio="none"
-                className="page-icon46"
-              >
-                <path
-                  d="M0 10 H330"
-                  fill="none"
-                  stroke="#000000"
-                  strokeWidth="0.5"
-                  vectorEffect="non-scaling-stroke"
-                  strokeDasharray="11 11"
-                ></path>
-              </svg>
-              <svg
-                width="20"
-                xmlns="http://www.w3.org/2000/svg"
-                height="110"
-                viewBox="0 0 20 110"
-                preserveAspectRatio="none"
-                className="page-icon48"
-              >
-                <path
-                  d="M10 0 V110"
-                  fill="none"
-                  stroke="#000000"
-                  strokeWidth="0.5"
-                  vectorEffect="non-scaling-stroke"
-                  strokeDasharray="11 11"
-                ></path>
-              </svg>
-              <svg
-                width="20"
-                xmlns="http://www.w3.org/2000/svg"
-                height="110"
-                viewBox="0 0 20 110"
-                preserveAspectRatio="none"
-                className="page-icon50"
-              >
-                <path
-                  d="M10 0 V110"
-                  fill="none"
-                  stroke="#000000"
-                  strokeWidth="0.5"
-                  vectorEffect="non-scaling-stroke"
-                  strokeDasharray="11 11"
-                ></path>
-              </svg>
-              <h2 className="page-text50">Когда вызывать мастера?</h2>
-              <p className="page-text51">
-                <span className="page-text52">
-                  Если вы выполнили все рек��мен��ации, но проблема осталась —
-                  обратитесь в сервис
-                  <span
-                    dangerouslySetInnerHTML={{
-                      __html: ' ',
-                    }}
-                  />
-                </span>
-                <span className="page-text53">&quot;</span>
-                <span className="page-text54">РемCтирМаш</span>
-                <span className="page-text55">&quot;</span>
-                <span className="page-text56">.</span>
-                <span className="page-text57">
-                  {' '}
-                  Наши специали��ты быстро прие��ут к вам в желае��ое вами время в
-                  любой ��айон Одессы и выполнят качественную диагностику и
-                  ремонт.
-                </span>
-              </p>
-              <svg
-                width="330"
-                xmlns="http://www.w3.org/2000/svg"
-                height="20"
-                viewBox="0 0 330 20"
-                preserveAspectRatio="none"
-                className="page-icon52"
-              >
-                <path
-                  d="M0 10 H330"
-                  fill="none"
-                  stroke="#000000"
-                  strokeWidth="0.5"
-                  vectorEffect="non-scaling-stroke"
-                  strokeDasharray="11 11"
-                ></path>
-              </svg>
-              <strong className="page-text58">Рабо��аем без выходных</strong>
-              <div className="page-container28">
-                <div className="page-container29">
-                  <div className="page-container30">
-                    <img
-                      alt="image"
-                      src="/image%203823106.svg"
-                      className="page-image3"
-                    />
-                    <strong className="page-text59">+38 (048) 253-23-23</strong>
-                  </div>
-                  <div className="page-container31">
-                    <img
-                      alt="image"
-                      src="/image%203823107.svg"
-                      className="page-image4"
-                    />
-                    <strong className="page-text60">+38 (048) 123-35-21</strong>
-                  </div>
-                </div>
-                <OrderButton onClick={openModal} text="Заказать мастера" />
-              </div>
-            </section>
+            <CallMasterSection onOrderClick={openModal} />
             <PageNavigation
               prevPage={{
                 href: '/silnoshumit',
@@ -834,12 +441,12 @@ const Page = (props) => {
             </svg>
             <RelatedArticles />
           </div>
-          <div className="page-dops-info">
-            <section className="page-frame1299">
+          <div className="page-dops-info"><InterestingAside />
+            <section className="page-frame1299" style={{display:"none"}}>
               <span className="page-text72">Вам будет интересно:</span>
               <div className="page-frame12981">
                 <span className="page-text73">
-                  Ошибки, которые приводят к до��огостоящему ремонту (и как их
+                  Ошибки, ко��орые приводят к до��огостоящему ремонту (и как их
                   избежать)
                 </span>
                 <div className="page-container45"></div>
@@ -847,7 +454,7 @@ const Page = (props) => {
               <div className="page-frame12982">
                 <span className="page-text74">
                   Как ��родлить жизнь машине на 3–5 лет — простые привычк��,
-                  которые сэкономят деньги
+                  ��оторые сэкономят деньги
                 </span>
                 <div className="page-container46"></div>
               </div>
@@ -889,6 +496,7 @@ const Page = (props) => {
             width: 100%;
             display: flex;
             min-height: 100vh;
+            min-height: 100dvh;
             align-items: center;
             flex-direction: column;
             background-color: #ffffff;
@@ -971,6 +579,7 @@ const Page = (props) => {
             line-height: normal;
             font-stretch: normal;
             text-decoration: none;
+            margin: 0 0 8px 0;
           }
           .page-text11 {
             color: var(--dl-color-theme-neutral-dark);
@@ -2394,6 +2003,9 @@ const Page = (props) => {
             .page-frame1299 {
               display: none;
             }
+            .page-dops-info {
+              display: none;
+            }
           }
           @media (max-width: 767px) {
             .page-breadcrumbs-section {
@@ -2509,21 +2121,8 @@ const Page = (props) => {
               width: auto;
               min-width: 100%;
             }
-            .page-container14 {
-              gap: var(--dl-layout-space-halfunit);
-              width: 100%;
-              height: 100%;
-              max-width: 100%;
-              min-width: 100%;
-              min-height: 100%;
-              margin-bottom: 14px;
-            }
-            .page-image38230521 {
-              width: auto;
-              max-width: auto;
-              min-width: auto;
-              min-height: 50px;
-            }
+            .page-container14 { gap: var(--dl-layout-space-halfunit); width: 280px; max-width: 280px; min-width: 280px; height: auto; min-height: 0; margin: 12px auto 16px; float: none; }
+            .page-image38230521 { width: 100%; height: 170px; object-fit: cover; min-width: 0; min-height: 0; }
             .page-text18 {
               width: 100%;
             }
@@ -2537,54 +2136,21 @@ const Page = (props) => {
             }
             .page-container18 { gap: var(--dl-layout-space-halfunit); width: 280px; max-width: 280px; min-width: 280px; height: auto; min-height: 0; margin: 12px auto 16px; float: none; }
             .page-image38230522 { width: 100%; height: 170px; object-fit: cover; min-width: 0; min-height: 0; }
-            .page-container21 {
-              gap: var(--dl-layout-space-halfunit);
-              height: 100%;
-              max-width: var(--dl-layout-size-xxlarge);
-              min-width: 100%;
-              min-height: 100%;
-              margin-bottom: 14px;
-            }
-            .page-image38230523 {
-              width: 100%;
-              min-width: 50%;
-              min-height: 50px;
-            }
+            .page-container21 { gap: var(--dl-layout-space-halfunit); width: 280px; max-width: 280px; min-width: 280px; height: auto; min-height: 0; margin: 12px auto 16px; float: none; }
+            .page-image38230523 { width: 100%; height: 170px; object-fit: cover; min-width: 0; min-height: 0; }
             .page-text40 {
               font-size: 13px;
             }
-            .page-container24 {
-              gap: var(--dl-layout-space-halfunit);
-              height: 100%;
-              max-width: 100%;
-              min-width: 100%;
-              min-height: 100%;
-              margin-bottom: 14px;
-            }
-            .page-image38230524 {
-              width: 100%;
-              min-width: 50%;
-              min-height: 50px;
-            }
+            .page-container24 { gap: var(--dl-layout-space-halfunit); width: 280px; max-width: 280px; min-width: 280px; height: auto; min-height: 0; margin: 12px auto 16px; float: none; }
+            .page-image38230524 { width: 100%; height: 170px; object-fit: cover; min-width: 0; min-height: 0; }
             .page-text45 {
               font-size: 13px;
               font-style: normal;
               font-family: Roboto;
               font-weight: 400;
             }
-            .page-container27 {
-              gap: var(--dl-layout-space-halfunit);
-              height: 100%;
-              max-width: 100%;
-              min-width: 100%;
-              min-height: 100%;
-              margin-bottom: 14px;
-            }
-            .page-image38230525 {
-              width: 100%;
-              min-width: 50%;
-              min-height: 50px;
-            }
+            .page-container27 { gap: var(--dl-layout-space-halfunit); width: 280px; max-width: 280px; min-width: 280px; height: auto; min-height: 0; margin: 12px auto 16px; float: none; }
+            .page-image38230525 { width: 100%; height: 170px; object-fit: cover; min-width: 0; min-height: 0; }
             .page-text48 {
               font-size: 13px;
               font-style: normal;
@@ -2687,13 +2253,6 @@ const Page = (props) => {
               font-size: 14px;
             }
 
-          }
-          .page-better-call-master { margin-top: calc(var(--dl-layout-space-oneandhalfunits) + 20px); margin-bottom: calc(var(--dl-layout-space-oneandhalfunits) + 20px); }
-          .page-text50 { font-size: 19px; }
-          .page-text51 { font-size: 15px; }
-          @media (max-width: 991px) {
-            .page-text50 { font-size: 18px; }
-            .page-text51 { font-size: 14px; }
           }
         `}
       </style>
