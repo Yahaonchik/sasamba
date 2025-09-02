@@ -140,7 +140,7 @@ const Frame1196 = (props) => {
                     ></path>
                   </svg>
                 </div>
-                <Image alt="Стиральная машина не сливает воду" src="/problems 2/11-300h.webp" layout="fill" objectFit="cover" className="frame1196-image15" priority />
+                <Image alt="Стиральная машина не сливает воду" src="/problems 2/11-300h.webp" layout="fill" objectFit="cover" className="frame1196-image15" />
               </a>
             </Link>
             <Link href="/negreetvodu">
@@ -161,7 +161,7 @@ const Frame1196 = (props) => {
                     ></path>
                   </svg>
                 </div>
-                <Image alt="Стиральная машина не нагревает воду" src="/problems 2/21-300h.webp" layout="fill" objectFit="cover" className="frame1196-image16" priority />
+                <Image alt="Стиральная машина не нагревает воду" src="/problems 2/21-300h.webp" layout="fill" objectFit="cover" className="frame1196-image16" />
               </a>
             </Link>
             <Link href="/protekaet">
@@ -180,7 +180,7 @@ const Frame1196 = (props) => {
                     ></path>
                   </svg>
                 </div>
-                <Image alt="Стиральная машина протекает" src="/problems 2/31-300h.webp" layout="fill" objectFit="cover" className="frame1196-image17" priority />
+                <Image alt="Стиральная машина протекает" src="/problems 2/31-300h.webp" layout="fill" objectFit="cover" className="frame1196-image17" />
               </a>
             </Link>
             <Link href="/silnoshumit">
@@ -201,7 +201,7 @@ const Frame1196 = (props) => {
                     ></path>
                   </svg>
                 </div>
-                <Image alt="Стиральная машина шумит при отжиме" src="/problems/4-300h.webp" layout="fill" objectFit="cover" className="frame1196-image18" priority />
+                <Image alt="Стиральная машина шумит при отжиме" src="/problems/4-300h.webp" layout="fill" objectFit="cover" className="frame1196-image18" />
               </a>
             </Link>
             <Link href="/nevkluchaetsa">
@@ -222,7 +222,7 @@ const Frame1196 = (props) => {
                     ></path>
                   </svg>
                 </div>
-                <Image alt="Стиральная машина не включается" src="/problems 2/51-300h.webp" layout="fill" objectFit="cover" className="frame1196-image19" priority />
+                <Image alt="Стиральная машина не включается" src="/problems 2/51-300h.webp" layout="fill" objectFit="cover" className="frame1196-image19" />
               </a>
             </Link>
             <Link href="/zavisaetnaprogramme">
@@ -243,7 +243,7 @@ const Frame1196 = (props) => {
                     ></path>
                   </svg>
                 </div>
-                <Image alt="Стиральная машина зависает на программе" src="/problems 2/61-300h.webp" layout="fill" objectFit="cover" className="frame1196-image20" priority />
+                <Image alt="Стиральная машина зависает на программе" src="/problems 2/61-300h.webp" layout="fill" objectFit="cover" className="frame1196-image20" />
               </a>
             </Link>
             <Link href="/neotjimaet">
@@ -264,7 +264,7 @@ const Frame1196 = (props) => {
                     ></path>
                   </svg>
                 </div>
-                <Image alt="Стиральная машина не отжимает" src="/problems 2/71-300h.webp" layout="fill" objectFit="cover" className="frame1196-image21" priority />
+                <Image alt="Стиральная машина не отжимает" src="/problems 2/71-300h.webp" layout="fill" objectFit="cover" className="frame1196-image21" />
               </a>
             </Link>
             <Link href="/nenabiraetvodu">
@@ -285,7 +285,7 @@ const Frame1196 = (props) => {
                     ></path>
                   </svg>
                 </div>
-                <Image alt="Стиральная машина не набирает воду" src="/problems/8-300h.webp" layout="fill" objectFit="cover" className="frame1196-image22" priority />
+                <Image alt="Стиральная машина не набирает воду" src="/problems/8-300h.webp" layout="fill" objectFit="cover" className="frame1196-image22" />
               </a>
             </Link>
             <Link href="/neotkrivaetsadverca">
@@ -306,7 +306,7 @@ const Frame1196 = (props) => {
                     ></path>
                   </svg>
                 </div>
-                <Image alt="Не открывается дверца стиральной машины" src="/problems 2/91-300h.webp" layout="fill" objectFit="cover" className="frame1196-image23" priority />
+                <Image alt="Не открывается дверца стиральной машины" src="/problems 2/91-300h.webp" layout="fill" objectFit="cover" className="frame1196-image23" />
               </a>
             </Link>
             <a href="/nekrutitbaraban" className="frame1196-container122">
@@ -326,7 +326,7 @@ const Frame1196 = (props) => {
                   ></path>
                 </svg>
               </div>
-              <Image alt="Стиральная машина не крутит барабан" src="/problems/10-300h.webp" layout="fill" objectFit="cover" className="frame1196-image24" priority />
+              <Image alt="Стиральная машина не крутит барабан" src="/problems/10-300h.webp" layout="fill" objectFit="cover" className="frame1196-image24" />
             </a>
           </article>
         </section>
