@@ -72,6 +72,8 @@ const SEOHead = ({
 
       <meta httpEquiv="content-language" content="ru" />
       <link rel="alternate" hrefLang="ru" href={currentUrl} />
+      <link rel="preload" as="image" href="/all ina dast or dust.webp" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" />
 
       {structuredData && (
         <script
