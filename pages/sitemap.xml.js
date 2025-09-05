@@ -1,6 +1,6 @@
 import { seoConfig } from '../utils/seoConfig'
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://sosamba3.vercel.app'
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://remont-stiralok.vercel.app/'
 
 function generateSiteMap() {
   const routes = Object.keys(seoConfig)
