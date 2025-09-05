@@ -2,4 +2,3 @@ User-agent: *
 Allow: /
 
 Sitemap: https://remont-stiralok.vercel.app/sitemap.xml
-Sitemap: https://remont-stiralok.vercel.app/sitemap_index.xml
