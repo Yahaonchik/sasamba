@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://sosamba3.vercel.app/sitemap.xml
+Sitemap: https://remont-stiralok.vercel.app/sitemap.xml
