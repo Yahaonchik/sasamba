@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://remont-stiralok.vercel.app/sitemap.xml
